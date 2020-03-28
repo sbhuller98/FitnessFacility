@@ -3,6 +3,7 @@ package ubc.cs304.team64.model;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.sql.*;
+import java.time.LocalDate;
 
 public class DatabaseConnectionHandler {
   private Connection connection;
@@ -32,7 +33,7 @@ public class DatabaseConnectionHandler {
       if(!result.next()){
         throw new InvalidLoginException();
       }
-      return new Member(
+      Member retVal =  new Member(
           result.getInt("mid"),
           result.getString("address"),
           result.getString("phoneNumber"),
@@ -42,14 +43,53 @@ public class DatabaseConnectionHandler {
           result.getString("sType"),
           result.getInt("cost")
       );
+      ps.close();
+      return retVal;
     } catch (SQLException e) {
       throw new Error(e);
     }
   }
 
-  public static void main(String[] args) throws Throwable {
-    DatabaseConnectionHandler handler = new DatabaseConnectionHandler();
-    Member ian = handler.getMember("imiller", "pa$$word");
-    System.out.println(ian);
+  public Member createMember(String login, String password, String address, String phoneNumber, String name, LocalDate birthDate, int dln, String sType){
+    try {
+      int statusCost = getStatusCost(sType);
+
+      String psString = "INSERT INTO member(login, password, address, phoneNumber, name, birthDate, driverLicenceNumber, sType) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+      PreparedStatement ps = connection.prepareStatement(psString, Statement.RETURN_GENERATED_KEYS);
+      ps.setString(1, login);
+      ps.setBytes(2, digest.digest(password.getBytes()));
+      ps.setString(3, address);
+      ps.setString(4, phoneNumber);
+      ps.setString(5, name);
+      ps.setDate(6, Date.valueOf(birthDate));
+      ps.setInt(7, dln);
+      ps.setString(8, sType);
+      System.out.println(ps.executeUpdate());
+
+      ResultSet autoKeys = ps.getGeneratedKeys();
+      if ((!autoKeys.next())) throw new AssertionError();
+      int mid = autoKeys.getInt(1);
+
+      ps.close();
+      connection.commit();
+      return new Member(mid, address, phoneNumber, name, Date.valueOf(birthDate), dln, sType, statusCost);
+    } catch (SQLIntegrityConstraintViolationException e){
+      throw new IllegalArgumentException(e);
+    }
+    catch (SQLException e) {
+      throw new Error(e);
+    }
+  }
+
+  private int getStatusCost(String sType) throws SQLException{
+    PreparedStatement getStatusCost = connection.prepareStatement("SELECT cost FROM status WHERE sType = ?");
+    getStatusCost.setString(1, sType);
+    ResultSet rs = getStatusCost.executeQuery();
+    if(!rs.next()) {
+      throw new IllegalSTypeException(sType);
+    }
+    int retVal = rs.getInt("cost");
+    getStatusCost.close();
+    return retVal;
   }
 }
