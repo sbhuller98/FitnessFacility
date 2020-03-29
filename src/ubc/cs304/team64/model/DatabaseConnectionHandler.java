@@ -145,7 +145,7 @@ public class DatabaseConnectionHandler {
           "WHERE c.time = t.time AND c.rid = t.rid AND c.fid = t.fid) " +
           "as taking " +
           "FROM class c NATURAL JOIN classt " +
-          "WHERE fid = ?");
+          "WHERE fid = ? AND time > CURRENT_TIMESTAMP()");
       ps.setInt(1, facility.getFid());
       Collection<ClassInfo> classes = new ArrayList<>();
       ResultSet rs = ps.executeQuery();
@@ -163,6 +163,7 @@ public class DatabaseConnectionHandler {
         );
         classes.add(classInfo);
       }
+      ps.close();
       return classes;
     } catch (SQLException e) {
       throw new Error(e);
