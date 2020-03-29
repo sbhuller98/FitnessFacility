@@ -16,7 +16,7 @@ public class Member {
   Member(int mid, String address, String phoneNumber, String name, Date birthDate, int driversLicenceNumber, String statusType, double statusCost) {
     this.mid = mid;
     this.address = address;
-    this.phoneNumber = phoneNumber;
+    this.phoneNumber = "("+ phoneNumber.substring(0,3) +") "+ phoneNumber.substring(3,6)+"-"+phoneNumber.substring(6,10);
     this.name = name;
     this.birthDate = birthDate;
     this.driversLicenceNumber = driversLicenceNumber;

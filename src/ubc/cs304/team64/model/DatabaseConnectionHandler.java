@@ -4,6 +4,8 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.sql.*;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.Collection;
 
 public class DatabaseConnectionHandler {
   private Connection connection;
@@ -90,6 +92,25 @@ public class DatabaseConnectionHandler {
     }
     int retVal = rs.getInt("cost");
     getStatusCost.close();
+    return retVal;
+  }
+
+  public Collection<Facility> getFacilities() {
+    Collection<Facility> retVal = new ArrayList<>();
+    try {
+      Statement s = connection.createStatement();
+      ResultSet rs = s.executeQuery("SELECT * FROM facility");
+      while(rs.next()) {
+        Facility f = new Facility(
+            rs.getInt("fid"),
+            rs.getString("address"),
+            rs.getString("name")
+        );
+        retVal.add(f);
+      }
+    } catch(SQLException e){
+      throw new Error(e);
+    }
     return retVal;
   }
 }
