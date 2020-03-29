@@ -2,6 +2,7 @@ package ubc.cs304.team64.model;
 
 import java.util.Date;
 import java.util.Objects;
+import java.util.Set;
 
 public class Member {
   private final int mid;
@@ -12,8 +13,9 @@ public class Member {
   private final int driversLicenceNumber;
   private final String statusType;
   private final double statusCost;
+  private final Set<String> availableClassTypes;
 
-  Member(int mid, String address, String phoneNumber, String name, Date birthDate, int driversLicenceNumber, String statusType, double statusCost) {
+  Member(int mid, String address, String phoneNumber, String name, Date birthDate, int driversLicenceNumber, String statusType, double statusCost, Set<String> availableClassTypes) {
     this.mid = mid;
     this.address = address;
     this.phoneNumber = "("+ phoneNumber.substring(0,3) +") "+ phoneNumber.substring(3,6)+"-"+phoneNumber.substring(6,10);
@@ -22,6 +24,7 @@ public class Member {
     this.driversLicenceNumber = driversLicenceNumber;
     this.statusType = statusType;
     this.statusCost = statusCost;
+    this.availableClassTypes = availableClassTypes;
   }
 
   public int getMid() {
@@ -54,6 +57,10 @@ public class Member {
 
   private double getStatusCost(){
     return statusCost;
+  }
+
+  private boolean canTakeClass(ClassInfo classInfo){
+    return availableClassTypes.contains(classInfo.getType());
   }
 
   @Override

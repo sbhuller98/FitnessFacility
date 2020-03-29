@@ -7,6 +7,8 @@ import java.sql.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashSet;
+import java.util.Set;
 
 public class DatabaseConnectionHandler {
   private Connection connection;
@@ -36,6 +38,7 @@ public class DatabaseConnectionHandler {
       if(!result.next()){
         throw new InvalidLoginException();
       }
+      String sType = result.getString("sType");
       Member retVal =  new Member(
           result.getInt("mid"),
           result.getString("address"),
@@ -43,8 +46,9 @@ public class DatabaseConnectionHandler {
           result.getString("name"),
           result.getDate("birthDate"),
           result.getInt("driverLicenceNumber"),
-          result.getString("sType"),
-          result.getInt("cost")
+          sType,
+          result.getInt("cost"),
+          getClassTypesForStatus(sType)
       );
       ps.close();
       return retVal;
@@ -78,11 +82,26 @@ public class DatabaseConnectionHandler {
 
       ps.close();
       connection.commit();
-      return new Member(mid, address, phoneNumber, name, Date.valueOf(birthDate), dln, sType, statusCost);
+      return new Member(mid, address, phoneNumber, name, Date.valueOf(birthDate), dln, sType, statusCost, getClassTypesForStatus(sType));
     } catch (SQLIntegrityConstraintViolationException e){
       throw new IllegalArgumentException(e);
     }
     catch (SQLException e) {
+      throw new Error(e);
+    }
+  }
+
+  private Set<String> getClassTypesForStatus(String status){
+    try{
+      PreparedStatement ps = connection.prepareStatement("SELECT classType FROM letsyoutake WHERE sType = ?");
+      ps.setString(1, status);
+      ResultSet rs = ps.executeQuery();
+      Set<String> retVal = new HashSet<>();
+      while (rs.next()){
+        retVal.add(rs.getString("classType"));
+      }
+      return retVal;
+    } catch (SQLException e){
       throw new Error(e);
     }
   }
@@ -100,8 +119,8 @@ public class DatabaseConnectionHandler {
   }
 
   public Collection<Facility> getFacilities() {
-    Collection<Facility> retVal = new ArrayList<>();
     try {
+      Collection<Facility> retVal = new ArrayList<>();
       Statement s = connection.createStatement();
       ResultSet rs = s.executeQuery("SELECT * FROM facility");
       while(rs.next()) {
@@ -112,9 +131,41 @@ public class DatabaseConnectionHandler {
         );
         retVal.add(f);
       }
+      return retVal;
     } catch(SQLException e){
       throw new Error(e);
     }
-    return retVal;
+  }
+
+  public Collection<ClassInfo> getClasses(Facility facility){
+    try {
+      PreparedStatement ps = connection.prepareStatement(
+          "SELECT *," +
+              "(SELECT COUNT(t.mid) FROM takes t " +
+          "WHERE c.time = t.time AND c.rid = t.rid AND c.fid = t.fid) " +
+          "as taking " +
+          "FROM class c NATURAL JOIN classt " +
+          "WHERE fid = ?");
+      ps.setInt(1, facility.getFid());
+      Collection<ClassInfo> classes = new ArrayList<>();
+      ResultSet rs = ps.executeQuery();
+      while (rs.next()){
+        ClassInfo classInfo = new ClassInfo(
+            facility,
+            rs.getInt("rid"),
+            rs.getTimestamp("time"),
+            rs.getString("title"),
+            rs.getString("description"),
+            rs.getString("type"),
+            rs.getInt("iid"),
+            rs.getInt("capacity"),
+            rs.getInt("taking")
+        );
+        classes.add(classInfo);
+      }
+      return classes;
+    } catch (SQLException e) {
+      throw new Error(e);
+    }
   }
 }
