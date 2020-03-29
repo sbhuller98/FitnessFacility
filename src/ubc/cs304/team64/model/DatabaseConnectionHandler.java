@@ -1,5 +1,6 @@
 package ubc.cs304.team64.model;
 
+import java.security.InvalidParameterException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.sql.*;
@@ -55,6 +56,9 @@ public class DatabaseConnectionHandler {
   public Member createMember(String login, String password, String address, String phoneNumber, String name, LocalDate birthDate, int dln, String sType){
     try {
       int statusCost = getStatusCost(sType);
+      if(phoneNumber.length() != 10 || !phoneNumber.matches("\\d*")){
+        throw new InvalidParameterException("Phone number should be a 10 digit number");
+      }
 
       String psString = "INSERT INTO member(login, password, address, phoneNumber, name, birthDate, driverLicenceNumber, sType) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
       PreparedStatement ps = connection.prepareStatement(psString, Statement.RETURN_GENERATED_KEYS);
