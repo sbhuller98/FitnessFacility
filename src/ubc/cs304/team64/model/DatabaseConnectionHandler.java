@@ -169,4 +169,23 @@ public class DatabaseConnectionHandler {
       throw new Error(e);
     }
   }
+
+  public Instructor getInstructor(ClassInfo classInfo){
+    try {
+      PreparedStatement ps = connection.prepareStatement("SELECT *, (SELECT COUNT(*) FROM rates r where r.iid = i.iid) as rating FROM instructor i WHERE i.iid = ?");
+      ps.setInt(1, classInfo.getIid());
+      ResultSet rs = ps.executeQuery();
+      if ((!rs.next())) throw new AssertionError();
+      Instructor retVal = new Instructor(
+          classInfo.getIid(),
+          rs.getString("name"),
+          rs.getDouble("rating"),
+          rs.getDouble("salary")
+      );
+      ps.close();
+      return retVal;
+    } catch (SQLException e) {
+      throw new Error(e);
+    }
+  }
 }
