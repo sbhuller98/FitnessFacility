@@ -8,10 +8,11 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+
 public class Main extends Application {
 
     public static void main(String[] args){
-        System.out.println("Esketit");
+        System.out.println("Program is running");
 
         launch(args);
     }
@@ -23,9 +24,12 @@ public class Main extends Application {
 
         Scene scene = new Scene(root);
 
-        stage.setTitle("FXML Welcome");
+        stage.setTitle("Login");
         stage.setScene(scene);
         stage.show();
+
     }
+
+
 
 }
