@@ -12,27 +12,27 @@
    <children>
       <ImageView fitHeight="130.0" fitWidth="130.0" layoutX="25.0" layoutY="70.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../../resources/IMG_0253.jpg" />
+            <Image url="@../../../../resources/facilities/logo3.jpg" />
          </image>
       </ImageView>
       <ImageView fitHeight="125.0" fitWidth="125.0" layoutX="444.0" layoutY="51.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../../resources/IMG_0254.jpg" />
+            <Image url="@../../../../resources/facilities/logo1.jpg" />
          </image>
       </ImageView>
       <ImageView fitHeight="125.0" fitWidth="125.0" layoutX="33.0" layoutY="204.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../../resources/IMG_0255.jpg" />
+            <Image url="@../../../../resources/facilities/logo5.jpg" />
          </image>
       </ImageView>
       <ImageView fitHeight="125.0" fitWidth="125.0" layoutX="238.0" layoutY="230.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../../resources/IMG_0256.jpg" />
+            <Image url="@../../../../resources/facilities/logo4.jpg" />
          </image>
       </ImageView>
       <ImageView fitHeight="125.0" fitWidth="125.0" layoutX="432.0" layoutY="213.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../../resources/IMG_0257.jpg" />
+            <Image url="@../../../../resources/facilities/logo2.jpg" />
          </image>
       </ImageView>
       <Button layoutX="16.0" layoutY="175.0" mnemonicParsing="false" style="-fx-background-color: #229aeb; -fx-text-fill: white;" text="Burnaby Aquatics Arena" />
