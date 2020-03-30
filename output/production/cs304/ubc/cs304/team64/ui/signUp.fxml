@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #363857;" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <TextField layoutX="27.0" layoutY="134.0" promptText="username" />
+      <TextField layoutX="27.0" layoutY="180.0" promptText="password" />
+      <TextField layoutX="31.0" layoutY="230.0" promptText="retype password" />
+      <TextField layoutX="215.0" layoutY="134.0" promptText="age" />
+      <TextField layoutX="31.0" layoutY="323.0" promptText="date of birth" />
+      <TextField layoutX="215.0" layoutY="180.0" promptText="address" />
+      <TextField layoutX="215.0" layoutY="230.0" promptText="city" />
+      <Label layoutX="222.0" layoutY="22.0" prefHeight="41.0" prefWidth="120.0" style="-fx-text-fill: white;" text="Welcome!" underline="true">
+         <font>
+            <Font name="System Bold" size="28.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="69.0" fitWidth="181.0" layoutX="414.0" layoutY="78.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../resources/Interac-Visa-Mastercard-300x160.jpg" />
+         </image>
+      </ImageView>
+      <TextField layoutX="403.0" layoutY="180.0" promptText="billing name" />
+      <TextField layoutX="403.0" layoutY="230.0" promptText="card number" />
+      <TextField layoutX="403.0" layoutY="277.0" promptText="cvv" />
+      <TextField layoutX="403.0" layoutY="323.0" promptText="expiry date mm/yy" />
+      <TextField layoutX="31.0" layoutY="86.0" promptText="membership level" />
+      <TextField layoutX="215.0" layoutY="277.0" promptText="province/state" />
+      <TextField layoutX="215.0" layoutY="86.0" promptText="phone number" />
+      <TextField layoutX="31.0" layoutY="277.0" promptText="primary facility" />
+      <Button layoutX="215.0" layoutY="331.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="152.0" text="Sign Up!" />
+      <BorderPane layoutX="378.0" layoutY="43.0" prefHeight="329.0" prefWidth="212.0" style="-fx-border-color: #229aeb; -fx-border-width: 8;" />
+   </children>
+</AnchorPane>
