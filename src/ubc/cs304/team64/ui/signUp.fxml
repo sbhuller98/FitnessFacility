@@ -13,6 +13,7 @@
             <Font name="System Bold" size="20.0" />
          </font>
       </Label>
+       
       <TextField layoutX="40.0" layoutY="60.0" promptText="Full Name" />
       <TextField layoutX="40.0" layoutY="100.0" promptText="Date of Birth" />
       <TextField layoutX="40.0" layoutY="140.0" promptText="Street Address" />
