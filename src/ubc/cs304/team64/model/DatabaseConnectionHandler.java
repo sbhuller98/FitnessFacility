@@ -172,20 +172,41 @@ public class DatabaseConnectionHandler {
 
   public Instructor getInstructor(ClassInfo classInfo){
     try {
-      PreparedStatement ps = connection.prepareStatement("SELECT *, (SELECT COUNT(*) FROM rates r where r.iid = i.iid) as rating FROM instructor i WHERE i.iid = ?");
+      PreparedStatement ps = connection.prepareStatement("SELECT * FROM ratedinstructors i WHERE i.iid = ?");
       ps.setInt(1, classInfo.getIid());
       ResultSet rs = ps.executeQuery();
       if ((!rs.next())) throw new AssertionError();
-      Instructor retVal = new Instructor(
-          classInfo.getIid(),
-          rs.getString("name"),
-          rs.getDouble("rating"),
-          rs.getDouble("salary")
-      );
+      Instructor retVal = getInstructorFromRs(rs);
       ps.close();
       return retVal;
     } catch (SQLException e) {
       throw new Error(e);
     }
+  }
+
+  public Collection<Instructor> getInstructorsFromFacility(Facility facility){
+    try {
+      PreparedStatement ps = connection.prepareStatement("SELECT i.* FROM ratedinstructors i WHERE " +
+          "i.iid IN (SELECT c.iid FROM class c WHERE c.time > CURRENT_TIMESTAMP AND c.iid = iid AND c.fid = ?)");
+      ps.setInt(1, facility.getFid());
+      ResultSet rs = ps.executeQuery();
+      Collection<Instructor> retVal = new ArrayList<>();
+      while (rs.next()){
+        retVal.add(getInstructorFromRs(rs));
+      }
+      ps.close();
+      return retVal;
+    } catch (SQLException e) {
+      throw new Error(e);
+    }
+  }
+
+  private Instructor getInstructorFromRs(ResultSet rs) throws SQLException{
+    return new Instructor(
+        rs.getInt("iid"),
+        rs.getString("name"),
+        rs.getDouble("avgRating"),
+        rs.getDouble("salary")
+    );
   }
 }
