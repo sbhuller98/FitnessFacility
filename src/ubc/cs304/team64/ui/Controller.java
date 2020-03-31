@@ -33,13 +33,6 @@ public class Controller implements Initializable {
     }
 
     public void launchSignUp(javafx.event.ActionEvent actionEvent) throws Exception {
-        Stage stage = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
-        Parent signUp = FXMLLoader.load(getClass().getResource("signUp.fxml"));
-
-        Scene signUpScene = new Scene(signUp);
-
-        stage.setTitle("SignUp");
-        stage.setScene(signUpScene);
-        stage.show();
+        Main.updateStage(new FXMLLoaderWrapper<>("signUp.fxml").getScene(), "SignUp");
     }
 }
