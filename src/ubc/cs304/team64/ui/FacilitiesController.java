@@ -35,6 +35,7 @@ public class FacilitiesController implements Initializable {
         break;
       }
       logos[i].setImage(new Image(getClass().getResource("/facilities/logo" + f.getFid() + ".jpg").toString()));
+      buttons[i].setText(f.getName());
       buttons[i].setOnAction(e -> FacilityController.setStage(f, m));
       i++;
     }

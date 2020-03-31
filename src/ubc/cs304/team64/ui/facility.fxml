@@ -10,7 +10,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #363857;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ubc.cs304.team64.ui.FacilityController">
    <children>
-      <Label fx:id="title" layoutX="95.0" layoutY="53.0" prefHeight="44.0" prefWidth="264.0" style="-fx-text-fill: #229aeb;" text="Best Training Facilities" underline="true">
+      <Label fx:id="title" layoutX="95.0" layoutY="53.0" prefHeight="44.0" prefWidth="264.0" style="-fx-text-fill: #229aeb;" underline="true">
          <font>
             <Font size="21.0" />
          </font>
@@ -21,14 +21,8 @@
       <Button layoutX="95.0" layoutY="327.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="176.0" style="-fx-background-color: #229aeb; -fx-text-fill: white;" text="My Account" />
       <Button layoutX="96.0" layoutY="171.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="174.0" style="-fx-background-color: #229aeb; -fx-text-fill: white;" text="Instructors" />
       <ImageView fx:id="image" fitHeight="200.0" fitWidth="287.0" layoutX="288.0" layoutY="177.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../../../../resources/facilities/image4.jpg" />
-         </image>
       </ImageView>
       <ImageView fx:id="logo" fitHeight="141.0" fitWidth="174.0" layoutX="368.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../../../../resources/facilities/logo4.jpg" />
-         </image>
       </ImageView>
    </children>
 </AnchorPane>
