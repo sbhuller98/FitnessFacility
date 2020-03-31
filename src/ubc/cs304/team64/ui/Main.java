@@ -30,7 +30,6 @@ public class Main extends Application {
         Main.stage = stage;
         Main.connectionHandler = new DatabaseConnectionHandler();
         updateStage(new FXMLLoaderWrapper<>("Login.fxml").getScene(), "Login");
-
     }
 
     public static void updateStage(Scene scene, String title){

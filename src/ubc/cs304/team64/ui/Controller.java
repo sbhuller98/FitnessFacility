@@ -10,10 +10,12 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
-import java.awt.event.ActionEvent;
+import javafx.event.ActionEvent;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.*;
+import ubc.cs304.team64.model.InvalidLoginException;
+import ubc.cs304.team64.model.Member;
 
 public class Controller implements Initializable {
 
@@ -23,7 +25,7 @@ public class Controller implements Initializable {
     @FXML
     private Button buttonSignUp;
 
-
+    @FXML private TextField userNameField, passwordField;
 
 
 
@@ -32,7 +34,18 @@ public class Controller implements Initializable {
 
     }
 
-    public void launchSignUp(javafx.event.ActionEvent actionEvent) throws Exception {
+    public void launchSignUp() throws Exception {
         Main.updateStage(new FXMLLoaderWrapper<>("signUp.fxml").getScene(), "SignUp");
+    }
+
+    public void login(){
+      String userName = userNameField.getText();
+      String password = passwordField.getText();
+      try{
+        Member m = Main.connectionHandler.getMember(userName, password);
+        FacilitiesController.setStage(m);
+      } catch (InvalidLoginException e) {
+        // TODO create error message
+      }
     }
 }

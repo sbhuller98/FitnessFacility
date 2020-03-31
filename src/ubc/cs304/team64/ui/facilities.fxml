@@ -8,38 +8,38 @@
 <?import javafx.scene.text.Font?>
 
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #363857;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #363857;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ubc.cs304.team64.ui.FacilitiesController">
    <children>
-      <ImageView fitHeight="130.0" fitWidth="130.0" layoutX="25.0" layoutY="70.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="logo3" fitHeight="130.0" fitWidth="130.0" layoutX="25.0" layoutY="70.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../../resources/facilities/logo3.jpg" />
          </image>
       </ImageView>
-      <ImageView fitHeight="125.0" fitWidth="125.0" layoutX="444.0" layoutY="51.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="logo1" fitHeight="125.0" fitWidth="125.0" layoutX="444.0" layoutY="51.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../../resources/facilities/logo1.jpg" />
          </image>
       </ImageView>
-      <ImageView fitHeight="125.0" fitWidth="125.0" layoutX="33.0" layoutY="204.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="logo5" fitHeight="125.0" fitWidth="125.0" layoutX="33.0" layoutY="204.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../../resources/facilities/logo5.jpg" />
          </image>
       </ImageView>
-      <ImageView fitHeight="125.0" fitWidth="125.0" layoutX="238.0" layoutY="230.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="logo4" fitHeight="125.0" fitWidth="125.0" layoutX="238.0" layoutY="230.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../../resources/facilities/logo4.jpg" />
          </image>
       </ImageView>
-      <ImageView fitHeight="125.0" fitWidth="125.0" layoutX="432.0" layoutY="213.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="logo2" fitHeight="125.0" fitWidth="125.0" layoutX="432.0" layoutY="213.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../../resources/facilities/logo2.jpg" />
          </image>
       </ImageView>
-      <Button layoutX="16.0" layoutY="175.0" mnemonicParsing="false" style="-fx-background-color: #229aeb; -fx-text-fill: white;" text="Burnaby Aquatics Arena" />
-      <Button layoutX="28.0" layoutY="344.0" mnemonicParsing="false" style="-fx-background-color: #229aeb; -fx-text-fill: white;" text="Langley Atheleisure" />
-      <Button layoutX="432.0" layoutY="175.0" mnemonicParsing="false" style="-fx-background-color: #229aeb; -fx-text-fill: white;" text="SurreyAthleisure Centre" />
-      <Button layoutX="231.0" layoutY="344.0" mnemonicParsing="false" style="-fx-background-color: #229aeb; -fx-text-fill: white;" text="Best Training Facilities" />
-      <Button layoutX="424.0" layoutY="344.0" mnemonicParsing="false" style="-fx-background-color: #229aeb; -fx-text-fill: white;" text="Vancouver Hockey Arenas" />
+      <Button fx:id="button3" layoutX="16.0" layoutY="175.0" mnemonicParsing="false" style="-fx-background-color: #229aeb; -fx-text-fill: white;" text="Burnaby Aquatics Arena" />
+      <Button fx:id="button5" layoutX="28.0" layoutY="344.0" mnemonicParsing="false" style="-fx-background-color: #229aeb; -fx-text-fill: white;" text="Langley Atheleisure" />
+      <Button fx:id="button1" layoutX="432.0" layoutY="175.0" mnemonicParsing="false" style="-fx-background-color: #229aeb; -fx-text-fill: white;" text="Surrey Athleisure Centre" />
+      <Button fx:id="button4" layoutX="231.0" layoutY="344.0" mnemonicParsing="false" style="-fx-background-color: #229aeb; -fx-text-fill: white;" text="Best Training Facilities" />
+      <Button fx:id="button2" layoutX="424.0" layoutY="344.0" mnemonicParsing="false" style="-fx-background-color: #229aeb; -fx-text-fill: white;" text="Vancouver Hockey Arenas" />
       <Label layoutX="225.0" layoutY="89.0" style="-fx-text-fill: #229aeb;" text="Select Your Facility" underline="true">
          <font>
             <Font size="19.0" />

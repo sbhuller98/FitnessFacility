@@ -45,8 +45,8 @@
          </font>
       </Label>
        <!-- fill in buttons -->
-      <TextField layoutX="388.0" layoutY="150.0" minWidth="150" minHeight="15" prefHeight="28.0" prefWidth="123.0" promptText="Username" />
-      <TextField layoutX="388.0" layoutY="200.0" minWidth="150" minHeight="15" prefHeight="28.0" prefWidth="123.0" promptText="Password" />
-      <Button layoutX="388.0" layoutY="255.0" minWidth="150" minHeight="15" mnemonicParsing="false" style="-fx-text-fill: #07407b; -fx-background-color: #7fcdee;" text="Login" />
+      <TextField fx:id="userNameField" layoutX="388.0" layoutY="150.0" minWidth="150" minHeight="15" prefHeight="28.0" prefWidth="123.0" promptText="Username" />
+      <TextField fx:id="passwordField" layoutX="388.0" layoutY="200.0" minWidth="150" minHeight="15" prefHeight="28.0" prefWidth="123.0" promptText="Password" />
+      <Button layoutX="388.0" layoutY="255.0" minWidth="150" minHeight="15" mnemonicParsing="false" style="-fx-text-fill: #07407b; -fx-background-color: #7fcdee;" text="Login" onAction="#login" />
    </children>
 </AnchorPane>
