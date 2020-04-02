@@ -57,7 +57,7 @@ public class DatabaseConnectionHandler {
     }
   }
 
-  public Member createMember(String login, String password, String address, String phoneNumber, String name, LocalDate birthDate, int dln, String sType){
+  public Member createMember(String login, String password, String address, String phoneNumber, String name, LocalDate birthDate, int dln, String sType, Payment payment){
     try {
       int statusCost = getStatusCost(sType);
       if(phoneNumber.length() != 10 || !phoneNumber.matches("\\d*")){
@@ -79,8 +79,13 @@ public class DatabaseConnectionHandler {
       ResultSet autoKeys = ps.getGeneratedKeys();
       if ((!autoKeys.next())) throw new AssertionError();
       int mid = autoKeys.getInt(1);
-
       ps.close();
+
+      PreparedStatement addPayment = connection.prepareStatement("INSERT INTO memberpayment(mid, pid) VALUES (?,?)");
+      addPayment.setInt(1, mid);
+      addPayment.setInt(2, payment.getPid());
+      addPayment.executeUpdate();
+      addPayment.close();
       connection.commit();
       return new Member(mid, address, phoneNumber, name, Date.valueOf(birthDate), dln, sType, statusCost, getClassTypesForStatus(sType));
     } catch (SQLIntegrityConstraintViolationException e){
@@ -116,6 +121,91 @@ public class DatabaseConnectionHandler {
     int retVal = rs.getInt("cost");
     getStatusCost.close();
     return retVal;
+  }
+
+  public Payment createPayment(String frequency, long number, int csv, LocalDate expiryDate, String nameOnCard){
+    try {
+      PreparedStatement createCreditCard = connection.prepareStatement("INSERT INTO creditcard(num, expiryDate, csv, nameOnCard) VALUES (?,?,?,?)");
+      createCreditCard.setLong(1, number);
+      createCreditCard.setDate(2, Date.valueOf(expiryDate));
+      createCreditCard.setInt(3, csv);
+      createCreditCard.setString(4, nameOnCard);
+      createCreditCard.executeUpdate();
+      createCreditCard.close();
+
+      PreparedStatement createPayment = connection.prepareStatement("INSERT INTO payment(frequency, creditCardNumber, accountNumber) VALUES (?, ?, NULL)", PreparedStatement.RETURN_GENERATED_KEYS);
+      createPayment.setString(1, frequency);
+      createPayment.setLong(2, number);
+      createPayment.executeUpdate();
+      ResultSet rs = createPayment.getGeneratedKeys();
+      if ((!rs.next())) throw new AssertionError();
+      int pid = rs.getInt(1);
+      createPayment.close();
+      connection.commit();
+      return new CreditCard(pid, frequency, number, csv, Date.valueOf(expiryDate), nameOnCard);
+    } catch (SQLIntegrityConstraintViolationException e){
+      throw new IllegalArgumentException(e);
+    } catch (SQLException e) {
+      throw new Error(e);
+    }
+  }
+
+  public Collection<Payment> getPayments(Member m){
+    try {
+      PreparedStatement base = connection.prepareStatement("SELECT * FROM payment NATURAL JOIN memberpayment WHERE mid = ?");
+      base.setInt(1, m.getMid());
+      ResultSet rs = base.executeQuery();
+      Collection<Payment> retVal = new ArrayList<>();
+      while (rs.next()){
+        Payment result;
+        int pid = rs.getInt("pid");
+        String frequency = rs.getString("frequency");
+        long creditCardNumber = rs.getLong("creditCardNumber");
+        if(rs.wasNull()){
+          int accountNumber = rs.getInt("accountNumber");
+          result = getPAP(pid, frequency, accountNumber);
+        } else {
+          result = getCreditCard(pid, frequency, creditCardNumber);
+        }
+        retVal.add(result);
+      }
+      return retVal;
+    } catch (SQLException e) {
+      throw new Error(e);
+    }
+  }
+
+  private CreditCard getCreditCard(int pid, String frequency, long creditCardNumber){
+    try {
+      PreparedStatement ps = connection.prepareStatement("SELECT * FROM creditcard WHERE num = ?");
+      ps.setLong(1, creditCardNumber);
+      ResultSet rs = ps.executeQuery();
+      if ((!rs.next())) throw new AssertionError();
+      CreditCard creditCard = new CreditCard(pid, frequency, creditCardNumber,
+          rs.getInt("csv"),
+          rs.getDate("expiryDate"),
+          rs.getString("nameOnCard"));
+      ps.close();
+      return creditCard;
+    } catch (SQLException e) {
+      throw new Error(e);
+    }
+  }
+
+  private PAPAccount getPAP(int pid, String frequency, int accountNumber){
+    try {
+      PreparedStatement ps = connection.prepareStatement("SELECT * FROM PAPAccount WHERE accountNumber = ?");
+      ps.setLong(1, accountNumber);
+      ResultSet rs = ps.executeQuery();
+      if ((!rs.next())) throw new AssertionError();
+      PAPAccount pap = new PAPAccount(pid, frequency, accountNumber,
+          rs.getInt("bankNumber"),
+          rs.getInt("transitNumber"));
+      ps.close();
+      return pap;
+    } catch (SQLException e) {
+      throw new Error(e);
+    }
   }
 
   public Collection<Facility> getFacilities() {

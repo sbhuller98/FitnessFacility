@@ -53,7 +53,7 @@ CREATE TABLE PAPAccount (
     transitNumber INT
 );
 CREATE TABLE Payment(
-    pid INT PRIMARY KEY ,
+    pid INT PRIMARY KEY AUTO_INCREMENT,
     frequency CHAR(10),
     creditCardNumber BIGINT,
     accountNumber INT,
