@@ -16,6 +16,10 @@ public class StrokeTransition extends Transition {
   private Color end;
   private BorderStroke base;
 
+  public static StrokeTransition basicError(Region parent){
+    return new StrokeTransition(parent, Duration.seconds(2), Color.RED, Color.TRANSPARENT);
+  }
+
   public StrokeTransition(Region parent, Duration duration, Color start, Color end){
     setCycleDuration(duration);
     this.start = start;
@@ -26,7 +30,6 @@ public class StrokeTransition extends Transition {
       base = strokes.get(0);
     } else {
       base = new BorderStroke(Color.TRANSPARENT, BorderStrokeStyle.SOLID, null, new BorderWidths(1));
-      System.out.println("made new");
     }
     parent.setBorder(new Border(base));
   }
