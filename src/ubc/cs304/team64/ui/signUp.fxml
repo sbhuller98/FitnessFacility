@@ -1,11 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="420.0" prefWidth="640.0" style="-fx-background-color: #07407b;" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ubc.cs304.team64.ui.Controller">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="420.0" prefWidth="640.0" style="-fx-background-color: #07407b;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ubc.cs304.team64.ui.SignUpController">
    <children>
 <!--      Sign Up-->
       <Label layoutX="40.0" layoutY="20.0" prefHeight="30.0" prefWidth="120.0" style="-fx-text-fill: white;" text="Sign Up" underline="true">
@@ -14,24 +21,24 @@
          </font>
       </Label>
        
-      <TextField layoutX="40.0" layoutY="60.0" promptText="Full Name" />
-      <TextField layoutX="40.0" layoutY="100.0" promptText="Date of Birth" />
-      <TextField layoutX="40.0" layoutY="140.0" promptText="Street Address" />
-      <TextField layoutX="40.0" layoutY="180.0" promptText="City" />
-      <TextField layoutX="40.0" layoutY="220.0" promptText="Province" />
-      <TextField layoutX="40.0" layoutY="260.0" promptText="Postal Code" />
-      <TextField layoutX="40.0" layoutY="300.0" promptText="Phone Number" />
+      <TextField fx:id="name" layoutX="40.0" layoutY="60.0" promptText="Full Name" />
+      <DatePicker fx:id="dob" layoutX="40.0" layoutY="100.0" maxWidth="150.0" promptText="Date of Birth"/>
+      <TextField fx:id="street" layoutX="40.0" layoutY="140.0" promptText="Street Address" />
+      <TextField fx:id="city" layoutX="40.0" layoutY="180.0" promptText="City" />
+      <TextField fx:id="province" layoutX="40.0" layoutY="220.0" promptText="Province" />
+      <TextField fx:id="postalCode" layoutX="40.0" layoutY="260.0" promptText="Postal Code" />
+      <TextField fx:id="phoneNumber" layoutX="40.0" layoutY="300.0" promptText="Phone Number" />
 
-      <TextField layoutX="200.0" layoutY="60.0" promptText="Email Address" />
-      <TextField layoutX="200.0" layoutY="100.0" promptText="Username" />
-      <TextField layoutX="200.0" layoutY="140.0" promptText="Password" />
-      <TextField layoutX="200.0" layoutY="180.0" promptText="Re-Enter Password" />
-      <TextField layoutX="200.0" layoutY="220.0" promptText="Membership Level" />
+      <TextField fx:id="email" layoutX="200.0" layoutY="60.0" promptText="Email Address" />
+      <TextField fx:id="username" layoutX="200.0" layoutY="100.0" promptText="Username" />
+      <PasswordField fx:id="password" layoutX="200.0" layoutY="140.0" promptText="Password" />
+      <PasswordField fx:id="passwordConf" layoutX="200.0" layoutY="180.0" promptText="Re-Enter Password" />
+      <ComboBox fx:id="status" layoutX="200.0" layoutY="220.0" promptText="Membership Level" />
 
-      <TextField layoutX="410.0" layoutY="180.0" promptText="Cardholder Name" />
-      <TextField layoutX="410.0" layoutY="220.0" promptText="Card Number" />
-      <TextField layoutX="410.0" layoutY="260.0" promptText="CVV" />
-      <TextField layoutX="410.0" layoutY="300.0" promptText="Expiry Date: MM/YY" />
+      <TextField fx:id="nameOnCard" layoutX="410.0" layoutY="180.0" promptText="Cardholder Name" />
+      <TextField fx:id="cardNumber" layoutX="410.0" layoutY="220.0" promptText="Card Number" />
+      <TextField fx:id="cvv" layoutX="410.0" layoutY="260.0" promptText="CVV" />
+      <TextField fx:id="expiryDate" layoutX="410.0" layoutY="300.0" promptText="Expiry Date: MM/YY" />
 
       <ImageView fitHeight="69.0" fitWidth="181.0" layoutX="418.0" layoutY="78.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -39,7 +46,7 @@
          </image>
       </ImageView>
 
-      <Button layoutX="40.0" layoutY="350.0" mnemonicParsing="false" style="-fx-text-fill: #07407b; -fx-background-color: #7fcdee;" prefHeight="35.0" prefWidth="100.0"  text="Sign Up" />
+      <Button layoutX="40.0" layoutY="350.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="100.0" style="-fx-text-fill: #07407b; -fx-background-color: #7fcdee;" text="Sign Up" />
 
       <BorderPane layoutX="375.0" layoutY="60.0" prefHeight="315.0" prefWidth="220.0" style="-fx-border-color: #7fcdee; -fx-border-width: 4;" />
    </children>

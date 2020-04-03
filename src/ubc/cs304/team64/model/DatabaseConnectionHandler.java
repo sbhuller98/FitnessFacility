@@ -57,6 +57,20 @@ public class DatabaseConnectionHandler {
     }
   }
 
+  public Collection<String> getStatuses(){
+    try{
+      Statement s = connection.createStatement();
+      ResultSet rs = s.executeQuery("SELECT sType FROM status");
+      Collection<String> retVal = new ArrayList<>();
+      while (rs.next()){
+        retVal.add(rs.getString("sType"));
+      }
+      return retVal;
+    } catch (SQLException e){
+      throw new Error(e);
+    }
+  }
+
   public Member createMember(String login, String password, String address, String phoneNumber, String name, LocalDate birthDate, int dln, String sType, Payment payment){
     try {
       int statusCost = getStatusCost(sType);
