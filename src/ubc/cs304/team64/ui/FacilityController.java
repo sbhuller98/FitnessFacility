@@ -25,7 +25,7 @@ public class FacilityController implements Initializable {
   private ImageView image;
 
   @FXML
-  private Button classes;
+  private Button classes, instructors;
 
   @Override
   public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -36,7 +36,8 @@ public class FacilityController implements Initializable {
     this.title.setText(facility.getName());
     logo.setImage(new Image(getClass().getResource("/facilities/logo" + facility.getFid() + ".jpg").toString()));
     image.setImage(new Image(getClass().getResource("/facilities/image" + facility.getFid() + ".jpg").toString()));
-      classes.setOnAction(e -> classViewController.setStage(facility));
+    classes.setOnAction(e -> classViewController.setStage(facility, member));
+    instructors.setOnAction(e -> InstructorViewController.setStage(facility));
   }
 
   static void setStage(Facility facility, Member member){

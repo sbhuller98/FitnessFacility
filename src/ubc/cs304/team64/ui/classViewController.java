@@ -14,6 +14,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import ubc.cs304.team64.model.Facility;
 import ubc.cs304.team64.model.ClassInfo;
 import ubc.cs304.team64.model.Instructor;
+import ubc.cs304.team64.model.Member;
 
 
 public class classViewController implements Initializable {
@@ -37,7 +38,7 @@ public class classViewController implements Initializable {
     @FXML
     private TableColumn<ClassInfo, String> instrucCol;
 
-    public void startUp( Facility facility) {
+    public void startUp(Facility facility, Member member) {
         titleCol.setCellValueFactory(new ImmutablePropertyFactory<>(ClassInfo::getTitle));
         DescriptionCol.setCellValueFactory(new ImmutablePropertyFactory<>(ClassInfo::getDescription));
         capacityCol.setCellValueFactory(new ImmutablePropertyFactory<>(ClassInfo::getEnrollmentStatus));
@@ -55,9 +56,9 @@ public class classViewController implements Initializable {
 
 
 
-    static void setStage(Facility facility){
+    static void setStage(Facility facility, Member member){
         FXMLLoaderWrapper<classViewController> loader = new FXMLLoaderWrapper<>("classView.fxml");
-        loader.getController().startUp(facility);
+        loader.getController().startUp(facility, member);
         Main.updateStage(loader.getScene(), facility.getName());
     }
     }

@@ -27,8 +27,6 @@ public class InstructorViewController implements Initializable {
     @FXML
     private TableView<Instructor> mainTable1;
     @FXML
-    private TableColumn<Instructor, Integer> iidCol;
-    @FXML
     private TableColumn<Instructor, String> iNameCol;
     @FXML
     private TableColumn<Instructor, Double> averageCol;
@@ -37,7 +35,6 @@ public class InstructorViewController implements Initializable {
 
 
     public void startUp(Facility facility) {
-        iidCol.setCellValueFactory(new ImmutablePropertyFactory<>(Instructor::getIid));
         iNameCol.setCellValueFactory(new ImmutablePropertyFactory<>(Instructor::getName));
         averageCol.setCellValueFactory(new ImmutablePropertyFactory<>(Instructor::getAverageRating));
         salaryCol.setCellValueFactory(new ImmutablePropertyFactory<>(Instructor::getSalary));
