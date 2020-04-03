@@ -37,10 +37,10 @@ public class InstructorViewController implements Initializable {
 
 
     public void startUp(Facility facility) {
-        iidCol.setCellValueFactory(new PropertyValueFactory<Instructor, Integer>("iid"));
-        iNameCol.setCellValueFactory(new PropertyValueFactory<Instructor, String>("name"));
-        averageCol.setCellValueFactory(new PropertyValueFactory<Instructor, Double>("averageRating"));
-        salaryCol.setCellValueFactory(new PropertyValueFactory<Instructor, Double>("salary"));
+        iidCol.setCellValueFactory(new ImmutablePropertyFactory<>(Instructor::getIid));
+        iNameCol.setCellValueFactory(new ImmutablePropertyFactory<>(Instructor::getName));
+        averageCol.setCellValueFactory(new ImmutablePropertyFactory<>(Instructor::getAverageRating));
+        salaryCol.setCellValueFactory(new ImmutablePropertyFactory<>(Instructor::getSalary));
 
         mainTable1.getItems().setAll(SetUp(facility));
     }

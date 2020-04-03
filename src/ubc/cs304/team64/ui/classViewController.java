@@ -33,16 +33,16 @@ public class classViewController implements Initializable {
     @FXML
     private TableColumn<ClassInfo, String> DescriptionCol;
     @FXML
-    private TableColumn<ClassInfo, Integer> capacityCol;
+    private TableColumn<ClassInfo, String> capacityCol;
     @FXML
     private TableColumn<ClassInfo, String> instrucCol;
 
     public void startUp( Facility facility) {
-        titleCol.setCellValueFactory(new PropertyValueFactory<ClassInfo, String>("title"));
-        DescriptionCol.setCellValueFactory(new PropertyValueFactory<ClassInfo, String>("description"));
-        capacityCol.setCellValueFactory(new PropertyValueFactory<ClassInfo, Integer>("enrollmentStatus"));
-        timeCol.setCellValueFactory(new PropertyValueFactory<ClassInfo, Timestamp>("time"));
-        instrucCol.setCellValueFactory(new PropertyValueFactory<ClassInfo, String>("instructorName"));
+        titleCol.setCellValueFactory(new ImmutablePropertyFactory<>(ClassInfo::getTitle));
+        DescriptionCol.setCellValueFactory(new ImmutablePropertyFactory<>(ClassInfo::getDescription));
+        capacityCol.setCellValueFactory(new ImmutablePropertyFactory<>(ClassInfo::getEnrollmentStatus));
+        timeCol.setCellValueFactory(new ImmutablePropertyFactory<>(ClassInfo::getTime));
+        instrucCol.setCellValueFactory(new ImmutablePropertyFactory<>(ClassInfo::getInstructorName));
 
         mainTable.getItems().setAll(SetUp(facility));
     }
