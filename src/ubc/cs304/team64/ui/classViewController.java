@@ -40,7 +40,7 @@ public class classViewController implements Initializable {
     public void startUp( Facility facility) {
         titleCol.setCellValueFactory(new PropertyValueFactory<ClassInfo, String>("title"));
         DescriptionCol.setCellValueFactory(new PropertyValueFactory<ClassInfo, String>("description"));
-        capacityCol.setCellValueFactory(new PropertyValueFactory<ClassInfo, Integer>("capacity"));
+        capacityCol.setCellValueFactory(new PropertyValueFactory<ClassInfo, Integer>("enrollmentStatus"));
         timeCol.setCellValueFactory(new PropertyValueFactory<ClassInfo, Timestamp>("time"));
         instrucCol.setCellValueFactory(new PropertyValueFactory<ClassInfo, String>("instructorName"));
 

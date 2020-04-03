@@ -66,6 +66,10 @@ public class ClassInfo {
     return currentlyTaking;
   }
 
+  public String getEnrollmentStatus(){
+    return getCurrentlyTaking() + "/" +getCapacity();
+  }
+
   @Override
   public boolean equals(Object o) {
     if (this == o) return true;
