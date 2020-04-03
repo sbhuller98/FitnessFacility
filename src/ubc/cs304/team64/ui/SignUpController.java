@@ -4,6 +4,8 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.util.StringConverter;
+import ubc.cs304.team64.model.Member;
+import ubc.cs304.team64.model.Payment;
 
 import java.net.URL;
 import java.time.LocalDate;
@@ -16,7 +18,7 @@ public class SignUpController implements Initializable {
   @FXML private DatePicker dob;
   @FXML private TextField street;
   @FXML private TextField city;
-  @FXML private TextField province;
+  @FXML private ComboBox<String> province;
   @FXML private TextField postalCode;
   @FXML private TextField phoneNumber;
   @FXML private TextField email;
@@ -26,11 +28,14 @@ public class SignUpController implements Initializable {
   @FXML private ComboBox<String> status;
   @FXML private TextField nameOnCard;
   @FXML private TextField cardNumber;
-  @FXML private TextField cvv;
+  @FXML private TextField csv;
   @FXML private TextField expiryDate;
 
   @Override
   public void initialize(URL url, ResourceBundle resourceBundle) {
+    String namePattern = "[A-Z][a-z]*( [A-Z][a-z]*){1,2}";
+    name.setTextFormatter(new TextFormatter<>(new RegexStringConverter(namePattern, RegexStringConverter::toTitleCase)));
+
     String postalCodePattern = "([A-Z]\\d){3}";
     postalCode.setTextFormatter(new TextFormatter<>(new RegexStringConverter(postalCodePattern, s -> s.replaceAll(" ", "").toUpperCase())));
 
@@ -40,11 +45,11 @@ public class SignUpController implements Initializable {
 
     username.setTextFormatter(new TextFormatter<>(new RegexStringConverter("\\w{0,20}")));
 
-    nameOnCard.setTextFormatter(new TextFormatter<>(new RegexStringConverter("[A-Z][a-z]*( [A-Z][a-z]*){1,2}", RegexStringConverter::toTitleCase)));
+    nameOnCard.setTextFormatter(new TextFormatter<>(new RegexStringConverter(namePattern, RegexStringConverter::toTitleCase)));
 
     cardNumber.setTextFormatter(new TextFormatter<>(new RegexStringConverter("\\d{12,19}")));
 
-    cvv.setTextFormatter(new TextFormatter<>(new RegexStringConverter("\\d{3}")));
+    csv.setTextFormatter(new TextFormatter<>(new RegexStringConverter("\\d{3}")));
 
     expiryDate.setTextFormatter(new TextFormatter<>(new RegexStringConverter("(0[1-9]|1[0-2])/\\d{2}", SignUpController::autoCorrectExpiryDate)));
 
@@ -57,7 +62,39 @@ public class SignUpController implements Initializable {
     }
   }
 
-  private void restrictDates(DatePicker picker, Predicate<LocalDate> acceptable) {
+  public void createMember(){
+    if(!password.getText().equals(passwordConf.getText())){
+      return;
+    }
+    try{
+      String expDate = expiryDate.getText();
+      Payment createdPayment = Main.connectionHandler.createPayment(
+          "???", // TODO fix
+          Long.parseLong(cardNumber.getText()),
+          Integer.parseInt(csv.getText()),
+          LocalDate.of(2000 + Integer.parseInt(expDate.substring(3,5)), Integer.parseInt(expDate.substring(0,2)), 1),
+          nameOnCard.getText()
+      );
+
+      Member created = Main.connectionHandler.createMember(
+          username.getText(),
+          password.getText(),
+          street.getText() + ", " + city.getText() + ", " + province.getValue() + ", " + postalCode.getText(),
+          phoneNumber.getText(),
+          name.getText(),
+          dob.getValue(),
+          0, // TODO fix
+          status.getValue(),
+        createdPayment
+      );
+
+      FacilitiesController.setStage(created);
+    } catch (Exception e){
+      // TODO handle
+    }
+  }
+
+  private static void restrictDates(DatePicker picker, Predicate<LocalDate> acceptable) {
     picker.setDayCellFactory(d -> new DateCell() {
       public void updateItem(LocalDate item, boolean empty){
         super.updateItem(item, empty);

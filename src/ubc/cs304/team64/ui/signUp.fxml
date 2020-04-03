@@ -12,6 +12,8 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
 
+<?import javafx.collections.FXCollections?>
+<?import java.lang.String?>
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="420.0" prefWidth="640.0" style="-fx-background-color: #07407b;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ubc.cs304.team64.ui.SignUpController">
    <children>
 <!--      Sign Up-->
@@ -25,7 +27,24 @@
       <DatePicker fx:id="dob" layoutX="40.0" layoutY="100.0" maxWidth="150.0" promptText="Date of Birth"/>
       <TextField fx:id="street" layoutX="40.0" layoutY="140.0" promptText="Street Address" />
       <TextField fx:id="city" layoutX="40.0" layoutY="180.0" promptText="City" />
-      <TextField fx:id="province" layoutX="40.0" layoutY="220.0" promptText="Province" />
+      <ComboBox fx:id="province" layoutX="40.0" layoutY="220.0" promptText="Province">
+       <items>
+         <FXCollections fx:factory="observableArrayList">
+           <String fx:value="AB"/>
+           <String fx:value="BC"/>
+           <String fx:value="MB"/>
+           <String fx:value="NL"/>
+           <String fx:value="NT"/>
+           <String fx:value="NS"/>
+           <String fx:value="NU"/>
+           <String fx:value="ON"/>
+           <String fx:value="PE"/>
+           <String fx:value="QC"/>
+           <String fx:value="SK"/>
+           <String fx:value="YT"/>
+         </FXCollections>
+       </items>
+      </ComboBox>
       <TextField fx:id="postalCode" layoutX="40.0" layoutY="260.0" promptText="Postal Code" />
       <TextField fx:id="phoneNumber" layoutX="40.0" layoutY="300.0" promptText="Phone Number" />
 
@@ -37,7 +56,7 @@
 
       <TextField fx:id="nameOnCard" layoutX="410.0" layoutY="180.0" promptText="Cardholder Name" />
       <TextField fx:id="cardNumber" layoutX="410.0" layoutY="220.0" promptText="Card Number" />
-      <TextField fx:id="cvv" layoutX="410.0" layoutY="260.0" promptText="CVV" />
+      <TextField fx:id="csv" layoutX="410.0" layoutY="260.0" promptText="CVV" />
       <TextField fx:id="expiryDate" layoutX="410.0" layoutY="300.0" promptText="Expiry Date: MM/YY" />
 
       <ImageView fitHeight="69.0" fitWidth="181.0" layoutX="418.0" layoutY="78.0" pickOnBounds="true" preserveRatio="true">
@@ -46,7 +65,7 @@
          </image>
       </ImageView>
 
-      <Button layoutX="40.0" layoutY="350.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="100.0" style="-fx-text-fill: #07407b; -fx-background-color: #7fcdee;" text="Sign Up" />
+      <Button layoutX="40.0" layoutY="350.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="100.0" style="-fx-text-fill: #07407b; -fx-background-color: #7fcdee;" text="Sign Up" onAction="#createMember"/>
 
       <BorderPane layoutX="375.0" layoutY="60.0" prefHeight="315.0" prefWidth="220.0" style="-fx-border-color: #7fcdee; -fx-border-width: 4;" />
    </children>
