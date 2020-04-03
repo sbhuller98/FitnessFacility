@@ -35,14 +35,14 @@ public class classViewController implements Initializable {
     @FXML
     private TableColumn<ClassInfo, Integer> capacityCol;
     @FXML
-    private TableColumn<ClassInfo, Integer> instrucCol;
+    private TableColumn<ClassInfo, String> instrucCol;
 
     public void startUp( Facility facility) {
         titleCol.setCellValueFactory(new PropertyValueFactory<ClassInfo, String>("title"));
         DescriptionCol.setCellValueFactory(new PropertyValueFactory<ClassInfo, String>("description"));
         capacityCol.setCellValueFactory(new PropertyValueFactory<ClassInfo, Integer>("capacity"));
         timeCol.setCellValueFactory(new PropertyValueFactory<ClassInfo, Timestamp>("time"));
-        instrucCol.setCellValueFactory(new PropertyValueFactory<ClassInfo, Integer>("iid"));
+        instrucCol.setCellValueFactory(new PropertyValueFactory<ClassInfo, String>("instructorName"));
 
         mainTable.getItems().setAll(SetUp(facility));
     }

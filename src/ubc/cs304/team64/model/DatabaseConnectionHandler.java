@@ -248,7 +248,7 @@ public class DatabaseConnectionHandler {
               "(SELECT COUNT(t.mid) FROM takes t " +
           "WHERE c.time = t.time AND c.rid = t.rid AND c.fid = t.fid) " +
           "as taking " +
-          "FROM class c NATURAL JOIN classt " +
+          "FROM instructor i NATURAL JOIN class c NATURAL JOIN classt " +
           "WHERE fid = ? AND time > CURRENT_TIMESTAMP()");
       ps.setInt(1, facility.getFid());
       Collection<ClassInfo> classes = new ArrayList<>();
@@ -262,6 +262,7 @@ public class DatabaseConnectionHandler {
             rs.getString("description"),
             rs.getString("type"),
             rs.getInt("iid"),
+            rs.getString("name"),
             rs.getInt("capacity"),
             rs.getInt("taking")
         );

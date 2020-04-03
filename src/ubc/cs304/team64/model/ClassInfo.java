@@ -11,10 +11,11 @@ public class ClassInfo {
   private final String description;
   private final String type;
   private final int iid;
+  private final String instructorName;
   private final int capacity;
   private final int currentlyTaking;
 
-  ClassInfo(Facility facility, int roomNumber, Timestamp time, String title, String description, String type, int iid, int capacity, int currentlyTaking) {
+  ClassInfo(Facility facility, int roomNumber, Timestamp time, String title, String description, String type, int iid, String iName, int capacity, int currentlyTaking) {
     this.facility = facility;
     this.roomNumber = roomNumber;
     this.time = time;
@@ -22,6 +23,7 @@ public class ClassInfo {
     this.description = description;
     this.type = type;
     this.iid = iid;
+    this.instructorName = iName;
     this.capacity = capacity;
     this.currentlyTaking = currentlyTaking;
   }
@@ -53,6 +55,8 @@ public class ClassInfo {
   public int getIid(){
     return iid;
   }
+
+  public String getInstructorName() {return instructorName;}
 
   public int getCapacity() {
     return capacity;
