@@ -8,6 +8,7 @@ public class Member {
   private final int mid;
   private final String address;
   private final String phoneNumber;
+  private final String email;
   private final String name;
   private final Date birthDate;
   private final int driversLicenceNumber;
@@ -15,10 +16,11 @@ public class Member {
   private final double statusCost;
   private final Set<String> availableClassTypes;
 
-  Member(int mid, String address, String phoneNumber, String name, Date birthDate, int driversLicenceNumber, String statusType, double statusCost, Set<String> availableClassTypes) {
+  Member(int mid, String address, String phoneNumber, String email, String name, Date birthDate, int driversLicenceNumber, String statusType, double statusCost, Set<String> availableClassTypes) {
     this.mid = mid;
     this.address = address;
     this.phoneNumber = "("+ phoneNumber.substring(0,3) +") "+ phoneNumber.substring(3,6)+"-"+phoneNumber.substring(6,10);
+    this.email = email;
     this.name = name;
     this.birthDate = birthDate;
     this.driversLicenceNumber = driversLicenceNumber;
@@ -37,6 +39,10 @@ public class Member {
 
   public String getPhoneNumber() {
     return phoneNumber;
+  }
+
+  public String getEmail(){
+    return email;
   }
 
   public String getName() {

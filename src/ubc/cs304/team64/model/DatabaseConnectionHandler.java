@@ -43,6 +43,7 @@ public class DatabaseConnectionHandler {
           result.getInt("mid"),
           result.getString("address"),
           result.getString("phoneNumber"),
+          result.getString("email"),
           result.getString("name"),
           result.getDate("birthDate"),
           result.getInt("driverLicenceNumber"),
@@ -71,23 +72,24 @@ public class DatabaseConnectionHandler {
     }
   }
 
-  public Member createMember(String login, String password, String address, String phoneNumber, String name, LocalDate birthDate, int dln, String sType, Payment payment){
+  public Member createMember(String login, String password, String address, String phoneNumber, String email, String name, LocalDate birthDate, int dln, String sType, Payment payment){
     try {
       int statusCost = getStatusCost(sType);
       if(phoneNumber.length() != 10 || !phoneNumber.matches("\\d*")){
         throw new InvalidParameterException("Phone number should be a 10 digit number");
       }
 
-      String psString = "INSERT INTO member(login, password, address, phoneNumber, name, birthDate, driverLicenceNumber, sType) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+      String psString = "INSERT INTO member(login, password, address, phoneNumber, email, name, birthDate, driverLicenceNumber, sType) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
       PreparedStatement ps = connection.prepareStatement(psString, Statement.RETURN_GENERATED_KEYS);
       ps.setString(1, login);
       ps.setBytes(2, digest.digest(password.getBytes()));
       ps.setString(3, address);
       ps.setString(4, phoneNumber);
-      ps.setString(5, name);
-      ps.setDate(6, Date.valueOf(birthDate));
-      ps.setInt(7, dln);
-      ps.setString(8, sType);
+      ps.setString(5, email);
+      ps.setString(6, name);
+      ps.setDate(7, Date.valueOf(birthDate));
+      ps.setInt(8, dln);
+      ps.setString(9, sType);
       System.out.println(ps.executeUpdate());
 
       ResultSet autoKeys = ps.getGeneratedKeys();
@@ -101,7 +103,7 @@ public class DatabaseConnectionHandler {
       addPayment.executeUpdate();
       addPayment.close();
       connection.commit();
-      return new Member(mid, address, phoneNumber, name, Date.valueOf(birthDate), dln, sType, statusCost, getClassTypesForStatus(sType));
+      return new Member(mid, address, phoneNumber, email, name, Date.valueOf(birthDate), dln, sType, statusCost, getClassTypesForStatus(sType));
     } catch (SQLIntegrityConstraintViolationException e){
       throw new IllegalArgumentException(e);
     }
