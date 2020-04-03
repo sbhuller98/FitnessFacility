@@ -1,11 +1,11 @@
 package ubc.cs304.team64.ui;
 
-import javafx.scene.control.TextFormatter;
-import javafx.scene.control.TextFormatter.Change;
+import javafx.scene.layout.Region;
+import javafx.scene.paint.Color;
+import javafx.util.Duration;
 import javafx.util.StringConverter;
 
 import java.util.Arrays;
-import java.util.function.Function;
 import java.util.function.UnaryOperator;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
@@ -13,14 +13,17 @@ import java.util.stream.Collectors;
 public class RegexStringConverter extends StringConverter<String>{
   private Pattern pattern;
   private UnaryOperator<String> modification;
+  private StrokeTransition transition;
 
-  public RegexStringConverter(String regexPattern){
-    this(regexPattern, UnaryOperator.identity());
+  public RegexStringConverter(String regexPattern, Region node){
+    this(regexPattern, node, UnaryOperator.identity());
   }
 
-  public RegexStringConverter(String regexPattern, UnaryOperator<String> modification){
+  public RegexStringConverter(String regexPattern, Region node, UnaryOperator<String> modification){
     this.pattern = Pattern.compile(regexPattern);
     this.modification = modification;
+    this.transition = new StrokeTransition(node, Duration.seconds(2), Color.RED, Color.TRANSPARENT);
+    this.transition.jumpTo(Duration.seconds(2));
   }
 
   @Override
@@ -34,6 +37,7 @@ public class RegexStringConverter extends StringConverter<String>{
     if(pattern.matcher(modified).matches()){
       return modified;
     }
+    transition.playFromStart();
     throw new IllegalArgumentException();
   }
 

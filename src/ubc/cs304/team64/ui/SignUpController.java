@@ -34,24 +34,24 @@ public class SignUpController implements Initializable {
   @Override
   public void initialize(URL url, ResourceBundle resourceBundle) {
     String namePattern = "[A-Z][a-z]*( [A-Z][a-z]*){1,2}";
-    name.setTextFormatter(new TextFormatter<>(new RegexStringConverter(namePattern, RegexStringConverter::toTitleCase)));
+    name.setTextFormatter(new TextFormatter<>(new RegexStringConverter(namePattern, name, RegexStringConverter::toTitleCase)));
 
     String postalCodePattern = "([A-Z]\\d){3}";
-    postalCode.setTextFormatter(new TextFormatter<>(new RegexStringConverter(postalCodePattern, s -> s.replaceAll(" ", "").toUpperCase())));
+    postalCode.setTextFormatter(new TextFormatter<>(new RegexStringConverter(postalCodePattern, postalCode, s -> s.replaceAll(" ", "").toUpperCase())));
 
-    phoneNumber.setTextFormatter(new TextFormatter<>(new RegexStringConverter("\\d{10}", s -> s.replaceAll("[ )(\\-]", ""))));
+    phoneNumber.setTextFormatter(new TextFormatter<>(new RegexStringConverter("\\d{10}", phoneNumber, s -> s.replaceAll("[ )(\\-]", ""))));
 
-    email.setTextFormatter(new TextFormatter<>(new RegexStringConverter("[\\w-_.]+@([\\w-]+\\.)+[\\w]{2,3}")));
+    email.setTextFormatter(new TextFormatter<>(new RegexStringConverter("[\\w-_.]+@([\\w-]+\\.)+[\\w]{2,3}", email)));
 
-    username.setTextFormatter(new TextFormatter<>(new RegexStringConverter("\\w{0,20}")));
+    username.setTextFormatter(new TextFormatter<>(new RegexStringConverter("\\w{0,20}", username)));
 
-    nameOnCard.setTextFormatter(new TextFormatter<>(new RegexStringConverter(namePattern, RegexStringConverter::toTitleCase)));
+    nameOnCard.setTextFormatter(new TextFormatter<>(new RegexStringConverter(namePattern, nameOnCard, RegexStringConverter::toTitleCase)));
 
-    cardNumber.setTextFormatter(new TextFormatter<>(new RegexStringConverter("\\d{12,19}")));
+    cardNumber.setTextFormatter(new TextFormatter<>(new RegexStringConverter("\\d{12,19}", cardNumber)));
 
-    csv.setTextFormatter(new TextFormatter<>(new RegexStringConverter("\\d{3}")));
+    csv.setTextFormatter(new TextFormatter<>(new RegexStringConverter("\\d{3}", csv)));
 
-    expiryDate.setTextFormatter(new TextFormatter<>(new RegexStringConverter("(0[1-9]|1[0-2])/\\d{2}", SignUpController::autoCorrectExpiryDate)));
+    expiryDate.setTextFormatter(new TextFormatter<>(new RegexStringConverter("(0[1-9]|1[0-2])/\\d{2}", expiryDate, SignUpController::autoCorrectExpiryDate)));
 
     LocalDate now = LocalDate.now();
     restrictDates(dob, date -> date.isBefore(now));
