@@ -13,7 +13,7 @@ import ubc.cs304.team64.model.Member;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class aboutController implements Initializable {
+public class AboutController implements Initializable {
 
     Member member1;
     Facility facility1;
@@ -48,7 +48,7 @@ public class aboutController implements Initializable {
 
     static void setStage(Facility facility, Member member){
 
-        FXMLLoaderWrapper<aboutController> loader = new FXMLLoaderWrapper<>("about.fxml");
+        FXMLLoaderWrapper<AboutController> loader = new FXMLLoaderWrapper<>("about.fxml");
         loader.getController().setUp(facility, member);
         Main.updateStage(loader.getScene(), facility.getName());
     }
