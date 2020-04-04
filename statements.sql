@@ -1,6 +1,8 @@
+USE project;
+
 PREPARE getMember FROM 'SELECT * FROM member NATURAL JOIN status WHERE login = ? AND password = ?';
 PREPARE getStatuses FROM 'SELECT sType FROM status';
-PREPARE createMember FROM 'INSERT INTO member(login, password, address, phoneNumber, email, name, birthDate, driverLicenceNumber, sType) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)';
+PREPARE createMember FROM 'INSERT INTO member(login, password, address, phoneNumber, name, birthDate, driverLicenceNumber, sType) VALUES (?, ?, ?, ?, ?, ?, ?, ?)';
 PREPARE addPayment FROM 'INSERT INTO memberpayment(mid, pid) VALUES (?,?)';
 PREPARE getClassTypesFromStatus FROM 'SELECT classType FROM letsyoutake WHERE sType = ?';
 PREPARE getStatusCost FROM 'SELECT cost FROM status WHERE sType = ?';
@@ -13,11 +15,10 @@ PREPARE getPap FROM 'SELECT * FROM PAPAccount WHERE accountNumber = ?';
 PREPARE getFacilities FROM 'SELECT * FROM facility';
 PREPARE getClasses FROM
     'SELECT *,
-          (SELECT COUNT(t.mid) FROM takes t
-          WHERE c.time = t.time AND c.rid = t.rid AND c.fid = t.fid)
-          as taking
-          FROM instructor i NATURAL JOIN class c NATURAL JOIN classt
-          WHERE fid = ? AND time > CURRENT_TIMESTAMP()';
+        (SELECT COUNT(t.mid) FROM takes t WHERE c.time = t.time AND c.rid = t.rid AND c.fid = t.fid) as taking,
+        ? IN (SELECT mid FROM takes t2 WHERE c.time = t2.time AND c.rid = t2.rid AND c.fid = t2.fid) as isMemberTaking
+    FROM instructor i NATURAL JOIN class c NATURAL JOIN classt
+    WHERE fid = ? AND time > CURRENT_TIMESTAMP()';
 PREPARE getInstructor FROM 'SELECT * FROM ratedinstructors i WHERE i.iid = ?';
 PREPARE getInstructorsInFacility FROM 'SELECT i.* FROM ratedinstructors i WHERE
     i.iid IN (SELECT c.iid FROM class c WHERE c.time > CURRENT_TIMESTAMP AND c.iid = iid AND c.fid = ?)';

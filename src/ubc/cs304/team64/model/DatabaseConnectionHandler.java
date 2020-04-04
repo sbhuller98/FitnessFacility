@@ -1,5 +1,6 @@
 package ubc.cs304.team64.model;
 
+import javax.lang.model.type.NullType;
 import java.security.InvalidParameterException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -244,19 +245,23 @@ public class DatabaseConnectionHandler {
   }
 
   public Collection<ClassInfo> getClasses(Facility facility){
+    return getClasses(facility, null);
+  }
+
+  public Collection<ClassInfo> getClasses(Facility facility, Member member){
     try {
       PreparedStatement ps = connection.prepareStatement(
-          "SELECT *," +
-              "(SELECT COUNT(t.mid) FROM takes t " +
-          "WHERE c.time = t.time AND c.rid = t.rid AND c.fid = t.fid) " +
-          "as taking " +
-          "FROM instructor i NATURAL JOIN class c NATURAL JOIN classt " +
+          "SELECT *, " +
+            "(SELECT COUNT(t.mid) FROM takes t WHERE c.time = t.time AND c.rid = t.rid AND c.fid = t.fid) as taking, " +
+            "? IN (SELECT mid FROM takes t2 WHERE c.time = t2.time AND c.rid = t2.rid AND c.fid = t2.fid) as isMemberTaking "+
+          "FROM instructor i NATURAL JOIN class c NATURAL JOIN classt "+
           "WHERE fid = ? AND time > CURRENT_TIMESTAMP()");
-      ps.setInt(1, facility.getFid());
+      ps.setInt(1, member == null ? -1 : member.getMid());
+      ps.setInt(2, facility.getFid());
       Collection<ClassInfo> classes = new ArrayList<>();
       ResultSet rs = ps.executeQuery();
       while (rs.next()){
-        ClassInfo classInfo = new ClassInfo(
+        ClassInfo classInfo = new ClassInfo (
             facility,
             rs.getInt("rid"),
             rs.getTimestamp("time"),
@@ -266,7 +271,9 @@ public class DatabaseConnectionHandler {
             rs.getInt("iid"),
             rs.getString("name"),
             rs.getInt("capacity"),
-            rs.getInt("taking")
+            rs.getInt("taking"),
+            member,
+            rs.getBoolean("isMemberTaking")
         );
         classes.add(classInfo);
       }

@@ -45,12 +45,12 @@ public class classViewController implements Initializable {
         timeCol.setCellValueFactory(new ImmutablePropertyFactory<>(ClassInfo::getTime));
         instrucCol.setCellValueFactory(new ImmutablePropertyFactory<>(ClassInfo::getInstructorName));
 
-        mainTable.getItems().setAll(SetUp(facility));
+        mainTable.getItems().setAll(SetUp(facility, member));
     }
 
 
-    public Collection<ClassInfo> SetUp (Facility facility) {
-        Collection<ClassInfo> allClasses = Main.connectionHandler.getClasses(facility);
+    public Collection<ClassInfo> SetUp (Facility facility, Member member) {
+        Collection<ClassInfo> allClasses = Main.connectionHandler.getClasses(facility, member);
         return allClasses;
         }
 

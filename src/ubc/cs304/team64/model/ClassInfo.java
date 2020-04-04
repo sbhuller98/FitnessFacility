@@ -14,8 +14,10 @@ public class ClassInfo {
   private final String instructorName;
   private final int capacity;
   private final int currentlyTaking;
+  private final Member owner;
+  private final boolean ownerIsTaking;
 
-  ClassInfo(Facility facility, int roomNumber, Timestamp time, String title, String description, String type, int iid, String iName, int capacity, int currentlyTaking) {
+  ClassInfo(Facility facility, int roomNumber, Timestamp time, String title, String description, String type, int iid, String iName, int capacity, int currentlyTaking, Member owner, boolean ownerIsTaking) {
     this.facility = facility;
     this.roomNumber = roomNumber;
     this.time = time;
@@ -26,6 +28,8 @@ public class ClassInfo {
     this.instructorName = iName;
     this.capacity = capacity;
     this.currentlyTaking = currentlyTaking;
+    this.owner = owner;
+    this.ownerIsTaking = ownerIsTaking;
   }
 
   public Facility getFacility() {
@@ -68,6 +72,10 @@ public class ClassInfo {
 
   public String getEnrollmentStatus(){
     return getCurrentlyTaking() + "/" +getCapacity();
+  }
+
+  public boolean IsOwnerTaking() {
+    return ownerIsTaking;
   }
 
   @Override
