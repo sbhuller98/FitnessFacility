@@ -4,6 +4,7 @@ import javafx.animation.Animation;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.stage.Stage;
 import javafx.util.StringConverter;
 import ubc.cs304.team64.model.Member;
 import ubc.cs304.team64.model.Payment;
@@ -30,6 +31,8 @@ public class SignUpController implements Initializable {
   @FXML private TextField cardNumber;
   @FXML private TextField csv;
   @FXML private TextField expiryDate;
+  @FXML private Button back;
+
 
   private Map<Control, Animation> inputs;
 
@@ -61,6 +64,8 @@ public class SignUpController implements Initializable {
     csv.setTextFormatter(new TextFormatter<>(new RegexStringConverter("\\d{3}", inputs.get(csv))));
 
     expiryDate.setTextFormatter(new TextFormatter<>(new RegexStringConverter("(0[1-9]|1[0-2])/\\d{2}", inputs.get(expiryDate), SignUpController::autoCorrectExpiryDate)));
+
+    back.setOnAction(e -> Main.updateStage(new FXMLLoaderWrapper<>("Login.fxml").getScene(), "Login"));
 
     LocalDate now = LocalDate.now();
     restrictDates(dob, date -> date.isBefore(now));

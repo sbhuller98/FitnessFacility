@@ -33,5 +33,10 @@
             <Font size="15.0" />
          </font>
       </Label>
+      <Button layoutX="524.0" layoutY="12.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="64.0" style="-fx-background-color: #229aeb; -fx-text-fill: white;" text="Back">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>
