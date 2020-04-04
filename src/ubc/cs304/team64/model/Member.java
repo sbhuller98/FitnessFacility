@@ -61,11 +61,11 @@ public class Member {
     return statusType;
   }
 
-  private double getStatusCost(){
+  public double getStatusCost(){
     return statusCost;
   }
 
-  private boolean canTakeClass(ClassInfo classInfo){
+  public boolean canTakeClass(ClassInfo classInfo){
     return availableClassTypes.contains(classInfo.getType());
   }
 
