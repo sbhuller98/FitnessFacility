@@ -13,7 +13,7 @@
          </font>
       </Label>
       <Button fx:id="classes" layoutX="96.0" layoutY="117.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="174.0" style="-fx-background-color: #229aeb; -fx-text-fill: white;" text="Classes" />
-      <Button layoutX="95.0" layoutY="221.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="176.0" style="-fx-background-color: #229aeb; -fx-text-fill: white;" text="Facility Map" />
+      <Button fx:id="fmap" layoutX="95.0" layoutY="221.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="176.0" style="-fx-background-color: #229aeb; -fx-text-fill: white;" text="Facility Map" />
       <Button layoutX="95.0" layoutY="273.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="176.0" style="-fx-background-color: #229aeb; -fx-text-fill: white;" text="About" />
       <Button layoutX="95.0" layoutY="327.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="176.0" style="-fx-background-color: #229aeb; -fx-text-fill: white;" text="My Account" />
       <Button fx:id="instructors" layoutX="96.0" layoutY="171.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="174.0" style="-fx-background-color: #229aeb; -fx-text-fill: white;" text="Instructors" />
@@ -21,5 +21,10 @@
       </ImageView>
       <ImageView fx:id="logo" fitHeight="141.0" fitWidth="174.0" layoutX="368.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
       </ImageView>
+      <Button layoutX="515.0" layoutY="14.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="71.0" style="-fx-background-color: #229aeb; -fx-text-fill: white;" text="Back">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>

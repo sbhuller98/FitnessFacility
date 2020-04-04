@@ -18,12 +18,6 @@
             <Font name="System Bold" size="26.0" />
          </font>
       </Label>
-      <!-- X button -->
-      <Button layoutX="562.0" layoutY="14.0" minWidth="53.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="53.0" style="-fx-text-fill: white; -fx-background-color: #07407b;" text="X" textOverrun="WORD_ELLIPSIS">
-         <font>
-            <Font name="Arial Bold" size="17.0" />
-         </font>
-      </Button>
       <!-- Image -->
       <ImageView fitHeight="280.0" fitWidth="280.0" layoutX="42.0" layoutY="110.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -33,11 +27,11 @@
       <!-- New here? -->
       <Label layoutX="380.0" layoutY="325.0" prefHeight="28.0" prefWidth="123.0" style="-fx-text-fill: #7fcdee;" text="New here?" textFill="WHITE">
          <font>
-            <Font size="15.0" name="Arial Bold" />
+            <Font name="Arial Bold" size="15.0" />
          </font>
       </Label>
       <!-- signup button -->
-      <Button fx:id="buttonSignUp" prefHeight="28.0" prefWidth="75" layoutX="470.0" layoutY="325.0" mnemonicParsing="false" onAction="#launchSignUp" style="-fx-text-fill: #07407b; -fx-background-color: #7fcdee;" text="Sign Up!" />
+      <Button fx:id="buttonSignUp" layoutX="470.0" layoutY="325.0" mnemonicParsing="false" onAction="#launchSignUp" prefHeight="28.0" prefWidth="75" style="-fx-text-fill: #07407b; -fx-background-color: #7fcdee;" text="Sign Up!" />
       <!-- log in -->
       <Label layoutX="390.0" layoutY="66.0" style="-fx-text-fill: white;" text="Log In" textFill="#9e2f2f">
          <font>
@@ -45,8 +39,8 @@
          </font>
       </Label>
        <!-- fill in buttons -->
-      <TextField fx:id="userNameField" layoutX="388.0" layoutY="150.0" minWidth="150" minHeight="15" prefHeight="28.0" prefWidth="123.0" promptText="Username" />
-      <PasswordField fx:id="passwordField" layoutX="388.0" layoutY="200.0" minWidth="150" minHeight="15" prefHeight="28.0" prefWidth="123.0" promptText="Password" />
-      <Button layoutX="388.0" layoutY="255.0" minWidth="150" minHeight="15" mnemonicParsing="false" style="-fx-text-fill: #07407b; -fx-background-color: #7fcdee;" text="Login" onAction="#login" />
+      <TextField fx:id="userNameField" layoutX="388.0" layoutY="150.0" minHeight="15" minWidth="150" prefHeight="28.0" prefWidth="123.0" promptText="Username" />
+      <PasswordField fx:id="passwordField" layoutX="388.0" layoutY="200.0" minHeight="15" minWidth="150" prefHeight="28.0" prefWidth="123.0" promptText="Password" />
+      <Button layoutX="388.0" layoutY="255.0" minHeight="15" minWidth="150" mnemonicParsing="false" onAction="#login" style="-fx-text-fill: #07407b; -fx-background-color: #7fcdee;" text="Login" />
    </children>
 </AnchorPane>
