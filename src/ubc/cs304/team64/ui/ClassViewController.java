@@ -1,9 +1,6 @@
 package ubc.cs304.team64.ui;
 
 import javafx.animation.PauseTransition;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 
@@ -11,11 +8,9 @@ import java.net.URL;
 import java.sql.Timestamp;
 import java.util.Collection;
 import java.util.ResourceBundle;
-import java.util.Timer;
 
 import javafx.scene.control.TableView;
 import javafx.scene.control.Button;
-import javafx.scene.control.*;
 import javafx.util.Duration;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableRow;
@@ -24,7 +19,7 @@ import ubc.cs304.team64.model.ClassInfo;
 import ubc.cs304.team64.model.Member;
 
 
-public class classViewController implements Initializable {
+public class ClassViewController implements Initializable {
 
     Facility facility1;
     Member member1;
@@ -116,7 +111,7 @@ public class classViewController implements Initializable {
 
 
     static void setStage(Facility facility, Member member){
-        FXMLLoaderWrapper<classViewController> loader = new FXMLLoaderWrapper<>("classView.fxml");
+        FXMLLoaderWrapper<ClassViewController> loader = new FXMLLoaderWrapper<>("classView.fxml");
         loader.getController().startUp(facility, member);
         Main.updateStage(loader.getScene(), facility.getName());
     }
@@ -129,7 +124,7 @@ public class classViewController implements Initializable {
           e.printStackTrace();
           // TODO handle
         }
-        classViewController.setStage(selected.getFacility(), member);
+        ClassViewController.setStage(selected.getFacility(), member);
     }
 
   @Override
