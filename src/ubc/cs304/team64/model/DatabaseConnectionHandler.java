@@ -322,4 +322,21 @@ public class DatabaseConnectionHandler {
         rs.getDouble("salary")
     );
   }
+
+  public void registerMemberForClass(ClassInfo classInfo){
+    try {
+      PreparedStatement ps = connection.prepareStatement("INSERT INTO takes(mid, time, rid, fid) VALUES (?, ?, ?, ?)");
+      ps.setInt(1, classInfo.getOwner().getMid());
+      ps.setTimestamp(2, classInfo.getTime());
+      ps.setInt(3, classInfo.getRoomNumber());
+      ps.setInt(4, classInfo.getFacility().getFid());
+      ps.executeUpdate();
+      connection.commit();
+      ps.close();
+    } catch (SQLIntegrityConstraintViolationException e){
+      throw new IllegalArgumentException(e);
+    } catch (SQLException e) {
+      throw new Error(e);
+    }
+  }
 }
