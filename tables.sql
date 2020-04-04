@@ -73,6 +73,7 @@ CREATE TABLE Member(
     password BINARY(16) NOT NULL,
     address CHAR(100),
     phoneNumber CHAR(10),
+    email CHAR(30),
     name CHAR(20),
     birthDate DATE,
     driverLicenceNumber INT,
@@ -279,17 +280,17 @@ INSERT INTO room (rid, fid) VALUES (100, 3);
 INSERT INTO room (rid, fid) VALUES (100, 4);
 INSERT INTO room (rid, fid) VALUES (100, 5);
 
-INSERT INTO member(login, password, address, phoneNumber, name, birthDate, driverLicenceNumber, sType) VALUES ('imiller', X'a61a78e492ee60c63ed8f2bb3a6a0072','4444 128 St, Surrey, BC', '6043442423', 'Ian Miller', '1978-12-12', 4238422, 'Silver');
+INSERT INTO member(login, password, address, phoneNumber, email, name, birthDate, driverLicenceNumber, sType) VALUES ('imiller', X'a61a78e492ee60c63ed8f2bb3a6a0072','4444 128 St, Surrey, BC', '6043442423', 'imiller@gmail.com', 'Ian Miller', '1978-12-12', 4238422, 'Silver');
 #password: "pa$$word"
-INSERT INTO member(login, password, address, phoneNumber, name, birthDate, driverLicenceNumber, sType) VALUES ('jonh_w', X'd0763edaa9d9bd2a9516280e9044d885', '1243 Westwood Drive, Coquitlam, BC', '7782443445', 'John Westbrrok', '2001-08-04', 2222222, 'Student');
+INSERT INTO member(login, password, address, phoneNumber, email, name, birthDate, driverLicenceNumber, sType) VALUES ('jonh_w', X'd0763edaa9d9bd2a9516280e9044d885', '1243 Westwood Drive, Coquitlam, BC', '7782443445', 'jonh.westbrrok@alumni.ubc.ca', 'John Westbrrok', '2001-08-04', 2222222, 'Student');
 #password: "monkey"
-INSERT INTO member(login, password, address, phoneNumber, name, birthDate, driverLicenceNumber, sType) VALUES ('henry_cavill', X'2632a9189905c888ead002e11e5c4446', '12-3443 54 Ave, Vancouver, BC', '6042557546', 'Henry Cavill', '1948-04-25', 4237676, 'Senior');
+INSERT INTO member(login, password, address, phoneNumber, email, name, birthDate, driverLicenceNumber, sType) VALUES ('henry_cavill', X'2632a9189905c888ead002e11e5c4446', '12-3443 54 Ave, Vancouver, BC', '6042557546', 'henry_cavill@shaw.ca', 'Henry Cavill', '1948-04-25', 4237676, 'Senior');
 #password: "asdfghjkl;'"
-INSERT INTO member(login, password, address, phoneNumber, name, birthDate, driverLicenceNumber, sType) VALUES ('saqon_barkley', X'e10adc3949ba59abbe56e057f20f883e', '4534 12 Ave, Burnaby, BC', '6041236533', 'Saquon Barkley', '1996-01-19', 4444444, 'Low-Income');
+INSERT INTO member(login, password, address, phoneNumber, email, name, birthDate, driverLicenceNumber, sType) VALUES ('saqon_barkley', X'e10adc3949ba59abbe56e057f20f883e', '4534 12 Ave, Burnaby, BC', '6041236533', 'sbarkley96@gmail.com', 'Saquon Barkley', '1996-01-19', 4444444, 'Low-Income');
 #password "123456"
-INSERT INTO member(login, password, address, phoneNumber, name, birthDate, driverLicenceNumber, sType) VALUES ('russel_wesbrrok', X'35d4785ecc5e3dabfc2edf7542392837', '1243 Westwood Drive, Coquitlam, BC', '7782347542', 'Russel Westbrrok', '1970-04-15', 3242322, 'Platinum');
+INSERT INTO member(login, password, address, phoneNumber, email, name, birthDate, driverLicenceNumber, sType) VALUES ('russel_wesbrrok', X'35d4785ecc5e3dabfc2edf7542392837', '1243 Westwood Drive, Coquitlam, BC', '7782347542', 'russel_wesbrrok@shaw.ca', 'Russel Westbrrok', '1970-04-15', 3242322, 'Platinum');
 #password "g0w0_3EWnf"
-INSERT INTO member(login, password, address, phoneNumber, name, birthDate, driverLicenceNumber, sType) VALUES ('lana_smith', X'e99a18c428cb38d5f260853678922e03', '4287 134 St, Langley, BC', '6044530927', 'Lana Smith', '1984-03-12', 9238475, 'Silver');
+INSERT INTO member(login, password, address, phoneNumber, email, name, birthDate, driverLicenceNumber, sType) VALUES ('lana_smith', X'e99a18c428cb38d5f260853678922e03', '4287 134 St, Langley, BC', '6044530927', 'lanasmith3@gmail.com', 'Lana Smith','1984-03-12', 9238475, 'Silver');
 #password "abc123"
 
 INSERT INTO classt (title, description, type) VALUES ('Abs of Steel', 'Have you ever wanted finely toned abs?  This is the class for you!  This class targets the various abdominal muscles through direct and indirect exercises, while also getting your heart racing!', 'BootCamp');
@@ -312,12 +313,12 @@ INSERT INTO canhave (rid, fid, classType) VALUES (100, 5, 'BootCamp');
 INSERT INTO canhave (rid, fid, classType) VALUES (100, 5, 'Cardio');
 INSERT INTO canhave (rid, fid, classType) VALUES (100, 5, 'Dance');
 
-INSERT INTO class (time, title, capacity, rid, fid, iid) VALUES ('2020-04-06 16:30:00', 'Abs of Steel', 30, 100, 4, 1);
-INSERT INTO class (time, title, capacity, rid, fid, iid) VALUES ('2020-04-06 10:00:00', 'Running Machine', 15, 100, 1, 2);
-INSERT INTO class (time, title, capacity, rid, fid, iid) VALUES ('2020-04-06 13:00:00', 'Shapetastic', 25, 100, 4, 3);
-INSERT INTO class (time, title, capacity, rid, fid, iid) VALUES ('2020-04-06 20:00:00', 'Basketball Skills I', 40, 100, 4, 4);
-INSERT INTO class (time, title, capacity, rid, fid, iid) VALUES ('2020-04-06 14:00:00', 'Running Machine', 20, 100, 5, 5);
-INSERT INTO class (time, title, capacity, rid, fid, iid) VALUES ('2020-04-06 18:00:00', 'World Dance', 30, 100, 5, 5);
+INSERT INTO class (time, title, capacity, rid, fid, iid) VALUES ('2020-04-11 16:30:00', 'Abs of Steel', 30, 100, 4, 1);
+INSERT INTO class (time, title, capacity, rid, fid, iid) VALUES ('2020-04-11 10:00:00', 'Running Machine', 15, 100, 1, 2);
+INSERT INTO class (time, title, capacity, rid, fid, iid) VALUES ('2020-04-11 13:00:00', 'Shapetastic', 25, 100, 4, 3);
+INSERT INTO class (time, title, capacity, rid, fid, iid) VALUES ('2020-04-11 20:00:00', 'Basketball Skills I', 40, 100, 4, 4);
+INSERT INTO class (time, title, capacity, rid, fid, iid) VALUES ('2020-04-11 14:00:00', 'Running Machine', 20, 100, 5, 5);
+INSERT INTO class (time, title, capacity, rid, fid, iid) VALUES ('2020-04-11 18:00:00', 'World Dance', 30, 100, 5, 5);
 
 INSERT INTO creditcard (num, expiryDate, csv, nameOnCard) VALUES (1234120000000000, '2021-02-28', 123, 'Ian Miller');
 INSERT INTO creditcard (num, expiryDate, csv, nameOnCard) VALUES (4567350000000000, '2020-07-31', 456, 'Lana Smith');
@@ -382,13 +383,13 @@ INSERT INTO letsyoutake (classType, sType) VALUES ('Swimming', 'Platinum');
 INSERT INTO letsyoutake (classType, sType) VALUES ('Skating', 'Platinum');
 
 
-INSERT INTO takes (mid, time, rid, fid) VALUES (1, '2020-04-06 16:30:00', 100, 4);
-INSERT INTO takes (mid, time, rid, fid) VALUES (2, '2020-04-06 10:00:00', 100, 1);
-INSERT INTO takes (mid, time, rid, fid) VALUES (3, '2020-04-06 13:00:00', 100, 4);
-INSERT INTO takes (mid, time, rid, fid) VALUES (4, '2020-04-06 20:00:00', 100, 4);
-INSERT INTO takes (mid, time, rid, fid) VALUES (5, '2020-04-06 10:00:00', 100, 1);
-INSERT INTO takes (mid, time, rid, fid) VALUES (5, '2020-04-06 14:00:00', 100, 5);
-INSERT INTO takes (mid, time, rid, fid) VALUES (6, '2020-04-06 18:00:00', 100, 5);
+INSERT INTO takes (mid, time, rid, fid) VALUES (1, '2020-04-11 16:30:00', 100, 4);
+INSERT INTO takes (mid, time, rid, fid) VALUES (2, '2020-04-11 10:00:00', 100, 1);
+INSERT INTO takes (mid, time, rid, fid) VALUES (3, '2020-04-11 13:00:00', 100, 4);
+INSERT INTO takes (mid, time, rid, fid) VALUES (4, '2020-04-11 20:00:00', 100, 4);
+INSERT INTO takes (mid, time, rid, fid) VALUES (5, '2020-04-11 10:00:00', 100, 1);
+INSERT INTO takes (mid, time, rid, fid) VALUES (5, '2020-04-11 14:00:00', 100, 5);
+INSERT INTO takes (mid, time, rid, fid) VALUES (6, '2020-04-11 18:00:00', 100, 5);
 
 INSERT INTO memberpayment (mid, pid) VALUES (1, 1);
 INSERT INTO memberpayment (mid, pid) VALUES (2, 5);

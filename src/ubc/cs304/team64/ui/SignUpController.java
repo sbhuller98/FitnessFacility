@@ -50,7 +50,7 @@ public class SignUpController implements Initializable {
 
     phoneNumber.setTextFormatter(new TextFormatter<>(new RegexStringConverter("\\d{10}", inputs.get(phoneNumber), s -> s.replaceAll("[ )(\\-]", ""))));
 
-    email.setTextFormatter(new TextFormatter<>(new RegexStringConverter("[\\w-_.]+@([\\w-]+\\.)+[\\w]{2,3}", inputs.get(email))));
+    email.setTextFormatter(new TextFormatter<>(new RegexStringConverter("[\\w-_.]+@([\\w-.]+\\.)+[\\w]{2,3}", inputs.get(email))));
 
     username.setTextFormatter(new TextFormatter<>(new RegexStringConverter("\\w{0,20}", inputs.get(username))));
 
@@ -93,6 +93,7 @@ public class SignUpController implements Initializable {
             password.getText(),
             street.getText() + ", " + city.getText() + ", " + province.getValue() + ", " + postalCode.getText(),
             phoneNumber.getText(),
+            email.getText(),
             name.getText(),
             dob.getValue(),
             0, // TODO fix

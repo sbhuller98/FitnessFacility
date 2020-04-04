@@ -1,5 +1,6 @@
 package ubc.cs304.team64.model;
 
+import javax.lang.model.type.NullType;
 import java.security.InvalidParameterException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -43,6 +44,7 @@ public class DatabaseConnectionHandler {
           result.getInt("mid"),
           result.getString("address"),
           result.getString("phoneNumber"),
+          result.getString("email"),
           result.getString("name"),
           result.getDate("birthDate"),
           result.getInt("driverLicenceNumber"),
@@ -71,23 +73,24 @@ public class DatabaseConnectionHandler {
     }
   }
 
-  public Member createMember(String login, String password, String address, String phoneNumber, String name, LocalDate birthDate, int dln, String sType, Payment payment){
+  public Member createMember(String login, String password, String address, String phoneNumber, String email, String name, LocalDate birthDate, int dln, String sType, Payment payment){
     try {
       int statusCost = getStatusCost(sType);
       if(phoneNumber.length() != 10 || !phoneNumber.matches("\\d*")){
         throw new InvalidParameterException("Phone number should be a 10 digit number");
       }
 
-      String psString = "INSERT INTO member(login, password, address, phoneNumber, name, birthDate, driverLicenceNumber, sType) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+      String psString = "INSERT INTO member(login, password, address, phoneNumber, email, name, birthDate, driverLicenceNumber, sType) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
       PreparedStatement ps = connection.prepareStatement(psString, Statement.RETURN_GENERATED_KEYS);
       ps.setString(1, login);
       ps.setBytes(2, digest.digest(password.getBytes()));
       ps.setString(3, address);
       ps.setString(4, phoneNumber);
-      ps.setString(5, name);
-      ps.setDate(6, Date.valueOf(birthDate));
-      ps.setInt(7, dln);
-      ps.setString(8, sType);
+      ps.setString(5, email);
+      ps.setString(6, name);
+      ps.setDate(7, Date.valueOf(birthDate));
+      ps.setInt(8, dln);
+      ps.setString(9, sType);
       System.out.println(ps.executeUpdate());
 
       ResultSet autoKeys = ps.getGeneratedKeys();
@@ -101,7 +104,7 @@ public class DatabaseConnectionHandler {
       addPayment.executeUpdate();
       addPayment.close();
       connection.commit();
-      return new Member(mid, address, phoneNumber, name, Date.valueOf(birthDate), dln, sType, statusCost, getClassTypesForStatus(sType));
+      return new Member(mid, address, phoneNumber, email, name, Date.valueOf(birthDate), dln, sType, statusCost, getClassTypesForStatus(sType));
     } catch (SQLIntegrityConstraintViolationException e){
       throw new IllegalArgumentException(e);
     }
@@ -242,19 +245,23 @@ public class DatabaseConnectionHandler {
   }
 
   public Collection<ClassInfo> getClasses(Facility facility){
+    return getClasses(facility, null);
+  }
+
+  public Collection<ClassInfo> getClasses(Facility facility, Member member){
     try {
       PreparedStatement ps = connection.prepareStatement(
-          "SELECT *," +
-              "(SELECT COUNT(t.mid) FROM takes t " +
-          "WHERE c.time = t.time AND c.rid = t.rid AND c.fid = t.fid) " +
-          "as taking " +
-          "FROM instructor i NATURAL JOIN class c NATURAL JOIN classt " +
+          "SELECT *, " +
+            "(SELECT COUNT(t.mid) FROM takes t WHERE c.time = t.time AND c.rid = t.rid AND c.fid = t.fid) as taking, " +
+            "? IN (SELECT mid FROM takes t2 WHERE c.time = t2.time AND c.rid = t2.rid AND c.fid = t2.fid) as isMemberTaking "+
+          "FROM instructor i NATURAL JOIN class c NATURAL JOIN classt "+
           "WHERE fid = ? AND time > CURRENT_TIMESTAMP()");
-      ps.setInt(1, facility.getFid());
+      ps.setInt(1, member == null ? -1 : member.getMid());
+      ps.setInt(2, facility.getFid());
       Collection<ClassInfo> classes = new ArrayList<>();
       ResultSet rs = ps.executeQuery();
       while (rs.next()){
-        ClassInfo classInfo = new ClassInfo(
+        ClassInfo classInfo = new ClassInfo (
             facility,
             rs.getInt("rid"),
             rs.getTimestamp("time"),
@@ -264,7 +271,9 @@ public class DatabaseConnectionHandler {
             rs.getInt("iid"),
             rs.getString("name"),
             rs.getInt("capacity"),
-            rs.getInt("taking")
+            rs.getInt("taking"),
+            member,
+            rs.getBoolean("isMemberTaking")
         );
         classes.add(classInfo);
       }
