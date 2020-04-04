@@ -30,6 +30,7 @@ public class classViewController implements Initializable {
     Member member1;
 
 
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         back.setOnAction(e -> FacilityController.setStage(facility1, member1));
@@ -50,8 +51,11 @@ public class classViewController implements Initializable {
     private TableColumn<ClassInfo, String> instructorCol;
     @FXML
     private Button register;
+    @FXML Button back;
 
     public void startUp(Facility facility, Member member) {
+        facility1 = facility;
+        member1 = member;
         titleCol.setCellValueFactory(new ImmutablePropertyFactory<>(ClassInfo::getTitle));
         roomCol.setCellValueFactory(new ImmutablePropertyFactory<>(ClassInfo::getRoomNumber));
         descriptionCol.setCellValueFactory(new ImmutablePropertyFactory<>(ClassInfo::getDescription));
@@ -130,7 +134,7 @@ public class classViewController implements Initializable {
           e.printStackTrace();
           // TODO handle
         }
-        classViewController.setStage(selected.getFacility(), member);
+        classViewController.setStage(selected.getFacility(), member1);
     }
 }
 
