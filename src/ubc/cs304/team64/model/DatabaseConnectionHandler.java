@@ -47,7 +47,6 @@ public class DatabaseConnectionHandler {
           result.getString("email"),
           result.getString("name"),
           result.getDate("birthDate"),
-          result.getInt("driverLicenceNumber"),
           sType,
           result.getInt("cost"),
           getClassTypesForStatus(sType)
@@ -73,14 +72,14 @@ public class DatabaseConnectionHandler {
     }
   }
 
-  public Member createMember(String login, String password, String address, String phoneNumber, String email, String name, LocalDate birthDate, int dln, String sType, Payment payment){
+  public Member createMember(String login, String password, String address, String phoneNumber, String email, String name, LocalDate birthDate, String sType, Payment payment){
     try {
       int statusCost = getStatusCost(sType);
       if(phoneNumber.length() != 10 || !phoneNumber.matches("\\d*")){
         throw new InvalidParameterException("Phone number should be a 10 digit number");
       }
 
-      String psString = "INSERT INTO member(login, password, address, phoneNumber, email, name, birthDate, driverLicenceNumber, sType) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+      String psString = "INSERT INTO member(login, password, address, phoneNumber, email, name, birthDate, sType) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
       PreparedStatement ps = connection.prepareStatement(psString, Statement.RETURN_GENERATED_KEYS);
       ps.setString(1, login);
       ps.setBytes(2, digest.digest(password.getBytes()));
@@ -89,8 +88,7 @@ public class DatabaseConnectionHandler {
       ps.setString(5, email);
       ps.setString(6, name);
       ps.setDate(7, Date.valueOf(birthDate));
-      ps.setInt(8, dln);
-      ps.setString(9, sType);
+      ps.setString(8, sType);
       System.out.println(ps.executeUpdate());
 
       ResultSet autoKeys = ps.getGeneratedKeys();
@@ -104,7 +102,7 @@ public class DatabaseConnectionHandler {
       addPayment.executeUpdate();
       addPayment.close();
       connection.commit();
-      return new Member(mid, address, phoneNumber, email, name, Date.valueOf(birthDate), dln, sType, statusCost, getClassTypesForStatus(sType));
+      return new Member(mid, address, phoneNumber, email, name, Date.valueOf(birthDate), sType, statusCost, getClassTypesForStatus(sType));
     } catch (SQLIntegrityConstraintViolationException e){
       throw new IllegalArgumentException(e);
     }
@@ -234,7 +232,8 @@ public class DatabaseConnectionHandler {
         Facility f = new Facility(
             rs.getInt("fid"),
             rs.getString("address"),
-            rs.getString("name")
+            rs.getString("name"),
+            rs.getString("description")
         );
         retVal.add(f);
       }

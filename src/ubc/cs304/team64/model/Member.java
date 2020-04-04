@@ -11,19 +11,17 @@ public class Member {
   private final String email;
   private final String name;
   private final Date birthDate;
-  private final int driversLicenceNumber;
   private final String statusType;
   private final double statusCost;
   private final Set<String> availableClassTypes;
 
-  Member(int mid, String address, String phoneNumber, String email, String name, Date birthDate, int driversLicenceNumber, String statusType, double statusCost, Set<String> availableClassTypes) {
+  Member(int mid, String address, String phoneNumber, String email, String name, Date birthDate, String statusType, double statusCost, Set<String> availableClassTypes) {
     this.mid = mid;
     this.address = address;
     this.phoneNumber = "("+ phoneNumber.substring(0,3) +") "+ phoneNumber.substring(3,6)+"-"+phoneNumber.substring(6,10);
     this.email = email;
     this.name = name;
     this.birthDate = birthDate;
-    this.driversLicenceNumber = driversLicenceNumber;
     this.statusType = statusType;
     this.statusCost = statusCost;
     this.availableClassTypes = availableClassTypes;
@@ -51,10 +49,6 @@ public class Member {
 
   public Date getBirthDate() {
     return birthDate;
-  }
-
-  public int getDriversLicenceNumber() {
-    return driversLicenceNumber;
   }
 
   public String getStatusType() {
