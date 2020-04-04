@@ -5,26 +5,30 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #363857;" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ubc.cs304.team64.ui.FacilityController">
+<?import java.net.URL?>
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ubc.cs304.team64.ui.FacilityController">
    <children>
-      <Label fx:id="title" layoutX="95.0" layoutY="53.0" prefHeight="44.0" prefWidth="264.0" style="-fx-text-fill: #229aeb;" underline="true">
+      <Label fx:id="title" styleClass="title" layoutX="95.0" layoutY="53.0" prefHeight="44.0" prefWidth="264.0">
          <font>
             <Font size="21.0" />
          </font>
       </Label>
-      <Button fx:id="classes" layoutX="96.0" layoutY="117.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="174.0" style="-fx-background-color: #229aeb; -fx-text-fill: white;" text="Classes" />
-      <Button fx:id="fmap" layoutX="95.0" layoutY="221.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="176.0" style="-fx-background-color: #229aeb; -fx-text-fill: white;" text="Facility Map" />
-      <Button layoutX="95.0" layoutY="273.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="176.0" style="-fx-background-color: #229aeb; -fx-text-fill: white;" text="About" />
-      <Button layoutX="95.0" layoutY="327.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="176.0" style="-fx-background-color: #229aeb; -fx-text-fill: white;" text="My Account" />
-      <Button fx:id="instructors" layoutX="96.0" layoutY="171.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="174.0" style="-fx-background-color: #229aeb; -fx-text-fill: white;" text="Instructors" />
+      <Button fx:id="classes" layoutX="96.0" layoutY="117.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="174.0" text="Classes" />
+      <Button fx:id="fmap" layoutX="95.0" layoutY="221.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="176.0" text="Facility Map" />
+      <Button layoutX="95.0" layoutY="273.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="176.0" text="About" />
+      <Button layoutX="95.0" layoutY="327.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="176.0" text="My Account" />
+      <Button fx:id="instructors" layoutX="96.0" layoutY="171.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="174.0" text="Instructors" />
       <ImageView fx:id="image" fitHeight="200.0" fitWidth="287.0" layoutX="288.0" layoutY="177.0" pickOnBounds="true" preserveRatio="true">
       </ImageView>
       <ImageView fx:id="logo" fitHeight="141.0" fitWidth="174.0" layoutX="368.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
       </ImageView>
-      <Button fx:id="back" layoutX="539.0" layoutY="8.0" mnemonicParsing="false" style="-fx-background-color: #229aeb; -fx-text-fill: white;" text="Back">
+      <Button fx:id="back" layoutX="539.0" layoutY="8.0" mnemonicParsing="false" text="Back">
          <font>
             <Font size="15.0" />
          </font>
       </Button>
    </children>
+  <stylesheets>
+    <URL value="@mainStyle.css" />
+  </stylesheets>
 </AnchorPane>

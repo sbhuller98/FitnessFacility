@@ -5,7 +5,8 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="420.0" prefWidth="640.0" style="-fx-background-color: #07407b;" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ubc.cs304.team64.ui.Controller">
+<?import java.net.URL?>
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="420.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ubc.cs304.team64.ui.Controller">
    <children>
       <!-- Greater Van -->
       <Label layoutX="99.0" layoutY="40.0" style="-fx-text-fill: #7fcdee;" text="GreaterVan">
@@ -41,6 +42,9 @@
        <!-- fill in buttons -->
       <TextField fx:id="userNameField" layoutX="388.0" layoutY="150.0" minHeight="15" minWidth="150" prefHeight="28.0" prefWidth="123.0" promptText="Username" />
       <PasswordField fx:id="passwordField" layoutX="388.0" layoutY="200.0" minHeight="15" minWidth="150" prefHeight="28.0" prefWidth="123.0" promptText="Password" />
-      <Button layoutX="388.0" layoutY="255.0" minHeight="15" minWidth="150" mnemonicParsing="false" onAction="#login" style="-fx-text-fill: #07407b; -fx-background-color: #7fcdee;" text="Login" />
+      <Button layoutX="388.0" layoutY="255.0" minHeight="15" minWidth="150" mnemonicParsing="false" onAction="#login" text="Login" />
    </children>
+  <stylesheets>
+    <URL value="@loginStyle.css" />
+  </stylesheets>
 </AnchorPane>

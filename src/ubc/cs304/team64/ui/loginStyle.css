@@ -1,0 +1,9 @@
+@import "masterStyle.css"
+
+.button{
+  -fx-text-fill: #07407b;
+  -fx-background-color: #7fcdee;
+}
+.root {
+    -fx-background-color: #07407b;
+}

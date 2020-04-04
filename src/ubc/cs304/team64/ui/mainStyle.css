@@ -1,0 +1,11 @@
+@import "masterStyle.css"
+.button{
+  -fx-background-color: #229aeb; -fx-text-fill: white;
+}
+.root{
+  -fx-background-color: #363857;
+}
+.title{
+  -fx-text-fill: #229aeb;
+  -fx-underline: true;
+}
