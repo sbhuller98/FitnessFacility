@@ -4,3 +4,6 @@
 .combo-box {
     -fx-pref-width: 150
 }
+.label {
+    -fx-pref-width: -1
+}
