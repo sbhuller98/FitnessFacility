@@ -313,12 +313,12 @@ INSERT INTO canhave (rid, fid, classType) VALUES (100, 5, 'BootCamp');
 INSERT INTO canhave (rid, fid, classType) VALUES (100, 5, 'Cardio');
 INSERT INTO canhave (rid, fid, classType) VALUES (100, 5, 'Dance');
 
-INSERT INTO class (time, title, capacity, rid, fid, iid) VALUES ('2020-04-06 16:30:00', 'Abs of Steel', 30, 100, 4, 1);
-INSERT INTO class (time, title, capacity, rid, fid, iid) VALUES ('2020-04-06 10:00:00', 'Running Machine', 15, 100, 1, 2);
-INSERT INTO class (time, title, capacity, rid, fid, iid) VALUES ('2020-04-06 13:00:00', 'Shapetastic', 25, 100, 4, 3);
-INSERT INTO class (time, title, capacity, rid, fid, iid) VALUES ('2020-04-06 20:00:00', 'Basketball Skills I', 40, 100, 4, 4);
-INSERT INTO class (time, title, capacity, rid, fid, iid) VALUES ('2020-04-06 14:00:00', 'Running Machine', 20, 100, 5, 5);
-INSERT INTO class (time, title, capacity, rid, fid, iid) VALUES ('2020-04-06 18:00:00', 'World Dance', 30, 100, 5, 5);
+INSERT INTO class (time, title, capacity, rid, fid, iid) VALUES ('2020-04-11 16:30:00', 'Abs of Steel', 30, 100, 4, 1);
+INSERT INTO class (time, title, capacity, rid, fid, iid) VALUES ('2020-04-11 10:00:00', 'Running Machine', 15, 100, 1, 2);
+INSERT INTO class (time, title, capacity, rid, fid, iid) VALUES ('2020-04-11 13:00:00', 'Shapetastic', 25, 100, 4, 3);
+INSERT INTO class (time, title, capacity, rid, fid, iid) VALUES ('2020-04-11 20:00:00', 'Basketball Skills I', 40, 100, 4, 4);
+INSERT INTO class (time, title, capacity, rid, fid, iid) VALUES ('2020-04-11 14:00:00', 'Running Machine', 20, 100, 5, 5);
+INSERT INTO class (time, title, capacity, rid, fid, iid) VALUES ('2020-04-11 18:00:00', 'World Dance', 30, 100, 5, 5);
 
 INSERT INTO creditcard (num, expiryDate, csv, nameOnCard) VALUES (1234120000000000, '2021-02-28', 123, 'Ian Miller');
 INSERT INTO creditcard (num, expiryDate, csv, nameOnCard) VALUES (4567350000000000, '2020-07-31', 456, 'Lana Smith');
@@ -383,13 +383,13 @@ INSERT INTO letsyoutake (classType, sType) VALUES ('Swimming', 'Platinum');
 INSERT INTO letsyoutake (classType, sType) VALUES ('Skating', 'Platinum');
 
 
-INSERT INTO takes (mid, time, rid, fid) VALUES (1, '2020-04-06 16:30:00', 100, 4);
-INSERT INTO takes (mid, time, rid, fid) VALUES (2, '2020-04-06 10:00:00', 100, 1);
-INSERT INTO takes (mid, time, rid, fid) VALUES (3, '2020-04-06 13:00:00', 100, 4);
-INSERT INTO takes (mid, time, rid, fid) VALUES (4, '2020-04-06 20:00:00', 100, 4);
-INSERT INTO takes (mid, time, rid, fid) VALUES (5, '2020-04-06 10:00:00', 100, 1);
-INSERT INTO takes (mid, time, rid, fid) VALUES (5, '2020-04-06 14:00:00', 100, 5);
-INSERT INTO takes (mid, time, rid, fid) VALUES (6, '2020-04-06 18:00:00', 100, 5);
+INSERT INTO takes (mid, time, rid, fid) VALUES (1, '2020-04-11 16:30:00', 100, 4);
+INSERT INTO takes (mid, time, rid, fid) VALUES (2, '2020-04-11 10:00:00', 100, 1);
+INSERT INTO takes (mid, time, rid, fid) VALUES (3, '2020-04-11 13:00:00', 100, 4);
+INSERT INTO takes (mid, time, rid, fid) VALUES (4, '2020-04-11 20:00:00', 100, 4);
+INSERT INTO takes (mid, time, rid, fid) VALUES (5, '2020-04-11 10:00:00', 100, 1);
+INSERT INTO takes (mid, time, rid, fid) VALUES (5, '2020-04-11 14:00:00', 100, 5);
+INSERT INTO takes (mid, time, rid, fid) VALUES (6, '2020-04-11 18:00:00', 100, 5);
 
 INSERT INTO memberpayment (mid, pid) VALUES (1, 1);
 INSERT INTO memberpayment (mid, pid) VALUES (2, 5);
