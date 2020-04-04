@@ -78,6 +78,8 @@ public class ClassInfo {
     return ownerIsTaking;
   }
 
+  Member getOwner() {return owner;}
+
   @Override
   public boolean equals(Object o) {
     if (this == o) return true;

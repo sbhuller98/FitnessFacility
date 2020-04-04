@@ -86,7 +86,7 @@ public class SignUpController implements Initializable {
       try{
         String expDate = expiryDate.getText();
         Payment createdPayment = Main.connectionHandler.createPayment(
-            "???", // TODO fix
+            "Monthly", // TODO fix
             Long.parseLong(cardNumber.getText()),
             Integer.parseInt(csv.getText()),
             LocalDate.of(2000 + Integer.parseInt(expDate.substring(3,5)), Integer.parseInt(expDate.substring(0,2)), 1),
@@ -101,7 +101,6 @@ public class SignUpController implements Initializable {
             email.getText(),
             name.getText(),
             dob.getValue(),
-            0, // TODO fix
             status.getValue(),
             createdPayment
         );

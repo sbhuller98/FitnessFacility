@@ -2,7 +2,7 @@ USE project;
 
 PREPARE getMember FROM 'SELECT * FROM member NATURAL JOIN status WHERE login = ? AND password = ?';
 PREPARE getStatuses FROM 'SELECT sType FROM status';
-PREPARE createMember FROM 'INSERT INTO member(login, password, address, phoneNumber, name, birthDate, driverLicenceNumber, sType) VALUES (?, ?, ?, ?, ?, ?, ?, ?)';
+PREPARE createMember FROM 'INSERT INTO member(login, password, address, phoneNumber, email, name, birthDate, sType) VALUES (?, ?, ?, ?, ?, ?, ?, ?)';
 PREPARE addPayment FROM 'INSERT INTO memberpayment(mid, pid) VALUES (?,?)';
 PREPARE getClassTypesFromStatus FROM 'SELECT classType FROM letsyoutake WHERE sType = ?';
 PREPARE getStatusCost FROM 'SELECT cost FROM status WHERE sType = ?';
@@ -22,3 +22,5 @@ PREPARE getClasses FROM
 PREPARE getInstructor FROM 'SELECT * FROM ratedinstructors i WHERE i.iid = ?';
 PREPARE getInstructorsInFacility FROM 'SELECT i.* FROM ratedinstructors i WHERE
     i.iid IN (SELECT c.iid FROM class c WHERE c.time > CURRENT_TIMESTAMP AND c.iid = iid AND c.fid = ?)';
+
+PREPARE registerForClass FROM 'INSERT INTO takes(mid, time, rid, fid) VALUES (?, ?, ?, ?)'

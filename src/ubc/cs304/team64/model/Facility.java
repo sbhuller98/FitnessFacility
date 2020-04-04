@@ -6,11 +6,13 @@ public class Facility{
   private final int fid;
   private final String address;
   private final String name;
+  private final String description;
 
-  Facility(int fid, String address, String name) {
+  Facility(int fid, String address, String name, String description) {
     this.fid = fid;
     this.address = address;
     this.name = name;
+    this.description = description;
   }
 
   public int getFid() {
@@ -23,6 +25,10 @@ public class Facility{
 
   public String getName() {
     return name;
+  }
+
+  public String getDescription() {
+    return description;
   }
 
   @Override
