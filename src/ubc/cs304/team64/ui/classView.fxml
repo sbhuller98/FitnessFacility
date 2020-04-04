@@ -22,7 +22,7 @@
           <TableColumn fx:id="descriptionCol" prefWidth="261.0" text="Description" />
         </columns>
       </TableView>
-      <Button layoutX="541.0" layoutY="8.0" mnemonicParsing="false" style="-fx-background-color: #229aeb; -fx-text-fill: white;" text="Back">
+      <Button fx:id="back" layoutX="541.0" layoutY="8.0" mnemonicParsing="false" style="-fx-background-color: #229aeb; -fx-text-fill: white;" text="Back">
          <font>
             <Font size="15.0" />
          </font>

@@ -21,10 +21,13 @@ public class FacilitiesController implements Initializable {
   @FXML private Button button1, button2, button3, button4, button5;
   private Button[] buttons;
 
+  @FXML private Button back;
+
   @Override
   public void initialize(URL url, ResourceBundle resourceBundle) {
     logos = new ImageView[]{logo1, logo2, logo3, logo4, logo5};
     buttons = new Button[]{button1, button2, button3, button4, button5};
+    back.setOnAction(e -> Main.updateStage(new FXMLLoaderWrapper<>("Login.fxml").getScene(), "Login"));
   }
 
   public void setUp(Member m){

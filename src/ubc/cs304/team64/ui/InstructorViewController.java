@@ -8,22 +8,18 @@ import java.sql.Timestamp;
 import java.util.Collection;
 import java.util.ResourceBundle;
 
+import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import ubc.cs304.team64.model.Facility;
 import ubc.cs304.team64.model.ClassInfo;
 import ubc.cs304.team64.model.Instructor;
+import ubc.cs304.team64.model.Member;
 
 
 public class InstructorViewController implements Initializable {
 
-
-
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-
-    }
     @FXML
     private TableView<Instructor> mainTable1;
     @FXML
@@ -32,9 +28,22 @@ public class InstructorViewController implements Initializable {
     private TableColumn<Instructor, Double> averageCol;
     @FXML
     private TableColumn<Instructor, Double> salaryCol;
+    @FXML private Button back;
+
+    Facility facility1;
+    Member member1;
 
 
-    public void startUp(Facility facility) {
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        back.setOnAction(e -> FacilityController.setStage(facility1, member1));
+    }
+
+
+
+    public void startUp(Facility facility, Member member) {
+        facility1 = facility;
+        member1 = member;
         iNameCol.setCellValueFactory(new ImmutablePropertyFactory<>(Instructor::getName));
         averageCol.setCellValueFactory(new ImmutablePropertyFactory<>(Instructor::getAverageRating));
         salaryCol.setCellValueFactory(new ImmutablePropertyFactory<>(Instructor::getSalary));
@@ -50,9 +59,9 @@ public class InstructorViewController implements Initializable {
 
 
 
-    static void setStage(Facility facility){
+    static void setStage(Facility facility, Member member){
         FXMLLoaderWrapper<InstructorViewController> loader1 = new FXMLLoaderWrapper<>("instructorView.fxml");
-        loader1.getController().startUp(facility);
+        loader1.getController().startUp(facility, member);
         Main.updateStage(loader1.getScene(), facility.getName());
     }
 }

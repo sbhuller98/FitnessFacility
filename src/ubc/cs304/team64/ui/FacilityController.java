@@ -25,20 +25,23 @@ public class FacilityController implements Initializable {
   private ImageView image;
 
   @FXML
-  private Button classes, instructors, fmap;
+  private Button classes, instructors, fmap, back;
+
+  Member member1;
 
   @Override
   public void initialize(URL url, ResourceBundle resourceBundle) {
-
+      back.setOnAction(e -> FacilitiesController.setStage(member1));
   }
 
   public void setUp(Facility facility, Member member) {
+      member1 = member;
     this.title.setText(facility.getName());
     logo.setImage(new Image(getClass().getResource("/facilities/logo" + facility.getFid() + ".jpg").toString()));
     image.setImage(new Image(getClass().getResource("/facilities/image" + facility.getFid() + ".jpg").toString()));
     classes.setOnAction(e -> classViewController.setStage(facility, member));
-    instructors.setOnAction(e -> InstructorViewController.setStage(facility));
-    fmap.setOnAction(e -> facilityMapController.setStage(facility));
+    instructors.setOnAction(e -> InstructorViewController.setStage(facility, member));
+    fmap.setOnAction(e -> facilityMapController.setStage(facility, member));
   }
 
   static void setStage(Facility facility, Member member){
@@ -46,4 +49,6 @@ public class FacilityController implements Initializable {
     loader.getController().setUp(facility, member);
     Main.updateStage(loader.getScene(), facility.getName());
   }
+
+
 }

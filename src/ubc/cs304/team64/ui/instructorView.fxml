@@ -25,7 +25,7 @@
             <Image url="@../../../../resources/trainer-logo.jpg" />
          </image>
       </ImageView>
-      <Button layoutX="539.0" layoutY="8.0" mnemonicParsing="false" style="-fx-background-color: #229aeb; -fx-text-fill: white;" text="Back">
+      <Button fx:id="back" layoutX="539.0" layoutY="8.0" mnemonicParsing="false" style="-fx-background-color: #229aeb; -fx-text-fill: white;" text="Back">
          <font>
             <Font size="15.0" />
          </font>

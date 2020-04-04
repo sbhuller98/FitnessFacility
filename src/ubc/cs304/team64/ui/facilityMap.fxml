@@ -33,7 +33,7 @@
             <Font size="15.0" />
          </font>
       </Label>
-      <Button layoutX="524.0" layoutY="12.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="64.0" style="-fx-background-color: #229aeb; -fx-text-fill: white;" text="Back">
+      <Button fx:id="back" layoutX="539.0" layoutY="8.0" mnemonicParsing="false"  style="-fx-background-color: #229aeb; -fx-text-fill: white;" text="Back">
          <font>
             <Font size="15.0" />
          </font>

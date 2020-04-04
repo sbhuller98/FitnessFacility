@@ -8,6 +8,7 @@ import java.sql.Timestamp;
 import java.util.Collection;
 import java.util.ResourceBundle;
 
+import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableRow;
 import javafx.scene.control.TableView;
@@ -18,11 +19,13 @@ import ubc.cs304.team64.model.Member;
 
 public class classViewController implements Initializable {
 
+    Facility facility1;
+    Member member1;
 
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
+        back.setOnAction(e -> FacilityController.setStage(facility1, member1));
     }
     @FXML
     private TableView<ClassInfo> mainTable;
@@ -39,7 +42,11 @@ public class classViewController implements Initializable {
     @FXML
     private TableColumn<ClassInfo, String> instructorCol;
 
+    @FXML private Button back;
+
     public void startUp(Facility facility, Member member) {
+        facility1 = facility;
+        member1 = member;
         titleCol.setCellValueFactory(new ImmutablePropertyFactory<>(ClassInfo::getTitle));
         roomCol.setCellValueFactory(new ImmutablePropertyFactory<>(ClassInfo::getRoomNumber));
         descriptionCol.setCellValueFactory(new ImmutablePropertyFactory<>(ClassInfo::getDescription));

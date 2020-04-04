@@ -27,6 +27,6 @@
             <Font size="19.0" />
          </font>
       </Label>
-      <Button layoutX="516.0" layoutY="6.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="80.0" style="-fx-background-color: #229aeb; -fx-text-fill: white;" text="LogOut " />
+      <Button fx:id="back" layoutX="516.0" layoutY="6.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="80.0" style="-fx-background-color: #229aeb; -fx-text-fill: white;" text="LogOut " />
    </children>
 </AnchorPane>
