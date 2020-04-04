@@ -1,6 +1,5 @@
 package ubc.cs304.team64.ui;
 
-import javafx.beans.value.ObservableValueBase;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 
@@ -9,17 +8,11 @@ import java.sql.Timestamp;
 import java.util.Collection;
 import java.util.ResourceBundle;
 
-import javafx.scene.Node;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableRow;
 import javafx.scene.control.TableView;
-import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.layout.Background;
-import javafx.scene.layout.BackgroundFill;
-import javafx.scene.paint.Color;
 import ubc.cs304.team64.model.Facility;
 import ubc.cs304.team64.model.ClassInfo;
-import ubc.cs304.team64.model.Instructor;
 import ubc.cs304.team64.model.Member;
 
 
@@ -38,18 +31,21 @@ public class classViewController implements Initializable {
     @FXML
     private TableColumn<ClassInfo, Timestamp> timeCol;
     @FXML
-    private TableColumn<ClassInfo, String> DescriptionCol;
+    private TableColumn<ClassInfo, Integer> roomCol;
+    @FXML
+    private TableColumn<ClassInfo, String> descriptionCol;
     @FXML
     private TableColumn<ClassInfo, String> capacityCol;
     @FXML
-    private TableColumn<ClassInfo, String> instrucCol;
+    private TableColumn<ClassInfo, String> instructorCol;
 
     public void startUp(Facility facility, Member member) {
         titleCol.setCellValueFactory(new ImmutablePropertyFactory<>(ClassInfo::getTitle));
-        DescriptionCol.setCellValueFactory(new ImmutablePropertyFactory<>(ClassInfo::getDescription));
+        roomCol.setCellValueFactory(new ImmutablePropertyFactory<>(ClassInfo::getRoomNumber));
+        descriptionCol.setCellValueFactory(new ImmutablePropertyFactory<>(ClassInfo::getDescription));
         capacityCol.setCellValueFactory(new ImmutablePropertyFactory<>(ClassInfo::getEnrollmentStatus));
         timeCol.setCellValueFactory(new ImmutablePropertyFactory<>(ClassInfo::getTime));
-        instrucCol.setCellValueFactory(new ImmutablePropertyFactory<>(ClassInfo::getInstructorName));
+        instructorCol.setCellValueFactory(new ImmutablePropertyFactory<>(ClassInfo::getInstructorName));
         mainTable.setRowFactory((classInfoTableView -> new TableRow<ClassInfo>() {
           @Override
           public void updateItem(ClassInfo classInfo, boolean empty) {
