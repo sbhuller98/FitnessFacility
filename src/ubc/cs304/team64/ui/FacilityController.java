@@ -35,7 +35,7 @@ public class FacilityController implements Initializable {
   }
 
   public void setUp(Facility facility, Member member) {
-      member1 = member;
+    member1 = member;
     this.title.setText(facility.getName());
     logo.setImage(new Image(getClass().getResource("/facilities/logo" + facility.getFid() + ".jpg").toString()));
     image.setImage(new Image(getClass().getResource("/facilities/image" + facility.getFid() + ".jpg").toString()));

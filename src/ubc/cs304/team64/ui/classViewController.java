@@ -30,10 +30,6 @@ public class classViewController implements Initializable {
     Member member1;
 
 
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-        back.setOnAction(e -> FacilityController.setStage(facility1, member1));
-    }
     @FXML
     private TableView<ClassInfo> mainTable;
     @FXML
@@ -50,6 +46,8 @@ public class classViewController implements Initializable {
     private TableColumn<ClassInfo, String> instructorCol;
     @FXML
     private Button register;
+    @FXML
+    private Button back;
 
     public void startUp(Facility facility, Member member) {
         titleCol.setCellValueFactory(new ImmutablePropertyFactory<>(ClassInfo::getTitle));
@@ -105,14 +103,15 @@ public class classViewController implements Initializable {
           pt.play();
         });
         register.disableProperty().bind(mainTable.getSelectionModel().selectedItemProperty().isNull());
-        register.setOnAction(t -> resister());
+        register.setOnAction(t -> resister(member));
+
+        back.setOnAction(e -> FacilityController.setStage(facility, member));
     }
 
-
-  public Collection<ClassInfo> SetUp (Facility facility, Member member) {
+    public Collection<ClassInfo> SetUp (Facility facility, Member member) {
         Collection<ClassInfo> allClasses = Main.connectionHandler.getClasses(facility, member);
         return allClasses;
-        }
+    }
 
 
 
@@ -122,7 +121,7 @@ public class classViewController implements Initializable {
         Main.updateStage(loader.getScene(), facility.getName());
     }
 
-    public void resister() {
+    public void resister(Member member) {
         ClassInfo selected = mainTable.getSelectionModel().getSelectedItem();
         try {
           Main.connectionHandler.registerMemberForClass(selected);
@@ -132,6 +131,11 @@ public class classViewController implements Initializable {
         }
         classViewController.setStage(selected.getFacility(), member);
     }
+
+  @Override
+  public void initialize(URL url, ResourceBundle resourceBundle) {
+
+  }
 }
 
 
