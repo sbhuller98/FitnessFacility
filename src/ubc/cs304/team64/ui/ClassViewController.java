@@ -1,9 +1,6 @@
 package ubc.cs304.team64.ui;
 
 import javafx.animation.PauseTransition;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 
@@ -11,11 +8,9 @@ import java.net.URL;
 import java.sql.Timestamp;
 import java.util.Collection;
 import java.util.ResourceBundle;
-import java.util.Timer;
 
 import javafx.scene.control.TableView;
 import javafx.scene.control.Button;
-import javafx.scene.control.*;
 import javafx.util.Duration;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableRow;
@@ -24,17 +19,12 @@ import ubc.cs304.team64.model.ClassInfo;
 import ubc.cs304.team64.model.Member;
 
 
-public class classViewController implements Initializable {
+public class ClassViewController implements Initializable {
 
     Facility facility1;
     Member member1;
 
 
-
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-        back.setOnAction(e -> FacilityController.setStage(facility1, member1));
-    }
     @FXML
     private TableView<ClassInfo> mainTable;
     @FXML
@@ -51,11 +41,10 @@ public class classViewController implements Initializable {
     private TableColumn<ClassInfo, String> instructorCol;
     @FXML
     private Button register;
-    @FXML Button back;
+    @FXML
+    private Button back;
 
     public void startUp(Facility facility, Member member) {
-        facility1 = facility;
-        member1 = member;
         titleCol.setCellValueFactory(new ImmutablePropertyFactory<>(ClassInfo::getTitle));
         roomCol.setCellValueFactory(new ImmutablePropertyFactory<>(ClassInfo::getRoomNumber));
         descriptionCol.setCellValueFactory(new ImmutablePropertyFactory<>(ClassInfo::getDescription));
@@ -109,24 +98,25 @@ public class classViewController implements Initializable {
           pt.play();
         });
         register.disableProperty().bind(mainTable.getSelectionModel().selectedItemProperty().isNull());
-        register.setOnAction(t -> resister());
+        register.setOnAction(t -> resister(member));
+
+        back.setOnAction(e -> FacilityController.setStage(facility, member));
     }
 
-
-  public Collection<ClassInfo> SetUp (Facility facility, Member member) {
+    public Collection<ClassInfo> SetUp (Facility facility, Member member) {
         Collection<ClassInfo> allClasses = Main.connectionHandler.getClasses(facility, member);
         return allClasses;
-        }
+    }
 
 
 
     static void setStage(Facility facility, Member member){
-        FXMLLoaderWrapper<classViewController> loader = new FXMLLoaderWrapper<>("classView.fxml");
+        FXMLLoaderWrapper<ClassViewController> loader = new FXMLLoaderWrapper<>("classView.fxml");
         loader.getController().startUp(facility, member);
         Main.updateStage(loader.getScene(), facility.getName());
     }
 
-    public void resister() {
+    public void resister(Member member) {
         ClassInfo selected = mainTable.getSelectionModel().getSelectedItem();
         try {
           Main.connectionHandler.registerMemberForClass(selected);
@@ -134,8 +124,13 @@ public class classViewController implements Initializable {
           e.printStackTrace();
           // TODO handle
         }
-        classViewController.setStage(selected.getFacility(), member1);
+        ClassViewController.setStage(selected.getFacility(), member);
     }
+
+  @Override
+  public void initialize(URL url, ResourceBundle resourceBundle) {
+
+  }
 }
 
 

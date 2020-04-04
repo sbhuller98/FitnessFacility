@@ -5,15 +5,16 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #363857;" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ubc.cs304.team64.ui.facilityMapController">
+<?import java.net.URL?>
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ubc.cs304.team64.ui.facilityMapController">
    <children>
-      <Label layoutX="215.0" layoutY="14.0" prefHeight="35.0" prefWidth="171.0" style="-fx-background-color: #229aeb; -fx-text-fill: white;" text="         Facility Map">
+      <Label styleClass="title" layoutX="215.0" layoutY="14.0" prefHeight="35.0" prefWidth="171.0"  text="         Facility Map">
          <font>
             <Font name="System Bold" size="20.0" />
          </font>
       </Label>
       <ImageView fx:id="image" fitHeight="357.0" fitWidth="494.0" layoutX="1.0" layoutY="47.0" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fx:id="image1" fitHeight="46.0" fitWidth="59.0" layoutX="514.0" layoutY="62.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="46.0" fitWidth="59.0" layoutX="514.0" layoutY="62.0" pickOnBounds="true" preserveRatio="true">
        <image>
            <Image url="@../../../../resources/accessible.png" />
        </image>
@@ -23,7 +24,7 @@
             <Font size="14.0" />
          </font>
       </Label>
-      <ImageView fx:id="image11" fitHeight="64.0" fitWidth="67.0" layoutX="505.0" layoutY="208.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="64.0" fitWidth="67.0" layoutX="505.0" layoutY="208.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../../resources/childminding.png" />
          </image>
@@ -33,10 +34,13 @@
             <Font size="14.0" />
          </font>
       </Label>
-      <Button fx:id="back" layoutX="539.0" layoutY="8.0" mnemonicParsing="false" style="-fx-background-color: #229aeb; -fx-text-fill: white;" text="Back">
+      <Button fx:id="back" layoutX="539.0" layoutY="8.0" mnemonicParsing="false" text="Back">
          <font>
             <Font size="15.0" />
          </font>
       </Button>
    </children>
+  <stylesheets>
+    <URL value="@mainStyle.css" />
+  </stylesheets>
 </AnchorPane>

@@ -35,11 +35,11 @@ public class FacilityController implements Initializable {
   }
 
   public void setUp(Facility facility, Member member) {
-      member1 = member;
+    member1 = member;
     this.title.setText(facility.getName());
     logo.setImage(new Image(getClass().getResource("/facilities/logo" + facility.getFid() + ".jpg").toString()));
     image.setImage(new Image(getClass().getResource("/facilities/image" + facility.getFid() + ".jpg").toString()));
-    classes.setOnAction(e -> classViewController.setStage(facility, member));
+    classes.setOnAction(e -> ClassViewController.setStage(facility, member));
     instructors.setOnAction(e -> InstructorViewController.setStage(facility, member));
     fmap.setOnAction(e -> facilityMapController.setStage(facility, member));
     about.setOnAction(e -> aboutController.setStage(facility, member));
