@@ -25,7 +25,7 @@ public class FacilityController implements Initializable {
   private ImageView image;
 
   @FXML
-  private Button classes, instructors, fmap, back;
+  private Button classes, instructors, fmap, back, about;
 
   Member member1;
 
@@ -42,6 +42,7 @@ public class FacilityController implements Initializable {
     classes.setOnAction(e -> classViewController.setStage(facility, member));
     instructors.setOnAction(e -> InstructorViewController.setStage(facility, member));
     fmap.setOnAction(e -> facilityMapController.setStage(facility, member));
+    about.setOnAction(e -> aboutController.setStage(facility, member));
   }
 
   static void setStage(Facility facility, Member member){
