@@ -13,7 +13,7 @@ import ubc.cs304.team64.model.Member;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class aboutController implements Initializable {
+public class AboutController implements Initializable {
     @FXML
     private Label description, address;
 
