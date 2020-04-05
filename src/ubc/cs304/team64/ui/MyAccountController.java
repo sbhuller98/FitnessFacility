@@ -36,7 +36,7 @@ public class MyAccountController implements Initializable {
 
 
 
-    @FXML Button back;
+    @FXML Button back, upDate;
 
 
     @Override
@@ -46,6 +46,7 @@ public class MyAccountController implements Initializable {
 
     public void setUp(Facility facility, Member member) {
         back.setOnAction(e -> FacilityController.setStage(facility, member));
+        upDate.setOnAction(e -> updateInfoController.setStage(facility, member));
         title.setCellValueFactory(new ImmutablePropertyFactory<>(ClassInfo::getTitle));
         room.setCellValueFactory(new ImmutablePropertyFactory<>(ClassInfo::getRoomNumber));
         time.setCellValueFactory(new ImmutablePropertyFactory<>(ClassInfo::getTime));

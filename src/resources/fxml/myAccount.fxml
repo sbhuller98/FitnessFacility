@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.net.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<?import java.net.URL?>
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ubc.cs304.team64.ui.MyAccountController">
    <children>
-      <Label styleClass="title" layoutX="239.0" layoutY="20.0" prefHeight="32.0" prefWidth="122.0" text="My Account" wrapText="true">
+      <Label layoutX="239.0" layoutY="20.0" prefHeight="32.0" prefWidth="122.0" styleClass="title" text="My Account" wrapText="true">
          <font>
             <Font size="20.0" />
          </font>
@@ -33,6 +33,7 @@
       </AnchorPane>
       <Label layoutX="17.0" layoutY="269.0" style="-fx-text-fill: #229aeb;" text="Personal Information:" />
       <Label fx:id="personalDetails" alignment="TOP_LEFT" layoutX="17.0" layoutY="294.0" prefHeight="93.0" prefWidth="314.0" style="-fx-border-color: #229aeb; -fx-border-width: 3; -fx-text-fill: white;" />
+      <Button fx:id="upDate" layoutX="44.0" layoutY="20.0" mnemonicParsing="false" text="updateInfoup" />
     
    </children>
   <stylesheets>
