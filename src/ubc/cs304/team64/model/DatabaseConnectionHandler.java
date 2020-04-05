@@ -393,6 +393,31 @@ public class DatabaseConnectionHandler {
     }
   }
 
+  public void rateInstructor(Member member, Instructor instructor, int rating){
+    try {
+      PreparedStatement ps = connection.prepareStatement("SELECT * FROM rates WHERE (mid = ? AND iid = ?)", ResultSet.TYPE_FORWARD_ONLY, ResultSet.CONCUR_UPDATABLE);
+      ps.setInt(1, member.getMid());
+      ps.setInt(2, instructor.getIid());
+      ResultSet rs = ps.executeQuery();
+      if(rs.next()){
+        rs.updateInt("rating", rating);
+        rs.updateRow();
+      } else {
+        PreparedStatement ps2 = connection.prepareStatement("INSERT INTO rates(mid, iid, rating) VALUES (?, ? ,?)");
+        ps2.setInt(1, member.getMid());
+        ps2.setInt(2, instructor.getIid());
+        ps2.setInt(3, rating);
+        ps2.executeUpdate();
+        ps2.close();
+      }
+      ps.close();
+      connection.commit();
+    } catch (SQLException e) {
+      throw new Error(e);
+    }
+
+  }
+
   public void registerMemberForClass(ClassInfo classInfo){
     alterRegistration(classInfo, "INSERT INTO takes(mid, time, rid, fid) VALUES (?, ?, ?, ?)");
   }

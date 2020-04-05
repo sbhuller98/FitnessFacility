@@ -1,5 +1,7 @@
 package ubc.cs304.team64.ui;
 
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 
@@ -8,6 +10,7 @@ import java.util.Collection;
 import java.util.ResourceBundle;
 
 import javafx.scene.control.Button;
+import javafx.scene.control.Slider;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import ubc.cs304.team64.model.Facility;
@@ -27,7 +30,14 @@ public class InstructorViewController implements Initializable {
     private TableColumn<Instructor, Double> averageCol;
     @FXML
     private TableColumn<Instructor, Double> salaryCol;
-    @FXML TableColumn<Instructor, String> memberRatingCol;
+    @FXML
+    private TableColumn<Instructor, String> memberRatingCol;
+
+    @FXML
+    private Slider rating;
+    @FXML
+    private Button rate;
+
     @FXML private Button back;
 
     @Override
@@ -43,6 +53,22 @@ public class InstructorViewController implements Initializable {
         salaryCol.setCellValueFactory(new ImmutablePropertyFactory<>(Instructor::getSalary));
         memberRatingCol.setCellValueFactory(new ImmutablePropertyFactory<>(Instructor::getMembersRating));
         mainTable1.getItems().setAll(SetUp(facility, member));
+        mainTable1.getSelectionModel().selectedItemProperty().addListener((observableValue, old, next) -> {
+          rating.setDisable(next == null);
+          if(next == null){
+            return;
+          }
+          if(next.getMembersRating().equals("")){
+            rating.setValue(3.0);
+          } else {
+            rating.setValue(Integer.parseInt(next.getMembersRating()));
+          }
+        });
+        rate.disableProperty().bind(mainTable1.getSelectionModel().selectedItemProperty().isNull());
+        rate.setOnAction(e -> {
+          Main.connectionHandler.rateInstructor(member, mainTable1.getSelectionModel().getSelectedItem(), (int)rating.getValue());
+          setStage(facility, member);
+        });
     }
 
 
