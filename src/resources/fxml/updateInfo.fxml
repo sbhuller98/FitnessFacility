@@ -74,7 +74,7 @@
          <font>
             <Font size="15.0" />
          </font></Button>
-      <Button layoutX="270.0" layoutY="344.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="129.0"  text="Update Password" />
+      <Button layoutX="270.0" layoutY="344.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="129.0"  text="Update Password" onAction="#updatePassword"/>
       <Button layoutX="489.0" layoutY="344.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="129.0"  text="Update Payment" onAction="#updatePayment"/>
    </children>
   <stylesheets>

@@ -111,6 +111,26 @@ public class DatabaseConnectionHandler {
       throw new Error(e);
     }
   }
+
+    public void updatepass(Member original, String password) {
+        Statement stmt;
+        try {
+            stmt = connection.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,
+                    ResultSet.CONCUR_UPDATABLE);
+            ResultSet result = stmt.executeQuery("SELECT * FROM MEMBER WHERE mid = " + original.getMid());
+            if (!result.next()) {
+                throw new InvalidLoginException();
+            }
+
+            result.updateBytes("password", digest.digest(password.getBytes()));
+            result.updateRow();
+            connection.commit();
+        } catch (SQLException e) {
+            throw new Error(e);
+        } catch (InvalidLoginException e) {
+            throw new IllegalArgumentException(e);
+        }
+    }
   
   public Member createMember(String login, String password, String address, String phoneNumber, String email, String name, LocalDate birthDate, String sType, Payment payment){
     try {
