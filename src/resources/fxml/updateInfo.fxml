@@ -10,17 +10,17 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="420.0" prefWidth="640.0" style="-fx-background-color: #07407b;" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ubc.cs304.team64.ui.updateInfoController">
    <children>
-     <BorderPane layoutX="236.0" layoutY="58.0" prefHeight="337.0" prefWidth="189.0" style="-fx-border-color: #7fcdee; -fx-border-width: 4;">
+     <BorderPane styleClass="border" layoutX="236.0" layoutY="58.0" prefHeight="337.0" prefWidth="189.0">
        <top>
          <ImageView fitHeight="127.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER" />
        </top>
      </BorderPane>
-     <BorderPane layoutX="26.0" layoutY="58.0" prefHeight="337.0" prefWidth="189.0" style="-fx-border-color: #7fcdee; -fx-border-width: 4;">
+     <BorderPane styleClass="border" layoutX="26.0" layoutY="58.0" prefHeight="337.0" prefWidth="189.0">
        <top>
          <ImageView fitHeight="127.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER" />
        </top>
      </BorderPane>
-     <BorderPane layoutX="447.0" layoutY="59.0" prefHeight="337.0" prefWidth="189.0" style="-fx-border-color: #7fcdee; -fx-border-width: 4;" />
+     <BorderPane styleClass="border" layoutX="447.0" layoutY="59.0" prefHeight="337.0" prefWidth="189.0" />
 
 <!--      Sign Up-->
       <Label layoutX="40.0" layoutY="20.0" prefHeight="30.0" prefWidth="120.0" style="-fx-text-fill: white;" text="Update Information" underline="true">
@@ -67,15 +67,15 @@
          </image>
       </ImageView>
 
-      <Button fx:id="upDatepButton" layoutX="57.0" layoutY="344.0" mnemonicParsing="false" onAction="#upDateMember" prefHeight="35.0" prefWidth="129.0" style="-fx-text-fill: #07407b; -fx-background-color: #7fcdee;" text="Update Personal" />
+      <Button fx:id="upDatepButton" layoutX="57.0" layoutY="344.0" mnemonicParsing="false" onAction="#upDateMember" prefHeight="35.0" prefWidth="129.0"  text="Update Personal" />
 
 
       <Button fx:id="back" layoutX="539.0" layoutY="8.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="65.0" style="-fx-text-fill: white; -fx-background-color: #7fcdee;" text="Back">
          <font>
             <Font size="15.0" />
          </font></Button>
-      <Button layoutX="270.0" layoutY="344.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="129.0" style="-fx-text-fill: #07407b; -fx-background-color: #7fcdee;" text="Update Password" />
-      <Button layoutX="489.0" layoutY="344.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="129.0" style="-fx-text-fill: #07407b; -fx-background-color: #7fcdee;" text="Update Payment" />
+      <Button layoutX="270.0" layoutY="344.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="129.0"  text="Update Password" />
+      <Button layoutX="489.0" layoutY="344.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="129.0"  text="Update Payment" />
    </children>
   <stylesheets>
     <URL value="@loginStyle.css" />

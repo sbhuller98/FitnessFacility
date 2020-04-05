@@ -7,3 +7,6 @@
 .root {
     -fx-background-color: #07407b;
 }
+.border{
+    -fx-border-color: #7fcdee; -fx-border-width: 4;
+}

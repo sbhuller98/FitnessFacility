@@ -48,7 +48,7 @@
       <PasswordField fx:id="passwordConf" layoutX="200.0" layoutY="180.0" promptText="Re-Enter Password" />
       <ComboBox fx:id="status" layoutX="200.0" layoutY="220.0" promptText="Membership Level" />
 
-     <BorderPane layoutX="375.0" layoutY="60.0" prefHeight="315.0" prefWidth="220.0" style="-fx-border-color: #7fcdee; -fx-border-width: 4;" />
+     <BorderPane styleClass="border" layoutX="375.0" layoutY="60.0" prefHeight="315.0" prefWidth="220.0"/>
 
       <TextField fx:id="nameOnCard" layoutX="410.0" layoutY="180.0" promptText="Cardholder Name" />
       <TextField fx:id="cardNumber" layoutX="410.0" layoutY="220.0" promptText="Card Number" />
@@ -61,10 +61,10 @@
          </image>
       </ImageView>
 
-      <Button layoutX="40.0" layoutY="350.0" mnemonicParsing="false" onAction="#createMember" prefHeight="35.0" prefWidth="100.0" style="-fx-text-fill: #07407b; -fx-background-color: #7fcdee;" text="Sign Up" />
+      <Button layoutX="40.0" layoutY="350.0" mnemonicParsing="false" onAction="#createMember" prefHeight="35.0" prefWidth="100.0" text="Sign Up" />
 
 
-      <Button fx:id="back" layoutX="539.0" layoutY="8.0" mnemonicParsing="false" onAction="#createMember" prefHeight="30.0" prefWidth="65.0" style="-fx-text-fill: white; -fx-background-color: #7fcdee;" text="Back">
+      <Button fx:id="back" layoutX="539.0" layoutY="8.0" mnemonicParsing="false" onAction="#createMember" prefHeight="30.0" prefWidth="65.0" text="Back">
          <font>
             <Font size="15.0" />
          </font></Button>
