@@ -22,7 +22,7 @@ public class Main extends Application {
     public void start(Stage stage) throws Exception {
         Main.stage = stage;
         Main.connectionHandler = new DatabaseConnectionHandler();
-        updateStage(new FXMLLoaderWrapper<>("facility.fxml").getScene(), "Login");
+        updateStage(new FXMLLoaderWrapper<>("Login.fxml").getScene(), "Login");
     }
 
     public static void updateStage(Scene scene, String title){
