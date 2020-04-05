@@ -86,7 +86,7 @@ public class updateInfoController implements Initializable {
     public void upDateMember() {
         if(hasNoBlanks()){
             try{
-                /*Main.connectionHandler.updatePersonal(
+                Main.connectionHandler.updatePersonal(
                         member1.getMid(),
                         name.getText(),
                         street.getText() + ", " + city.getText() + ", " + province.getValue() + ", " + postalCode.getText(),
