@@ -30,6 +30,7 @@
          </font>
       </Button>
      <Button fx:id="register" text="Register"/>
+     <Button fx:id="deregister" text="Deregister"/>
    </children>
   <stylesheets>
     <URL value="@mainStyle.css" />
