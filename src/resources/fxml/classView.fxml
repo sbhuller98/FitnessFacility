@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.net.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<?import javafx.scene.control.Button?>
-<?import java.net.URL?>
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ubc.cs304.team64.ui.ClassViewController">
    <children>
-      <Label styleClass="title" layoutX="250.0" layoutY="22.0" prefHeight="23.0" prefWidth="76.0" style="-fx-text-fill: #229aeb;" text="Classes">
+      <Label layoutX="250.0" layoutY="22.0" prefHeight="23.0" prefWidth="76.0" style="-fx-text-fill: #229aeb;" styleClass="title" text="Classes">
          <font>
             <Font size="21.0" />
          </font>
@@ -29,8 +28,8 @@
             <Font size="15.0" />
          </font>
       </Button>
-     <Button fx:id="register" text="Register"/>
-     <Button fx:id="deregister" text="Deregister"/>
+     <Button fx:id="register" prefHeight="27.0" prefWidth="77.0" text="Register" />
+     <Button fx:id="deregister" layoutX="77.0" prefHeight="27.0" prefWidth="77.0" text="Deregister" />
    </children>
   <stylesheets>
     <URL value="@mainStyle.css" />
