@@ -43,7 +43,7 @@ public class updateInfoController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        List<Control> inputList = Arrays.asList(name, street, city, province, email, postalCode, phoneNumber, expiryDate, csv, cardNumber, nameOnCard);
+        List<Control> inputList = Arrays.asList(name, street, city, province, email, postalCode, phoneNumber,password, passwordConf, expiryDate, csv, cardNumber, nameOnCard);
         inputs = new HashMap<>(inputList.size());
         for(Control c : inputList){
             inputs.put(c, StrokeTransition.basicError(c));
@@ -109,6 +109,28 @@ public class updateInfoController implements Initializable {
       } catch (Exception e){
         //todo
       }
+    }
+
+        public void updatePassword() {
+            boolean anyNull = false;
+            for(TextField c : Arrays.asList(password, passwordConf)){
+                if(c.getText().equals("")){
+                    inputs.get(c).playFromStart();
+                    anyNull = true;
+                }
+            }
+            if(anyNull){
+                return;
+            }
+
+        if (!password.getText().equals(passwordConf.getText())) {
+            inputs.get(password).playFromStart();
+            inputs.get(passwordConf).playFromStart();
+            return;
+        }
+                Main.connectionHandler.updatepass(member1, password.getText());
+                setStage(facility1, member1);
+
     }
 
     public void updatePayment(){
