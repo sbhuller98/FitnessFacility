@@ -9,16 +9,8 @@
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="420.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ubc.cs304.team64.ui.Controller">
    <children>
       <!-- Greater Van -->
-      <Label layoutX="99.0" layoutY="40.0" style="-fx-text-fill: #7fcdee;" text="GreaterVan">
-         <font>
-            <Font name="System Bold" size="26.0" />
-         </font>
-      </Label>
-      <Label layoutX="196.0" layoutY="66.0" style="-fx-text-fill: #7fcdee;" text="Fitness" textFill="#9e2f2f">
-         <font>
-            <Font name="System Bold" size="26.0" />
-         </font>
-      </Label>
+      <Label layoutX="99.0" layoutY="40.0" style="-fx-text-fill: #7fcdee; -fx-font-weight: bold; -fx-font-size: 26;" text="GreaterVan"/>
+      <Label layoutX="196.0" layoutY="66.0" style="-fx-text-fill: #7fcdee; -fx-font-weight: bold; -fx-font-size: 26;" text="Fitness" textFill="#9e2f2f"/>
       <!-- Image -->
       <ImageView fitHeight="280.0" fitWidth="280.0" layoutX="42.0" layoutY="110.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -26,19 +18,11 @@
          </image>
       </ImageView>
       <!-- New here? -->
-      <Label layoutX="380.0" layoutY="325.0" prefHeight="28.0" prefWidth="123.0" style="-fx-text-fill: #7fcdee;" text="New here?" textFill="WHITE">
-         <font>
-            <Font name="Arial Bold" size="15.0" />
-         </font>
-      </Label>
+      <Label layoutX="380.0" layoutY="325.0" prefHeight="28.0" prefWidth="123.0" style="-fx-text-fill: #7fcdee; -fx-font-weight: bold; -fx-font-size: 15;" text="New here?" textFill="WHITE"/>
       <!-- signup button -->
       <Button fx:id="buttonSignUp" layoutX="470.0" layoutY="325.0" mnemonicParsing="false" onAction="#launchSignUp" prefHeight="28.0" prefWidth="75" style="-fx-text-fill: #07407b; -fx-background-color: #7fcdee;" text="Sign Up!" />
       <!-- log in -->
-      <Label layoutX="390.0" layoutY="66.0" style="-fx-text-fill: white;" text="Log In" textFill="#9e2f2f">
-         <font>
-            <Font name="System Bold" size="22.0" />
-         </font>
-      </Label>
+      <Label layoutX="390.0" layoutY="66.0" style="-fx-text-fill: white;  -fx-font-weight: bold; -fx-font-size: 20;" text="Log In" textFill="#9e2f2f"/>
        <!-- fill in buttons -->
       <TextField fx:id="userNameField" layoutX="388.0" layoutY="150.0" minHeight="15" minWidth="150" prefHeight="28.0" prefWidth="123.0" promptText="Username" />
       <PasswordField fx:id="passwordField" layoutX="388.0" layoutY="200.0" minHeight="15" minWidth="150" prefHeight="28.0" prefWidth="123.0" promptText="Password" />
