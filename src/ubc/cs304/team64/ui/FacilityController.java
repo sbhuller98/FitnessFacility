@@ -42,7 +42,7 @@ public class FacilityController implements Initializable {
     instructors.setOnAction(e -> InstructorViewController.setStage(facility, member));
     fmap.setOnAction(e -> FacilityMapController.setStage(facility, member));
     about.setOnAction(e -> AboutController.setStage(facility, member));
-    myAccount.setOnAction(e -> myAccountController.setStage(facility, member));
+    myAccount.setOnAction(e -> MyAccountController.setStage(facility, member));
   }
 
   static void setStage(Facility facility, Member member){

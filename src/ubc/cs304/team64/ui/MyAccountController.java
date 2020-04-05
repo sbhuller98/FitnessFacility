@@ -17,7 +17,7 @@ import java.sql.Timestamp;
 import java.util.Collection;
 import java.util.ResourceBundle;
 
-public class myAccountController implements Initializable {
+public class MyAccountController implements Initializable {
 
     @FXML
     private TableView<ClassInfo> table;
@@ -75,7 +75,7 @@ public class myAccountController implements Initializable {
 
     static void setStage(Facility facility, Member member){
 
-        FXMLLoaderWrapper<myAccountController> loader = new FXMLLoaderWrapper<>("myAccount.fxml");
+        FXMLLoaderWrapper<MyAccountController> loader = new FXMLLoaderWrapper<>("myAccount.fxml");
         loader.getController().setUp(facility, member);
         Main.updateStage(loader.getScene(), facility.getName());
     }
