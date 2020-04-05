@@ -72,7 +72,7 @@ public class DatabaseConnectionHandler {
     }
   }
 
-  public void updatePersonal(int mid, String name, String address, String email, String phone) {
+  public Member updatePersonal(Member original, String name, String address, String email, String phone) {
       Statement stmt = null;
       try {
           if (phone.length() != 10 || !phone.matches("\\d*")) {
@@ -81,21 +81,20 @@ public class DatabaseConnectionHandler {
 
           stmt = connection.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,
                   ResultSet.CONCUR_UPDATABLE);
-          ResultSet result = stmt.executeQuery("SELECT * FROM MEMBER WHERE mid = " + mid);
+          ResultSet result = stmt.executeQuery("SELECT * FROM MEMBER WHERE mid = " + original.getMid());
           if (!result.next()) {
-              throw new InvalidLoginException();
+              throw new AssertionError();
           }
-          result.updateInt("mid", mid);
           result.updateString("address", address);
           result.updateString("name", name);
           result.updateString("email", email);
           result.updateString("phoneNumber", phone);
           result.updateRow();
-
-
-      } catch (SQLException e) {
+          connection.commit();
+          return new Member(original.getMid(), address, phone, email, name, original.getBirthDate(), original.getStatusType(), original.getStatusCost(), original.getAvailableClassTypes());
+      } catch (SQLIntegrityConstraintViolationException e) {
           throw new Error(e);
-      } catch (InvalidLoginException e) {
+      } catch (SQLException e) {
           throw new IllegalArgumentException(e);
       }
   }

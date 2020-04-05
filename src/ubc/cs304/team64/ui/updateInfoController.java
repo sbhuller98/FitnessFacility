@@ -19,8 +19,8 @@ import java.util.*;
 import java.util.function.Predicate;
 
 public class updateInfoController implements Initializable {
-    private static Member member1;
-    private static Facility facility1;
+    private Member member1;
+    private Facility facility1;
     @FXML private TextField name;
     @FXML private TextField street;
     @FXML private TextField city;
@@ -47,52 +47,65 @@ public class updateInfoController implements Initializable {
         for(Control c : inputList){
             inputs.put(c, StrokeTransition.basicError(c));
         }
+    }
+
+    public void setUp(Member member, Facility facility){
+      member1 = member;
+      facility1 = facility;
+
+      String[] addressSplits = member1.getAddress().split(", ");
 
 
-        String namePattern = "[A-Z][a-z]*( [A-Z][a-z]*){1,2}";
-        name.setTextFormatter(new TextFormatter<>(new RegexStringConverter(namePattern, inputs.get(name), RegexStringConverter::toTitleCase)));
+      String namePattern = "[A-Z][a-z]*( [A-Z][a-z]*){1,2}";
+      name.setTextFormatter(new TextFormatter<>(new RegexStringConverter(namePattern, inputs.get(name), RegexStringConverter::toTitleCase)));
+      name.setText(member1.getName());
 
-        String postalCodePattern = "([A-Z]\\d){3}";
-        postalCode.setTextFormatter(new TextFormatter<>(new RegexStringConverter(postalCodePattern, inputs.get(postalCode), s -> s.replaceAll(" ", "").toUpperCase())));
+      street.setTextFormatter(new TextFormatter<>(new RegexStringConverter("[^,]*", inputs.get(street))));
+      street.setText(addressSplits[0]);
+      city.setTextFormatter(new TextFormatter<>(new RegexStringConverter("\\w*", inputs.get(street))));
+      city.setText(addressSplits[1]);
 
-        phoneNumber.setTextFormatter(new TextFormatter<>(new RegexStringConverter("\\d{10}", inputs.get(phoneNumber), s -> s.replaceAll("[ )(\\-]", ""))));
+      province.getSelectionModel().select(addressSplits[2]);
 
-        email.setTextFormatter(new TextFormatter<>(new RegexStringConverter("[\\w-_.]+@([\\w-.]+\\.)+[\\w]{2,3}", inputs.get(email))));
+      String postalCodePattern = "([A-Z]\\d){3}";
+      postalCode.setTextFormatter(new TextFormatter<>(new RegexStringConverter(postalCodePattern, inputs.get(postalCode), s -> s.replaceAll(" ", "").toUpperCase())));
+      postalCode.setText(addressSplits[3]);
 
-        nameOnCard.setTextFormatter(new TextFormatter<>(new RegexStringConverter(namePattern, inputs.get(nameOnCard), RegexStringConverter::toTitleCase)));
+      phoneNumber.setTextFormatter(new TextFormatter<>(new RegexStringConverter("\\d{10}", inputs.get(phoneNumber), s -> s.replaceAll("[ )(\\-]", ""))));
+      phoneNumber.setText(member1.getPhoneNumber());
 
-        cardNumber.setTextFormatter(new TextFormatter<>(new RegexStringConverter("\\d{12,19}", inputs.get(cardNumber))));
+      email.setTextFormatter(new TextFormatter<>(new RegexStringConverter("[\\w-_.]+@([\\w-.]+\\.)+[\\w]{2,3}", inputs.get(email))));
+      email.setText(member1.getEmail());
 
-        csv.setTextFormatter(new TextFormatter<>(new RegexStringConverter("\\d{3}", inputs.get(csv))));
+      nameOnCard.setTextFormatter(new TextFormatter<>(new RegexStringConverter(namePattern, inputs.get(nameOnCard), RegexStringConverter::toTitleCase)));
 
-        expiryDate.setTextFormatter(new TextFormatter<>(new RegexStringConverter("(0[1-9]|1[0-2])/\\d{2}", inputs.get(expiryDate), updateInfoController::autoCorrectExpiryDate)));
+      cardNumber.setTextFormatter(new TextFormatter<>(new RegexStringConverter("\\d{12,19}", inputs.get(cardNumber))));
 
-        back.setOnAction(e -> MyAccountController.setStage(facility1, member1));
+      csv.setTextFormatter(new TextFormatter<>(new RegexStringConverter("\\d{3}", inputs.get(csv))));
 
+      expiryDate.setTextFormatter(new TextFormatter<>(new RegexStringConverter("(0[1-9]|1[0-2])/\\d{2}", inputs.get(expiryDate), updateInfoController::autoCorrectExpiryDate)));
 
-
+      back.setOnAction(e -> MyAccountController.setStage(facility1, member1));
     }
 
 
 
     static void setStage(Facility facility, Member member){
-
         FXMLLoaderWrapper<updateInfoController> loader = new FXMLLoaderWrapper<>("updateInfo.fxml");
-        member1 = member;
-        facility1 = facility;
+        loader.getController().setUp(member, facility);
         Main.updateStage(loader.getScene(), facility.getName());
     }
 
     public void upDateMember() {
         if(hasNoBlanks()){
             try{
-                Main.connectionHandler.updatePersonal(
-                        member1.getMid(),
+                Member updated = Main.connectionHandler.updatePersonal(
+                        member1,
                         name.getText(),
                         street.getText() + ", " + city.getText() + ", " + province.getValue() + ", " + postalCode.getText(),
                         email.getText(),
                         phoneNumber.getText());
-
+                setStage(facility1, updated);
             } catch (Exception e){
                 //todo
             }

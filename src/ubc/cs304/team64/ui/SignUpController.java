@@ -50,6 +50,9 @@ public class SignUpController implements Initializable {
     String namePattern = "[A-Z][a-z]*( [A-Z][a-z]*){1,2}";
     name.setTextFormatter(new TextFormatter<>(new RegexStringConverter(namePattern, inputs.get(name), RegexStringConverter::toTitleCase)));
 
+    street.setTextFormatter(new TextFormatter<>(new RegexStringConverter("[^,]*", inputs.get(street))));
+    city.setTextFormatter(new TextFormatter<>(new RegexStringConverter("\\w*", inputs.get(street))));
+
     String postalCodePattern = "([A-Z]\\d){3}";
     postalCode.setTextFormatter(new TextFormatter<>(new RegexStringConverter(postalCodePattern, inputs.get(postalCode), s -> s.replaceAll(" ", "").toUpperCase())));
 

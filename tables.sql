@@ -177,7 +177,7 @@ CREATE TRIGGER cantLowerStatusWhenTakingNotAllowedClasses BEFORE UPDATE ON Membe
     IF EXISTS(
             SELECT ct.title
             FROM Takes t NATURAL JOIN Class c NATURAL JOIN ClassT ct
-            WHERE NEW.mid = t.mid AND c.time > CURRENT_TIMESTAMP AND ct.title NOT IN(
+            WHERE NEW.mid = t.mid AND c.time > CURRENT_TIMESTAMP AND ct.type NOT IN(
                 SELECT l.classType
                 FROM LetsYouTake l
                 WHERE l.sType = NEW.sType
@@ -296,17 +296,17 @@ INSERT INTO room (rid, fid) VALUES (100, 5);
 INSERT INTO room (rid, fid) VALUES (101, 5);
 INSERT INTO room (rid, fid) VALUES (102, 5);
 
-INSERT INTO member(login, password, address, phoneNumber, email, name, birthDate, sType) VALUES ('imiller', X'a61a78e492ee60c63ed8f2bb3a6a0072','4444 128 St, Surrey, BC', '6043442423', 'imiller@gmail.com', 'Ian Miller', '1978-12-12', 'Silver');
+INSERT INTO member(login, password, address, phoneNumber, email, name, birthDate, sType) VALUES ('imiller', X'a61a78e492ee60c63ed8f2bb3a6a0072','4444 128 St, Surrey, BC, V3X1T8', '6043442423', 'imiller@gmail.com', 'Ian Miller', '1978-12-12', 'Silver');
 #password: "pa$$word"
-INSERT INTO member(login, password, address, phoneNumber, email, name, birthDate, sType) VALUES ('jonh_w', X'd0763edaa9d9bd2a9516280e9044d885', '1243 Westwood Drive, Coquitlam, BC', '7782443445', 'jonh.westbrrok@alumni.ubc.ca', 'John Westbrrok', '2001-08-04', 'Student');
+INSERT INTO member(login, password, address, phoneNumber, email, name, birthDate, sType) VALUES ('jonh_w', X'd0763edaa9d9bd2a9516280e9044d885', '1243 Westwood Drive, Coquitlam, BC, V3B4S7', '7782443445', 'jonh.westbrrok@alumni.ubc.ca', 'John Westbrrok', '2001-08-04', 'Student');
 #password: "monkey"
-INSERT INTO member(login, password, address, phoneNumber, email, name, birthDate, sType) VALUES ('henry_cavill', X'2632a9189905c888ead002e11e5c4446', '12-3443 54 Ave, Vancouver, BC', '6042557546', 'henry_cavill@shaw.ca', 'Henry Cavill', '1948-04-25', 'Senior');
+INSERT INTO member(login, password, address, phoneNumber, email, name, birthDate, sType) VALUES ('henry_cavill', X'2632a9189905c888ead002e11e5c4446', '12-3443 54 Ave, Vancouver, BC, V5X3B4', '6042557546', 'henry_cavill@shaw.ca', 'Henry Cavill', '1948-04-25', 'Senior');
 #password: "asdfghjkl;'"
-INSERT INTO member(login, password, address, phoneNumber, email, name, birthDate, sType) VALUES ('saqon_barkley', X'e10adc3949ba59abbe56e057f20f883e', '4534 12 Ave, Burnaby, BC', '6041236533', 'sbarkley96@gmail.com', 'Saquon Barkley', '1996-01-19', 'Low-Income');
+INSERT INTO member(login, password, address, phoneNumber, email, name, birthDate, sType) VALUES ('saqon_barkley', X'e10adc3949ba59abbe56e057f20f883e', '4534 12 Ave, Burnaby, BC, V3N2J1', '6041236533', 'sbarkley96@gmail.com', 'Saquon Barkley', '1996-01-19', 'Low-Income');
 #password "123456"
-INSERT INTO member(login, password, address, phoneNumber, email, name, birthDate, sType) VALUES ('russel_wesbrrok', X'35d4785ecc5e3dabfc2edf7542392837', '1243 Westwood Drive, Coquitlam, BC', '7782347542', 'russel_wesbrrok@shaw.ca', 'Russel Westbrrok', '1970-04-15', 'Platinum');
+INSERT INTO member(login, password, address, phoneNumber, email, name, birthDate, sType) VALUES ('russel_wesbrrok', X'35d4785ecc5e3dabfc2edf7542392837', '1243 Westwood Drive, Coquitlam, BC, V3B4S7', '7782347542', 'russel_wesbrrok@shaw.ca', 'Russel Westbrrok', '1970-04-15', 'Platinum');
 #password "g0w0_3EWnf"
-INSERT INTO member(login, password, address, phoneNumber, email, name, birthDate, sType) VALUES ('lana_smith', X'e99a18c428cb38d5f260853678922e03', '4287 134 St, Langley, BC', '6044530927', 'lanasmith3@gmail.com', 'Lana Smith','1984-03-12', 'Silver');
+INSERT INTO member(login, password, address, phoneNumber, email, name, birthDate, sType) VALUES ('lana_smith', X'e99a18c428cb38d5f260853678922e03', '6237 134 St, Langley, BC, V3X1L7', '6044530927', 'lanasmith3@gmail.com', 'Lana Smith','1984-03-12', 'Silver');
 #password "abc123"
 
 INSERT INTO classt (title, description, type) VALUES ('Abs of Steel', 'Have you ever wanted finely toned abs?  This is the class for you!  This class targets the various abdominal muscles through direct and indirect exercises, while also getting your heart racing!', 'BootCamp');
