@@ -42,7 +42,7 @@ public class updateInfoController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        List<Control> inputList = Arrays.asList(name, street, city, province, postalCode, phoneNumber, email, password, passwordConf, nameOnCard, cardNumber, csv, expiryDate);
+        List<Control> inputList = Arrays.asList(name, street, city, province, email, postalCode, phoneNumber);
         inputs = new HashMap<>(inputList.size());
         for(Control c : inputList){
             inputs.put(c, StrokeTransition.basicError(c));
@@ -90,7 +90,8 @@ public class updateInfoController implements Initializable {
                         member1.getMid(),
                         name.getText(),
                         street.getText() + ", " + city.getText() + ", " + province.getValue() + ", " + postalCode.getText(),
-                        email.getText(), phoneNumber.getText());*/
+                        email.getText(),
+                        phoneNumber.getText());
 
             } catch (Exception e){
                 //todo
