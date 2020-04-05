@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="420.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ubc.cs304.team64.ui.Controller">
+    <children>
+        <!-- Greater Van -->
+        <Label layoutX="179.0" layoutY="22.0" style="-fx-text-fill: #7fcdee; -fx-font-weight: bold; -fx-font-size: 26;" text="GreaterVan" />
+        <Label layoutX="274.0" layoutY="53.0" style="-fx-text-fill: #7fcdee; -fx-font-weight: bold; -fx-font-size: 26;" text="Fitness" textFill="#9e2f2f" />
+      <Label accessibleText="-" alignment="TOP_CENTER" layoutX="117.0" layoutY="202.0" prefHeight="16.0" prefWidth="141.0" style="-fx-wrap-text: true;" />
+       
+    </children>
+    <stylesheets>
+        <URL value="@loginStyle.css" />
+    </stylesheets>
+</AnchorPane>

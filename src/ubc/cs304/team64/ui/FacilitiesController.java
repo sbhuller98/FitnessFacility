@@ -15,13 +15,15 @@ import java.util.Collection;
 import java.util.ResourceBundle;
 
 public class FacilitiesController implements Initializable {
+    Member member1;
+
   @FXML private ImageView logo1, logo2, logo3, logo4, logo5;
   private ImageView[] logos;
 
   @FXML private Button button1, button2, button3, button4, button5;
   private Button[] buttons;
 
-  @FXML private Button back;
+  @FXML private Button back, organization;
 
   @Override
   public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -31,6 +33,7 @@ public class FacilitiesController implements Initializable {
   }
 
   public void setUp(Member m){
+      organization.setOnAction(e -> organizationController.setStage(m));
     Collection<Facility> facilities = Main.connectionHandler.getFacilities();
     int i = 0;
     for(Facility f : facilities){
