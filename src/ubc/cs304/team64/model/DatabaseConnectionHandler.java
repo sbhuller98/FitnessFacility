@@ -342,30 +342,35 @@ public class DatabaseConnectionHandler {
     return classes;
   }
 
-  public Collection<Instructor> getInstructorsFromFacility(Facility facility){
+  public Collection<Instructor> getInstructorsFromFacility(Facility facility, Member member){
     try {
-      PreparedStatement ps = connection.prepareStatement("SELECT i.* FROM ratedinstructors i WHERE " +
-          "i.iid IN (SELECT c.iid FROM class c WHERE c.time > CURRENT_TIMESTAMP AND c.iid = iid AND c.fid = ?)");
-      ps.setInt(1, facility.getFid());
+      PreparedStatement ps = connection.prepareStatement("SELECT i.*, r.rating FROM ratedinstructors i NATURAL LEFT OUTER JOIN " +
+          "(SELECT * FROM rates WHERE mid = ?) r " +
+          "WHERE i.iid IN (SELECT c.iid FROM class c WHERE c.time > CURRENT_TIMESTAMP AND c.iid = iid AND c.fid = ?)");
+      ps.setInt(1, member.getMid());
+      ps.setInt(2, facility.getFid());
       ResultSet rs = ps.executeQuery();
       Collection<Instructor> retVal = new ArrayList<>();
       while (rs.next()){
-        retVal.add(getInstructorFromRs(rs));
+        String memberRating = String.valueOf(rs.getInt("rating"));
+        if(rs.wasNull()){
+          memberRating = "";
+        }
+        Instructor i = new Instructor(
+            rs.getInt("iid"),
+            rs.getString("name"),
+            rs.getDouble("avgRating"),
+            rs.getDouble("salary"),
+            memberRating,
+            member
+        );
+        retVal.add(i);
       }
       ps.close();
       return retVal;
     } catch (SQLException e) {
       throw new Error(e);
     }
-  }
-
-  private Instructor getInstructorFromRs(ResultSet rs) throws SQLException{
-    return new Instructor(
-        rs.getInt("iid"),
-        rs.getString("name"),
-        rs.getDouble("avgRating"),
-        rs.getDouble("salary")
-    );
   }
 
   public void registerMemberForClass(ClassInfo classInfo){
