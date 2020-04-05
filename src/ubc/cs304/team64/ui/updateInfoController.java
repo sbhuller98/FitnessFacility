@@ -13,6 +13,7 @@ import ubc.cs304.team64.util.RegexStringConverter;
 import ubc.cs304.team64.util.StrokeTransition;
 
 import java.net.URL;
+import java.sql.Date;
 import java.sql.SQLOutput;
 import java.time.LocalDate;
 import java.util.*;
@@ -42,7 +43,7 @@ public class updateInfoController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        List<Control> inputList = Arrays.asList(name, street, city, province, email, postalCode, phoneNumber);
+        List<Control> inputList = Arrays.asList(name, street, city, province, email, postalCode, phoneNumber, expiryDate, csv, cardNumber, nameOnCard);
         inputs = new HashMap<>(inputList.size());
         for(Control c : inputList){
             inputs.put(c, StrokeTransition.basicError(c));
@@ -97,39 +98,40 @@ public class updateInfoController implements Initializable {
     }
 
     public void upDateMember() {
-        if(hasNoBlanks()){
-            try{
-                Member updated = Main.connectionHandler.updatePersonal(
-                        member1,
-                        name.getText(),
-                        street.getText() + ", " + city.getText() + ", " + province.getValue() + ", " + postalCode.getText(),
-                        email.getText(),
-                        phoneNumber.getText());
-                setStage(facility1, updated);
-            } catch (Exception e){
-                //todo
-            }
-        }
+      try{
+        Member updated = Main.connectionHandler.updatePersonal(
+            member1,
+            name.getText(),
+            street.getText() + ", " + city.getText() + ", " + province.getValue() + ", " + postalCode.getText(),
+            email.getText(),
+            phoneNumber.getText());
+        setStage(facility1, updated);
+      } catch (Exception e){
+        //todo
+      }
     }
 
-    private boolean hasNoBlanks() {
-        boolean retVal = true;
-        for(Map.Entry<Control, Animation> entry : inputs.entrySet()){
-            Object data;
-            if(entry.getKey() instanceof ComboBoxBase){
-                data = ((ComboBoxBase)(entry.getKey())).getValue();
-            } else if(entry.getKey() instanceof TextInputControl){
-                data = ((TextInputControl)(entry.getKey())).getText();
-                if(data.equals("")) data = null;
-            } else {
-                data = "Something";
-            }
-            if(data == null){
-                entry.getValue().playFromStart();
-                retVal = false;
-            }
+    public void updatePayment(){
+      boolean anyNull = false;
+      for(TextField c : Arrays.asList(nameOnCard, csv, expiryDate, cardNumber)){
+        if(c.getText().equals("")){
+          inputs.get(c).playFromStart();
+          anyNull = true;
         }
-        return retVal;
+      }
+      if(anyNull){
+        return;
+      }
+      String[] dateSplits = expiryDate.getText().split("/");
+      LocalDate date = LocalDate.of(Integer.parseInt(dateSplits[1]), Integer.parseInt(dateSplits[0]), 1);
+      Payment payment = Main.connectionHandler.createPayment(
+          "Monthly",
+          Long.parseLong(cardNumber.getText()),
+          Integer.parseInt(csv.getText()),
+          date,
+          nameOnCard.getText());
+      Main.connectionHandler.updatePayment(member1, payment);
+      setStage(facility1, member1);
     }
 
     private static String autoCorrectExpiryDate(String expiryDate){
