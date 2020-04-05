@@ -125,7 +125,6 @@ public class DatabaseConnectionHandler {
             result.updateBytes("password", digest.digest(password.getBytes()));
             result.updateRow();
             connection.commit();
-            System.out.println("success");
         } catch (SQLException e) {
             throw new Error(e);
         } catch (InvalidLoginException e) {
