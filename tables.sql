@@ -308,6 +308,23 @@ INSERT INTO member(login, password, address, phoneNumber, email, name, birthDate
 #password "g0w0_3EWnf"
 INSERT INTO member(login, password, address, phoneNumber, email, name, birthDate, sType) VALUES ('lana_smith', X'e99a18c428cb38d5f260853678922e03', '6237 134 St, Langley, BC, V3X1L7', '6044530927', 'lanasmith3@gmail.com', 'Lana Smith','1984-03-12', 'Silver');
 #password "abc123"
+INSERT INTO member(login, password, address, phoneNumber, email, name, birthDate, sType) VALUES ('jaebell', X'a50a12eee7caab7848728e0a59d96852', '7117 4th West St, Vancouver, BC, V761X3', '6044998076', 'jaebell@yahoo.ca', 'Jae Bell','1987-03-18', 'Gold');
+#password "twenty20"
+INSERT INTO member(login, password, address, phoneNumber, email, name, birthDate, sType) VALUES ('ben_carter', X'c4bb408471eb7727e59e11385b0a8c19', '4-44 Westbrook Mall, Vancouver, BC, V6S5U5', '7783353535', 'carterben@gmail.com', 'Ben Carter','1996-01-22', 'Student');
+#password "hihihi"
+INSERT INTO member(login, password, address, phoneNumber, email, name, birthDate, sType) VALUES ('hpotter', X'6403e55883a8a4abf62af4ef7cc85dc1', '545 Pemberton Ave, North Vancouver, BC, V3M0L7', '6049886151', 'hpotter00@gmail.com', 'Harry Potter','1980-08-31', 'Gold');
+#password "hedwig"
+INSERT INTO member(login, password, address, phoneNumber, email, name, birthDate, sType) VALUES ('estewart', X'4c2a4a7078da0ac6733464eacfd00f86', '777 152 St, Langley, BC, V8H3K7', '6045667656', 'estewart94@gmail.com', 'Elizabeth Stewart','1994-05-12', 'Low-income');
+#password "magenta"
+INSERT INTO member(login, password, address, phoneNumber, email, name, birthDate, sType) VALUES ('bellaswan', X'a53f3929621dba1306f8a61588f52f55', '15322 Buena Vista Ave, Surrey, BC, V7T6Y6', '6043456789', 'bellaswan@hotmail.net', 'Isabella Swan','1987-09-13', 'Bronze');
+#password "edward"
+INSERT INTO member(login, password, address, phoneNumber, email, name, birthDate, sType) VALUES ('samantha_r', X'5ed4b687561eea35f0f1f562fc38abf5', '34-62 1st St, Burnaby, BC, V7D5L5', '7781234567', 'samrobin@yahoo.com', 'Samantha Robin','1954-11-03', 'Senior');
+#password "223344tt"
+INSERT INTO member(login, password, address, phoneNumber, email, name, birthDate, sType) VALUES ('jills22', X'16af54f5d3a0b58c37f9a85d41c7795f', '3190 Parker Blvd, Vancouver, BC, V7P1Y7', '7780998765', 'jills22@gmail.com', 'Jill Steven','1976-10-29', 'Silver');
+#password "55tg55"
+INSERT INTO member(login, password, address, phoneNumber, email, name, birthDate, sType) VALUES ('willpark', X'aaab09a8fdd7d0ab9d2ff8f4563baa98', '25 111th St, Burnaby, BC, V7P0L0', '7786785474', 'willpark@shaw.ca', 'William Park','1975-05-05', 'Platinum');
+#password "random9"
+
 
 INSERT INTO classt (title, description, type) VALUES ('Abs of Steel', 'Have you ever wanted finely toned abs?  This is the class for you!  This class targets the various abdominal muscles through direct and indirect exercises, while also getting your heart racing!', 'BootCamp');
 INSERT INTO classt (title, description, type) VALUES ('Running Machine', 'Do you get tired climbing the stairs?  Come train with us.  We’ll get you in shape and help[ you get that perfect runner body!  This class focuses on aerobic cardio exercises such as skipping rope, biking, and running on the treadmill.  Sign up now!', 'Cardio');
@@ -454,7 +471,7 @@ INSERT INTO memberpayment (mid, pid) VALUES (5, 5);
 INSERT INTO memberpayment (mid, pid) VALUES (5, 6);
 INSERT INTO memberpayment (mid, pid) VALUES (6, 2);
 
-INSERT INTO cleans (fid, staffid) VALUES (1, 1);
+INSERT INTO cleans (fid, staffID) VALUES (1, 1);
 INSERT INTO cleans (fid, staffID) VALUES (2, 2);
 INSERT INTO cleans (fid, staffID) VALUES (3, 3);
 INSERT INTO cleans (fid, staffID) VALUES (4, 4);
