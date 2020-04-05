@@ -272,7 +272,7 @@ INSERT INTO facility (address, name, description) VALUES ('8034 152 St, Surrey, 
 INSERT INTO facility (address, name, description) VALUES ('2134 West 12 Ave, Vancouver BC', 'Vancouver Hockey Centre', 'Vancouver Hockey Centre description');
 INSERT INTO facility (address, name, description) VALUES ('34-6454 Kingsqway, Burnaby, BC', 'Burnaby Aquatics Arena', 'Burnaby Aquatics Arena description');
 INSERT INTO facility (address, name, description) VALUES ('3487 Haney Place, Coquitlam, BC', 'Best Training Facility', 'Best Training Facility description');
-INSERT INTO facility (address, name, description) VALUES ('2204 196 St, Langley, BC', 'Lanngley Athleisure Centre', 'Lanngley Athleisure Centre description');
+INSERT INTO facility (address, name, description) VALUES ('2204 196 St, Langley, BC', 'Langley Athleisure Centre', 'Langley Athleisure Centre description');
 
 INSERT INTO room (rid, fid) VALUES (100, 1);
 INSERT INTO room (rid, fid) VALUES (100, 2);
