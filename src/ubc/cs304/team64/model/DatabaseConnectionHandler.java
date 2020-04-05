@@ -98,6 +98,19 @@ public class DatabaseConnectionHandler {
           throw new IllegalArgumentException(e);
       }
   }
+
+  public void updatePayment(Member member, Payment payment){
+    try {
+      PreparedStatement ps = connection.prepareStatement("INSERT INTO memberpayment(mid, pid) VALUES (?, ?)");
+      ps.setInt(1, member.getMid());
+      ps.setInt(2, payment.getPid());
+      ps.executeUpdate();
+      ps.close();
+      connection.commit();
+    } catch (SQLException e) {
+      throw new Error(e);
+    }
+  }
   
   public Member createMember(String login, String password, String address, String phoneNumber, String email, String name, LocalDate birthDate, String sType, Payment payment){
     try {

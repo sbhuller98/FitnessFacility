@@ -11,6 +11,7 @@ PREPARE createPayment FROM 'INSERT INTO payment(frequency, creditCardNumber, acc
 PREPARE getPayments FROM 'SELECT * FROM payment NATURAL JOIN memberpayment WHERE mid = ?';
 PREPARE getCreditCard FROM 'SELECT * FROM creditcard WHERE num = ?';
 PREPARE getPap FROM 'SELECT * FROM PAPAccount WHERE accountNumber = ?';
+PREPARE updatePayment FROM 'INSERT INTO memberpayment(mid, pid) VALUES (?, ?)';
 
 PREPARE getFacilities FROM 'SELECT * FROM facility';
 PREPARE getClasses FROM
