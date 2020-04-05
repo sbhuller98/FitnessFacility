@@ -1,4 +1,4 @@
-package ubc.cs304.team64.ui;
+package ubc.cs304.team64.util;
 
 import javafx.beans.binding.ObjectBinding;
 import javafx.beans.value.ObservableValue;

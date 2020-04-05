@@ -17,6 +17,9 @@ import javafx.scene.control.TableRow;
 import ubc.cs304.team64.model.Facility;
 import ubc.cs304.team64.model.ClassInfo;
 import ubc.cs304.team64.model.Member;
+import ubc.cs304.team64.util.FXMLLoaderWrapper;
+import ubc.cs304.team64.util.FunctionalBinding;
+import ubc.cs304.team64.util.ImmutablePropertyFactory;
 
 
 public class ClassViewController implements Initializable {

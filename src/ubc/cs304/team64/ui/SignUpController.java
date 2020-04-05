@@ -4,10 +4,12 @@ import javafx.animation.Animation;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
-import javafx.stage.Stage;
 import javafx.util.StringConverter;
 import ubc.cs304.team64.model.Member;
 import ubc.cs304.team64.model.Payment;
+import ubc.cs304.team64.util.FXMLLoaderWrapper;
+import ubc.cs304.team64.util.RegexStringConverter;
+import ubc.cs304.team64.util.StrokeTransition;
 
 import java.net.URL;
 import java.time.LocalDate;

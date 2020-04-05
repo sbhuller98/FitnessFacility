@@ -1,17 +1,10 @@
 package ubc.cs304.team64.ui;
 
-import ubc.cs304.team64.*;
-
 import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import ubc.cs304.team64.model.DatabaseConnectionHandler;
-import ubc.cs304.team64.model.Facility;
-
-import java.util.Collection;
-import java.util.Iterator;
+import ubc.cs304.team64.util.FXMLLoaderWrapper;
 
 
 public class Main extends Application {
