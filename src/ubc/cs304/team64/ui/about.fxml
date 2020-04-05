@@ -5,20 +5,24 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #363857;" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ubc.cs304.team64.ui.aboutController">
+<?import java.net.URL?>
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0"  xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ubc.cs304.team64.ui.AboutController">
    <children>
-      <Label layoutX="272.0" layoutY="24.0" prefHeight="32.0" prefWidth="56.0" style="-fx-text-fill: #229aeb;" text="About" underline="true">
+      <Label styleClass="title" layoutX="272.0" layoutY="24.0" prefHeight="32.0" prefWidth="56.0" text="About">
          <font>
             <Font size="21.0" />
          </font>
       </Label>
       <Label fx:id="description" alignment="TOP_LEFT" layoutX="38.0" layoutY="184.0" prefHeight="188.0" prefWidth="291.0" style="-fx-text-fill: white; -fx-background-color: #3e4173;" />
       <Label fx:id="address" layoutX="38.0" layoutY="103.0" prefHeight="39.0" prefWidth="291.0" style="-fx-text-fill: white; -fx-background-color: #3e4173;" />
-      <Button fx:id="back" layoutX="530.0" layoutY="8.0" mnemonicParsing="false" style="-fx-background-color: #229aeb; -fx-text-fill: white;" text="Back">
+      <Button fx:id="back" layoutX="530.0" layoutY="8.0" mnemonicParsing="false" text="Back">
          <font>
             <Font size="16.0" />
          </font></Button>
       <ImageView fx:id="image" fitHeight="188.0" fitWidth="246.0" layoutX="346.0" layoutY="204.0" pickOnBounds="true" preserveRatio="true" />
       <ImageView fx:id="logo" fitHeight="128.0" fitWidth="119.0" layoutX="410.0" layoutY="48.0" pickOnBounds="true" preserveRatio="true" />
    </children>
+  <stylesheets>
+    <URL value="@mainStyle.css" />
+  </stylesheets>
 </AnchorPane>

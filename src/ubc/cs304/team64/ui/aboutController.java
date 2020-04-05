@@ -42,7 +42,7 @@ public class aboutController implements Initializable {
 
     static void setStage(Facility facility, Member member){
 
-        FXMLLoaderWrapper<aboutController> loader = new FXMLLoaderWrapper<>("about.fxml");
+        FXMLLoaderWrapper<AboutController> loader = new FXMLLoaderWrapper<>("about.fxml");
         loader.getController().setUp(facility, member);
         Main.updateStage(loader.getScene(), facility.getName());
     }
