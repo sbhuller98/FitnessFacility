@@ -19,6 +19,8 @@ public class organizationController implements Initializable {
     @FXML
     private Label text;
 
+    @FXML Button back;
+
 
 
 
@@ -26,16 +28,16 @@ public class organizationController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
     }
 
-    public void setUp(Member member) {
-        back.setOnAction(e -> FacilitiesController.setStage(member));
 
-    }
+
+
+
 
     static void setStage(Member member){
-        FXMLLoaderWrapper<organizationController> loader = new FXMLLoaderWrapper<>("organization.fxml");
-        loader.getController().setUp(member);
-        Main.updateStage(loader.getScene();
+
+        FacilitiesController.setStage(member);
     }
+
 
 
 }
