@@ -72,6 +72,34 @@ public class DatabaseConnectionHandler {
     }
   }
 
+  public void updatePersonal(int mid, String name, String address, String email, String phone) {
+      Statement stmt = null;
+      try {
+          if (phone.length() != 10 || !phone.matches("\\d*")) {
+              throw new InvalidParameterException("Phone number should be a 10 digit number");
+          }
+
+          stmt = connection.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,
+                  ResultSet.CONCUR_UPDATABLE);
+          ResultSet result = stmt.executeQuery("SELECT * FROM MEMBER WHERE mid = " + mid);
+          if (!result.next()) {
+              throw new InvalidLoginException();
+          }
+          result.updateInt("mid", mid);
+          result.updateString("address", address);
+          result.updateString("name", name);
+          result.updateString("email", email);
+          result.updateString("phoneNumber", phone);
+          result.updateRow();
+
+
+      } catch (SQLException e) {
+          throw new Error(e);
+      } catch (InvalidLoginException e) {
+          throw new IllegalArgumentException(e);
+      }
+  }
+  
   public Member createMember(String login, String password, String address, String phoneNumber, String email, String name, LocalDate birthDate, String sType, Payment payment){
     try {
       int statusCost = getStatusCost(sType);

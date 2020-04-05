@@ -72,7 +72,7 @@
             <ImageView fitHeight="127.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER" />
          </top>
       </BorderPane>
-      <BorderPane layoutX="26.0" layoutY="58.0" prefHeight="337.0" prefWidth="189.0" style="-fx-border-color: #7fcdee; -fx-border-width: 4;">
+      <BorderPane layoutX="-261.0" layoutY="204.0" prefHeight="337.0" prefWidth="189.0" style="-fx-border-color: #7fcdee; -fx-border-width: 4;">
          <top>
             <ImageView fitHeight="127.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER" />
          </top>
