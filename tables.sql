@@ -269,11 +269,11 @@ INSERT INTO status (sType, cost) VALUES ('Student', 29);
 INSERT INTO status (sType, cost) VALUES ('Senior', 35);
 INSERT INTO status (sType, cost) VALUES ('Low-Income', 19);
 
-INSERT INTO facility (address, name, description) VALUES ('8034 152 St, Surrey, BC', 'Surrey Athleisure Centre', 'Surrey Athleisure Centre description');
-INSERT INTO facility (address, name, description) VALUES ('2134 West 12 Ave, Vancouver BC', 'Vancouver Hockey Centre', 'Vancouver Hockey Centre description');
-INSERT INTO facility (address, name, description) VALUES ('34-6454 Kingsqway, Burnaby, BC', 'Burnaby Aquatics Arena', 'Burnaby Aquatics Arena description');
-INSERT INTO facility (address, name, description) VALUES ('3487 Haney Place, Coquitlam, BC', 'Best Training Facility', 'Best Training Facility description');
-INSERT INTO facility (address, name, description) VALUES ('2204 196 St, Langley, BC', 'Lanngley Athleisure Centre', 'Lanngley Athleisure Centre description');
+INSERT INTO facility (address, name, description) VALUES ('8034 152 St, Surrey, BC', 'Surrey Athleisure Centre', 'The Langley Athleisure Centre is home to many public programs and private classes. We have been offering training programs and events at this facility since 2008 and are dedicated to create the best training experience in an indoor setting.');
+INSERT INTO facility (address, name, description) VALUES ('2134 West 12 Ave, Vancouver BC', 'Vancouver Hockey Centre', 'The Vancouver Hockey Center is dedicated to creating opportunities for Canadians to play the national sport: Hockey. We were established in 2001 and offer public and private classes for all age ranges. Please check our schedule for drop-in classes.');
+INSERT INTO facility (address, name, description) VALUES ('34-6454 Kingsqway, Burnaby, BC', 'Burnaby Aquatics Arena', 'Welcome to Burnaby Aquatics Arena. We have been offering private and public swimming classes at our facility since our establishment in 2010 for all  age range and drop-ins are always welcome. Our mission is to help our community to enhance their quality of life through aquatic exercises.');
+INSERT INTO facility (address, name, description) VALUES ('3487 Haney Place, Coquitlam, BC', 'Best Training Facility', 'Welcome to Best Training Facility. Our facility was established in 2005 and has been offering various drop-in public and private training classes and fitness programs to enhance the quality of life of all of our members.');
+INSERT INTO facility (address, name, description) VALUES ('2204 196 St, Langley, BC', 'Langley Athleisure Centre', 'The Langley Athleisure Centre is home to many public programs and private classes. We have been offering training programs and events at this facility since 2008 and are dedicated to create the best training experience in an indoor setting.');
 
 INSERT INTO room (rid, fid) VALUES (100, 1);
 INSERT INTO room (rid, fid) VALUES (101, 1);
