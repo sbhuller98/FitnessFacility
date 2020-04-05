@@ -17,8 +17,9 @@
       <TableView fx:id="mainTable1" layoutX="16.0" layoutY="80.0" prefHeight="299.0" prefWidth="375.0" style="-fx-background-color: #363857; -fx-border-color: #229aeb; -fx-border-width: 5;">
         <columns>
           <TableColumn fx:id="iNameCol" prefWidth="118.0" style="-fx-background-color: #229aeb;" text="Name" />
-          <TableColumn fx:id="averageCol" prefWidth="108.0" style="-fx-background-color: #229aeb;" text="Rating" />
+          <TableColumn fx:id="averageCol" prefWidth="108.0" style="-fx-background-color: #229aeb;" text="Avg Rating" />
           <TableColumn fx:id="salaryCol" prefWidth="137.0" style="-fx-background-color: #229aeb;" text="Salary" />
+          <TableColumn fx:id="memberRatingCol" prefWidth="100.0" style="-fx-background-color: #229aeb;" text="Your Rating" />
         </columns>
       </TableView>
       <ImageView fitHeight="187.0" fitWidth="153.0" layoutX="438.0" layoutY="101.0" pickOnBounds="true" preserveRatio="true">

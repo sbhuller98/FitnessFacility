@@ -7,12 +7,16 @@ public class Instructor {
   private final String name;
   private final double averageRating;
   private final double salary;
+  private final String membersRating;
+  private final Member member;
 
-  public Instructor(int iid, String name, double averageRating, double salary) {
+  public Instructor(int iid, String name, double averageRating, double salary, String membersRating, Member member) {
     this.iid = iid;
     this.name = name;
     this.averageRating = averageRating;
     this.salary = salary;
+    this.membersRating = membersRating;
+    this.member = member;
   }
 
   public int getIid() {
@@ -29,6 +33,10 @@ public class Instructor {
 
   public double getSalary() {
     return salary;
+  }
+
+  public String getMembersRating() {
+    return membersRating;
   }
 
   @Override

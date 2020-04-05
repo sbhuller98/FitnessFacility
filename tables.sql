@@ -126,7 +126,7 @@ CREATE TABLE Takes(
     fid INT,
     PRIMARY KEY(mid, time, rid, fid),
     FOREIGN KEY(mid) REFERENCES Member(mid),
-    FOREIGN KEY(time, rid, fid) REFERENCES Class(time, rid, fid)
+    FOREIGN KEY(time, rid, fid) REFERENCES Class(time, rid, fid) ON DELETE CASCADE
 );
 
 CREATE TABLE MemberPayment(

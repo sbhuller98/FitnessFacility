@@ -27,6 +27,7 @@ public class InstructorViewController implements Initializable {
     private TableColumn<Instructor, Double> averageCol;
     @FXML
     private TableColumn<Instructor, Double> salaryCol;
+    @FXML TableColumn<Instructor, String> memberRatingCol;
     @FXML private Button back;
 
     @Override
@@ -40,13 +41,13 @@ public class InstructorViewController implements Initializable {
         iNameCol.setCellValueFactory(new ImmutablePropertyFactory<>(Instructor::getName));
         averageCol.setCellValueFactory(new ImmutablePropertyFactory<>(Instructor::getAverageRating));
         salaryCol.setCellValueFactory(new ImmutablePropertyFactory<>(Instructor::getSalary));
-
-        mainTable1.getItems().setAll(SetUp(facility));
+        memberRatingCol.setCellValueFactory(new ImmutablePropertyFactory<>(Instructor::getMembersRating));
+        mainTable1.getItems().setAll(SetUp(facility, member));
     }
 
 
-    public Collection<Instructor> SetUp (Facility facility) {
-        Collection<Instructor> allClasses = Main.connectionHandler.getInstructorsFromFacility(facility);
+    public Collection<Instructor> SetUp (Facility facility, Member m) {
+        Collection<Instructor> allClasses = Main.connectionHandler.getInstructorsFromFacility(facility, m);
         return allClasses;
     }
 
