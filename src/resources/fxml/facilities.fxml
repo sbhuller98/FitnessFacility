@@ -34,7 +34,7 @@
            <Image url="@../infoLogo.jpg" />
        </image>
    </ImageView>
-      <Button layoutX="233.0" layoutY="187.0" mnemonicParsing="false" text="Our Organization" />
+      <Button fx:id="organization" layoutX="233.0" layoutY="187.0" mnemonicParsing="false" text="Our Organization" />
    </children>
   <stylesheets>
     <URL value="@mainStyle.css" />
