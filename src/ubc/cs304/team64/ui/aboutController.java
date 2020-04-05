@@ -14,10 +14,6 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class aboutController implements Initializable {
-
-    Member member1;
-    Facility facility1;
-
     @FXML
     private Label description, address;
 
@@ -29,12 +25,10 @@ public class aboutController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        back.setOnAction(e -> FacilityController.setStage(facility1, member1));
     }
 
     public void setUp(Facility facility, Member member) {
-        facility1 = facility;
-        member1 = member;
+        back.setOnAction(e -> FacilityController.setStage(facility, member));
         description.setWrapText(true);
         address.setWrapText(true);
         description.setText(facility.getDescription());

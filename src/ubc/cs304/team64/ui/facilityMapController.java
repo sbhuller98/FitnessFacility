@@ -15,9 +15,6 @@ import java.util.ResourceBundle;
 
 public class facilityMapController implements Initializable {
 
-    Member member1;
-    Facility facility1;
-
     @FXML
     private ImageView image;
 
@@ -26,14 +23,11 @@ public class facilityMapController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        back.setOnAction(e -> FacilityController.setStage(facility1, member1));
     }
 
     public void setUp(Facility facility, Member member) {
-        facility1 = facility;
-        member1 = member;
         image.setImage(new Image(getClass().getResource("/facilities/fmap" + facility.getFid() + ".jpg").toString()));
-
+        back.setOnAction(e -> FacilityController.setStage(facility, member));
     }
 
     static void setStage(Facility facility, Member member){

@@ -47,6 +47,8 @@ public class Member {
     return name;
   }
 
+  public Set<String> getAvailableClassTypes() { return availableClassTypes; }
+
   public Date getBirthDate() {
     return birthDate;
   }

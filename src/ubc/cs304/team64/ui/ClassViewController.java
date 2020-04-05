@@ -21,9 +21,6 @@ import ubc.cs304.team64.model.Member;
 
 public class ClassViewController implements Initializable {
 
-    Facility facility1;
-    Member member1;
-
 
     @FXML
     private TableView<ClassInfo> mainTable;

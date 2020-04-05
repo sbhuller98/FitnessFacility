@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #363857;" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ubc.cs304.team64.ui.myAccountController">
+   <children>
+      <Label layoutX="239.0" layoutY="20.0" prefHeight="32.0" prefWidth="122.0" style="-fx-text-fill: #229aeb;" text="My Account" underline="true" wrapText="true">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </Label>
+      <Label layoutX="14.0" layoutY="50.0" prefHeight="43.0" prefWidth="122.0" style="-fx-text-fill: #229aeb;" text="Registered Classes:" />
+      <Label layoutX="239.0" layoutY="92.0" prefHeight="43.0" prefWidth="122.0" style="-fx-text-fill: white;" text="Classes" />
+      <Label layoutX="418.0" layoutY="71.0" prefHeight="43.0" prefWidth="122.0" style="-fx-text-fill: #229aeb;" text="Membership Details" />
+      <Button fx:id="back" layoutX="551.0" layoutY="7.0" mnemonicParsing="false" style="-fx-background-color: #229aeb; -fx-text-fill: white;" text="Back" />
+      <TableView fx:id="table" layoutX="14.0" layoutY="82.0" prefHeight="161.0" prefWidth="350.0" style="-fx-background-color: #363857; -fx-border-color: #229aeb; -fx-border-width: 3;">
+        <columns>
+          <TableColumn fx:id="title" prefWidth="133.0" style="-fx-backgrund-color: #229aeb;" text="Name" />
+            <TableColumn fx:id="time" prefWidth="162.0" text="Time" />
+            <TableColumn fx:id="room" prefWidth="46.0" text="Room" />
+        </columns>
+      </TableView>
+      <AnchorPane layoutX="386.0" layoutY="103.0" prefHeight="293.0" prefWidth="200.0" style="-fx-border-color: #229aeb; -fx-border-width: 3;">
+         <children>
+            <Label fx:id="memType" layoutX="10.0" layoutY="37.0" prefHeight="27.0" prefWidth="195.0" style="-fx-text-fill: white;" text="Label" />
+            <Label fx:id="memCost" layoutX="10.0" layoutY="81.0" prefHeight="27.0" prefWidth="195.0" style="-fx-text-fill: white;" text="Label" />
+            <ListView fx:id="memAvailable" layoutX="8.0" layoutY="157.0" prefHeight="122.0" prefWidth="184.0" style="-fx-background-color: #363857;" />
+            <Label layoutX="14.0" layoutY="132.0" style="-fx-text-fill: white;" text="Available Classes:" />
+         </children>
+      </AnchorPane>
+      <Label layoutX="17.0" layoutY="269.0" style="-fx-text-fill: #229aeb;" text="Personal Information:" />
+      <Label fx:id="personalDetails" alignment="TOP_LEFT" layoutX="17.0" layoutY="294.0" prefHeight="93.0" prefWidth="314.0" style="-fx-border-color: #229aeb; -fx-border-width: 3; -fx-text-fill: white;" />
+    
+   </children>
+</AnchorPane>

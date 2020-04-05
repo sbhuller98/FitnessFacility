@@ -30,20 +30,14 @@ public class InstructorViewController implements Initializable {
     private TableColumn<Instructor, Double> salaryCol;
     @FXML private Button back;
 
-    Facility facility1;
-    Member member1;
-
-
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        back.setOnAction(e -> FacilityController.setStage(facility1, member1));
     }
 
 
 
     public void startUp(Facility facility, Member member) {
-        facility1 = facility;
-        member1 = member;
+        back.setOnAction(e -> FacilityController.setStage(facility, member));
         iNameCol.setCellValueFactory(new ImmutablePropertyFactory<>(Instructor::getName));
         averageCol.setCellValueFactory(new ImmutablePropertyFactory<>(Instructor::getAverageRating));
         salaryCol.setCellValueFactory(new ImmutablePropertyFactory<>(Instructor::getSalary));

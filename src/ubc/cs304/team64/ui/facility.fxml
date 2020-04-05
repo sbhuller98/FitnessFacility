@@ -15,8 +15,8 @@
       </Label>
       <Button fx:id="classes" layoutX="96.0" layoutY="117.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="174.0" text="Classes" />
       <Button fx:id="fmap" layoutX="95.0" layoutY="221.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="176.0" text="Facility Map" />
-      <Button layoutX="95.0" layoutY="273.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="176.0" text="About" />
-      <Button layoutX="95.0" layoutY="327.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="176.0" text="My Account" />
+      <Button fx:id="about" layoutX="95.0" layoutY="273.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="176.0" text="About" />
+      <Button fx:id="myAccount" layoutX="95.0" layoutY="327.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="176.0" text="My Account" />
       <Button fx:id="instructors" layoutX="96.0" layoutY="171.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="174.0" text="Instructors" />
       <ImageView fx:id="image" fitHeight="200.0" fitWidth="287.0" layoutX="288.0" layoutY="177.0" pickOnBounds="true" preserveRatio="true">
       </ImageView>

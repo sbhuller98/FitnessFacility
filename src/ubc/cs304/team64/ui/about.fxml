@@ -9,7 +9,7 @@
    <children>
       <Label layoutX="272.0" layoutY="24.0" prefHeight="32.0" prefWidth="56.0" style="-fx-text-fill: #229aeb;" text="About" underline="true">
          <font>
-            <Font name="System Bold" size="21.0" />
+            <Font size="21.0" />
          </font>
       </Label>
       <Label fx:id="description" alignment="TOP_LEFT" layoutX="38.0" layoutY="184.0" prefHeight="188.0" prefWidth="291.0" style="-fx-text-fill: white; -fx-background-color: #3e4173;" />
