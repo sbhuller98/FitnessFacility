@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import java.net.URL?>
+<?import javafx.collections.FXCollections?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="420.0" prefWidth="640.0" style="-fx-background-color: #07407b;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ubc.cs304.team64.ui.SignUpController">
+   <children>
+<!--      Sign Up-->
+      <Label layoutX="40.0" layoutY="20.0" prefHeight="30.0" prefWidth="120.0" style="-fx-text-fill: white;" text="Sign Up" underline="true">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </Label>
+       
+      <TextField fx:id="name" layoutX="40.0" layoutY="70.0" promptText="Full Name" />
+      <TextField fx:id="street" layoutX="40.0" layoutY="106.0" promptText="Street Address" />
+      <TextField fx:id="city" layoutX="40.0" layoutY="141.0" promptText="City" />
+      <ComboBox fx:id="province" layoutX="40.0" layoutY="175.0" promptText="Province">
+       <items>
+         <FXCollections fx:factory="observableArrayList">
+           <String fx:value="AB" />
+           <String fx:value="BC" />
+           <String fx:value="MB" />
+           <String fx:value="NL" />
+           <String fx:value="NT" />
+           <String fx:value="NS" />
+           <String fx:value="NU" />
+           <String fx:value="ON" />
+           <String fx:value="PE" />
+           <String fx:value="QC" />
+           <String fx:value="SK" />
+           <String fx:value="YT" />
+         </FXCollections>
+       </items>
+      </ComboBox>
+      <TextField fx:id="postalCode" layoutX="40.0" layoutY="244.0" promptText="Postal Code" />
+      <TextField fx:id="phoneNumber" layoutX="40.0" layoutY="281.0" promptText="Phone Number" />
+
+      <TextField fx:id="email" layoutX="40.0" layoutY="210.0" promptText="Email Address" />
+      <PasswordField fx:id="password" layoutX="250.0" layoutY="217.0" promptText="Password" />
+      <PasswordField fx:id="passwordConf" layoutX="250.0" layoutY="268.0" promptText="Re-Enter Password" />
+
+     <BorderPane layoutX="447.0" layoutY="59.0" prefHeight="337.0" prefWidth="179.0" style="-fx-border-color: #7fcdee; -fx-border-width: 4;" />
+      <TextField fx:id="cardNumber" layoutX="464.0" layoutY="217.0" promptText="Card Number" />
+      <TextField fx:id="csv" layoutX="464.0" layoutY="261.0" promptText="CVV" />
+      <TextField fx:id="expiryDate" layoutX="464.0" layoutY="301.0" promptText="Expiry Date: MM/YY" />
+
+      <ImageView fitHeight="69.0" fitWidth="181.0" layoutX="474.0" layoutY="99.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../UBC%20MAC%20CURR/CS304/Projectrepo/cs304/src/resources/Interac-Visa-Mastercard-300x160.jpg" />
+         </image>
+      </ImageView>
+
+      <Button layoutX="57.0" layoutY="344.0" mnemonicParsing="false" onAction="#createMember" prefHeight="35.0" prefWidth="100.0" style="-fx-text-fill: #07407b; -fx-background-color: #7fcdee;" text="Sign Up" />
+
+
+      <Button fx:id="back" layoutX="539.0" layoutY="8.0" mnemonicParsing="false" onAction="#createMember" prefHeight="30.0" prefWidth="65.0" style="-fx-text-fill: white; -fx-background-color: #7fcdee;" text="Back">
+         <font>
+            <Font size="15.0" />
+         </font></Button>
+      <Button layoutX="270.0" layoutY="344.0" mnemonicParsing="false" onAction="#createMember" prefHeight="35.0" prefWidth="100.0" style="-fx-text-fill: #07407b; -fx-background-color: #7fcdee;" text="Sign Up" />
+      <Button layoutX="489.0" layoutY="344.0" mnemonicParsing="false" onAction="#createMember" prefHeight="35.0" prefWidth="100.0" style="-fx-text-fill: #07407b; -fx-background-color: #7fcdee;" text="Sign Up" />
+
+            <TextField fx:id="nameOnCard" layoutX="464.0" layoutY="175.0" promptText="Cardholder Name" />
+      <BorderPane layoutX="236.0" layoutY="58.0" prefHeight="337.0" prefWidth="179.0" style="-fx-border-color: #7fcdee; -fx-border-width: 4;">
+         <top>
+            <ImageView fitHeight="127.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER" />
+         </top>
+      </BorderPane>
+      <BorderPane layoutX="26.0" layoutY="58.0" prefHeight="337.0" prefWidth="179.0" style="-fx-border-color: #7fcdee; -fx-border-width: 4;">
+         <top>
+            <ImageView fitHeight="127.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER" />
+         </top>
+      </BorderPane>
+   </children>
+  <stylesheets>
+    <URL value="@../../UBC%20MAC%20CURR/CS304/Projectrepo/cs304/src/resources/fxml/loginStyle.css" />
+  </stylesheets>
+</AnchorPane>

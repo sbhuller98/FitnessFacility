@@ -24,3 +24,4 @@ PREPARE getInstructorsInFacility FROM 'SELECT i.* FROM ratedinstructors i WHERE
     i.iid IN (SELECT c.iid FROM class c WHERE c.time > CURRENT_TIMESTAMP AND c.iid = iid AND c.fid = ?)';
 
 PREPARE registerForClass FROM 'INSERT INTO takes(mid, time, rid, fid) VALUES (?, ?, ?, ?)'
+PREPARE deregisterForClass FROM 'DELETE FROM takes WHERE mid = ? AND time = ? AND rid = ? AND fid = ?';

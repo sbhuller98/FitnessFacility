@@ -17,6 +17,9 @@ import javafx.scene.control.TableRow;
 import ubc.cs304.team64.model.Facility;
 import ubc.cs304.team64.model.ClassInfo;
 import ubc.cs304.team64.model.Member;
+import ubc.cs304.team64.util.FXMLLoaderWrapper;
+import ubc.cs304.team64.util.FunctionalBinding;
+import ubc.cs304.team64.util.ImmutablePropertyFactory;
 
 
 public class ClassViewController implements Initializable {
@@ -39,6 +42,8 @@ public class ClassViewController implements Initializable {
     @FXML
     private Button register;
     @FXML
+    private Button deregister;
+    @FXML
     private Button back;
 
     public void startUp(Facility facility, Member member) {
@@ -52,20 +57,21 @@ public class ClassViewController implements Initializable {
           @Override
           public void updateItem(ClassInfo classInfo, boolean empty) {
             super.updateItem(classInfo, empty);
-            boolean canTake = false;
+            boolean disable = true;
             String style;
             if(empty || classInfo == null){
               style = "#229aeb";
+            }  else if (classInfo.IsOwnerTaking()){
+              style = "green";
+              disable = false;
             } else if(!member.canTakeClass(classInfo) || classInfo.getCurrentlyTaking() >= classInfo.getCapacity()){
               style = "grey";
-            } else if (classInfo.IsOwnerTaking()){
-              style = "green";
             } else {
               style = "#229aeb";
-              canTake = true;
+              disable = false;
             }
             setStyle("-fx-background-color: "+style+";");
-            setDisable(!canTake);
+            setDisable(disable);
           }
         }));
         mainTable.getItems().setAll(SetUp(facility, member));
@@ -80,7 +86,7 @@ public class ClassViewController implements Initializable {
           int n = mainTable.getItems().size();
           for (int i = next.intValue(); i >= 0 && i < n; i+=dir) {
             ClassInfo c = mainTable.getItems().get(i);
-            if(!c.IsOwnerTaking() && member.canTakeClass(c) && c.getCurrentlyTaking() < c.getCapacity()){
+            if(member.canTakeClass(c) && (c.getCurrentlyTaking() < c.getCapacity() || c.IsOwnerTaking())){
               if(i == next.intValue()){
                 return;
               } else {
@@ -94,8 +100,13 @@ public class ClassViewController implements Initializable {
           pt.setOnFinished(e -> mainTable.getSelectionModel().clearSelection());
           pt.play();
         });
-        register.disableProperty().bind(mainTable.getSelectionModel().selectedItemProperty().isNull());
-        register.setOnAction(t -> resister(member));
+
+        register.disableProperty().bind(new FunctionalBinding<>(mainTable.getSelectionModel().selectedItemProperty(),
+            classInfo -> classInfo == null || classInfo.IsOwnerTaking()));
+        deregister.disableProperty().bind(new FunctionalBinding<>(mainTable.getSelectionModel().selectedItemProperty(),
+            classInfo -> classInfo == null || !classInfo.IsOwnerTaking()));
+        register.setOnAction(t -> register(member));
+        deregister.setOnAction(t -> deregister(member));
 
         back.setOnAction(e -> FacilityController.setStage(facility, member));
     }
@@ -113,7 +124,7 @@ public class ClassViewController implements Initializable {
         Main.updateStage(loader.getScene(), facility.getName());
     }
 
-    public void resister(Member member) {
+    private void register(Member member) {
         ClassInfo selected = mainTable.getSelectionModel().getSelectedItem();
         try {
           Main.connectionHandler.registerMemberForClass(selected);
@@ -124,10 +135,19 @@ public class ClassViewController implements Initializable {
         ClassViewController.setStage(selected.getFacility(), member);
     }
 
-  @Override
-  public void initialize(URL url, ResourceBundle resourceBundle) {
+    private void deregister(Member member) {
+        ClassInfo selected = mainTable.getSelectionModel().getSelectedItem();
+        try {
+          Main.connectionHandler.deregisterMemberForClass(selected);
+        } catch (IllegalArgumentException e){
+          e.printStackTrace();
+          // TODO handle
+        }
+        ClassViewController.setStage(selected.getFacility(), member);
+    }
 
-  }
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {}
 }
 
 

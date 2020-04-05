@@ -9,6 +9,8 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import ubc.cs304.team64.model.InvalidLoginException;
 import ubc.cs304.team64.model.Member;
+import ubc.cs304.team64.util.FXMLLoaderWrapper;
+import ubc.cs304.team64.util.StrokeTransition;
 
 public class Controller implements Initializable {
 

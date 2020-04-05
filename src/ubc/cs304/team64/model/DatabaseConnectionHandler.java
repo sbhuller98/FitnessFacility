@@ -324,8 +324,16 @@ public class DatabaseConnectionHandler {
   }
 
   public void registerMemberForClass(ClassInfo classInfo){
+    alterRegistration(classInfo, "INSERT INTO takes(mid, time, rid, fid) VALUES (?, ?, ?, ?)");
+  }
+
+  public void deregisterMemberForClass(ClassInfo classInfo){
+    alterRegistration(classInfo, "DELETE FROM takes WHERE mid = ? AND time = ? AND rid = ? AND fid = ?");
+  }
+
+  private void alterRegistration(ClassInfo classInfo, String psString){
     try {
-      PreparedStatement ps = connection.prepareStatement("INSERT INTO takes(mid, time, rid, fid) VALUES (?, ?, ?, ?)");
+      PreparedStatement ps = connection.prepareStatement(psString);
       ps.setInt(1, classInfo.getOwner().getMid());
       ps.setTimestamp(2, classInfo.getTime());
       ps.setInt(3, classInfo.getRoomNumber());

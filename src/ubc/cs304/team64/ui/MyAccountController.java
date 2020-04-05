@@ -5,19 +5,19 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
-import javafx.scene.control.cell.PropertyValueFactory;
 import ubc.cs304.team64.model.ClassInfo;
 import ubc.cs304.team64.model.Facility;
 import ubc.cs304.team64.model.Member;
+import ubc.cs304.team64.util.FXMLLoaderWrapper;
+import ubc.cs304.team64.util.ImmutablePropertyFactory;
 
 
 import java.net.URL;
 import java.sql.Timestamp;
 import java.util.Collection;
 import java.util.ResourceBundle;
-import java.util.Set;
 
-public class myAccountController implements Initializable {
+public class MyAccountController implements Initializable {
 
     @FXML
     private TableView<ClassInfo> table;
@@ -75,7 +75,7 @@ public class myAccountController implements Initializable {
 
     static void setStage(Facility facility, Member member){
 
-        FXMLLoaderWrapper<myAccountController> loader = new FXMLLoaderWrapper<>("myAccount.fxml");
+        FXMLLoaderWrapper<MyAccountController> loader = new FXMLLoaderWrapper<>("myAccount.fxml");
         loader.getController().setUp(facility, member);
         Main.updateStage(loader.getScene(), facility.getName());
     }

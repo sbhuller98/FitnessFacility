@@ -17,7 +17,7 @@
       <ImageView fx:id="image" fitHeight="357.0" fitWidth="494.0" layoutX="1.0" layoutY="47.0" pickOnBounds="true" preserveRatio="true" />
       <ImageView fitHeight="46.0" fitWidth="59.0" layoutX="514.0" layoutY="62.0" pickOnBounds="true" preserveRatio="true">
        <image>
-           <Image url="@../../../../resources/accessible.png" />
+           <Image url="@../accessible.png" />
        </image>
       </ImageView>
       <Label layoutX="467.0" layoutY="129.0" prefHeight="35.0" prefWidth="145.0" style="-fx-text-fill: white;" text="Wheelchair accesible.">
@@ -27,7 +27,7 @@
       </Label>
       <ImageView fitHeight="64.0" fitWidth="67.0" layoutX="505.0" layoutY="208.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../../resources/childminding.png" />
+            <Image url="@../childminding.png" />
          </image>
       </ImageView>
       <Label layoutX="457.0" layoutY="272.0" prefHeight="46.0" prefWidth="160.0" style="-fx-text-fill: white;" text="Childminding available.">

@@ -7,3 +7,6 @@
 .label {
     -fx-pref-width: -1
 }
+* {
+  -fx-font-family: "arial"
+}

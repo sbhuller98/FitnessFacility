@@ -1,4 +1,4 @@
-package ubc.cs304.team64.ui;
+package ubc.cs304.team64.util;
 
 import javafx.animation.Animation;
 import javafx.util.StringConverter;

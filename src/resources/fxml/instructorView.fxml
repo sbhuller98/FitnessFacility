@@ -23,7 +23,7 @@
       </TableView>
       <ImageView fitHeight="187.0" fitWidth="153.0" layoutX="438.0" layoutY="101.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../../resources/trainer-logo.jpg" />
+            <Image url="@../trainer-logo.jpg" />
          </image>
       </ImageView>
       <Button fx:id="back" layoutX="539.0" layoutY="8.0" mnemonicParsing="false" text="Back">
