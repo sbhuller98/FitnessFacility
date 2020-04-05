@@ -417,6 +417,25 @@ public class DatabaseConnectionHandler {
     }
 
   }
+  public Instructor bestInstructor(){
+    try {
+      Statement s = connection.createStatement();
+      ResultSet rs = s.executeQuery(
+          "SELECT * FROM ratedinstructors i WHERE i.avgRating = " +
+              "(SELECT MAX(i2.avgRating) FROM ratedinstructors i2)"
+      );
+      if(!rs.next()) throw new AssertionError();
+      return new Instructor(
+          rs.getInt("iid"),
+          rs.getString("name"),
+          rs.getDouble("avgRating"),
+          rs.getDouble("salary"),
+          null, null
+      );
+    } catch (SQLException e) {
+      throw new Error(e);
+    }
+  }
 
   public void registerMemberForClass(ClassInfo classInfo){
     alterRegistration(classInfo, "INSERT INTO takes(mid, time, rid, fid) VALUES (?, ?, ?, ?)");

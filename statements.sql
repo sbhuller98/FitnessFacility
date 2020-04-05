@@ -29,6 +29,8 @@ PREPARE getInstructor FROM 'SELECT * FROM ratedinstructors i WHERE i.iid = ?';
 PREPARE getInstructorsInFacility FROM 'SELECT i.*, r.rating FROM ratedinstructors i NATURAL LEFT OUTER JOIN
     (SELECT * FROM rates WHERE mid = ?) r
 WHERE i.iid IN (SELECT c.iid FROM class c WHERE c.time > CURRENT_TIMESTAMP AND c.iid = iid AND c.fid = ?)';
+PREPARE bestInstructor FROM 'SELECT * FROM ratedinstructors i WHERE i.avgRating =
+                                (SELECT MAX(i2.avgRating) FROM ratedinstructors i2)';
 
 PREPARE registerForClass FROM 'INSERT INTO takes(mid, time, rid, fid) VALUES (?, ?, ?, ?)'
 PREPARE deregisterForClass FROM 'DELETE FROM takes WHERE mid = ? AND time = ? AND rid = ? AND fid = ?';
