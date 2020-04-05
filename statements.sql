@@ -11,24 +11,28 @@ PREPARE createPayment FROM 'INSERT INTO payment(frequency, creditCardNumber, acc
 PREPARE getPayments FROM 'SELECT * FROM payment NATURAL JOIN memberpayment WHERE mid = ?';
 PREPARE getCreditCard FROM 'SELECT * FROM creditcard WHERE num = ?';
 PREPARE getPap FROM 'SELECT * FROM PAPAccount WHERE accountNumber = ?';
+PREPARE updatePersonal FROM 'SELECT * FROM MEMBER WHERE mid = ?' --then update result set
 PREPARE updatePayment FROM 'INSERT INTO memberpayment(mid, pid) VALUES (?, ?)';
+PREPARE updatePassword FROM 'SELECT * FROM MEMBER WHERE mid = ?' --then update result set
 
 PREPARE getFacilities FROM 'SELECT * FROM facility';
 PREPARE getClasses FROM
-    'SELECT *,
-        (SELECT COUNT(t.mid) FROM takes t WHERE c.time = t.time AND c.rid = t.rid AND c.fid = t.fid) as taking,
+    'SELECT *, COUNT(t.mid) as taking,
         ? IN (SELECT mid FROM takes t2 WHERE c.time = t2.time AND c.rid = t2.rid AND c.fid = t2.fid) as isMemberTaking
-    FROM instructor i NATURAL JOIN class c NATURAL JOIN classt
-    WHERE fid = ? AND time > CURRENT_TIMESTAMP';
+    FROM takes t NATURAL RIGHT OUTER JOIN class c NATURAL JOIN classt ct NATURAL JOIN instructor i
+    WHERE fid = ? AND time > CURRENT_TIMESTAMP
+    GROUP BY c.time, c.rid, c.fid';
 PREPARE getRegisteredClasses FROM
-    'SELECT *,
-        (SELECT COUNT(t.mid) FROM takes t WHERE c.time = t.time AND c.rid = t.rid AND c.fid = t.fid) as taking
-    FROM instructor i NATURAL JOIN class c NATURAL JOIN classt
-    WHERE fid = ? AND time > CURRENT_TIMESTAMP AND ? IN (SELECT mid FROM takes t2 WHERE c.time = t2.time AND c.rid = t2.rid AND c.fid = t2.fid)';
+    'SELECT *, COUNT(t.mid) as taking
+    FROM  takes t NATURAL RIGHT OUTER JOIN class c NATURAL JOIN classt NATURAL JOIN instructor i
+    WHERE fid = ? AND time > CURRENT_TIMESTAMP AND ? IN (SELECT mid FROM takes t2 WHERE c.time = t2.time AND c.rid = t2.rid AND c.fid = t2.fid)
+    GROUP BY c.time, c.title, c.fid';
 PREPARE getInstructor FROM 'SELECT * FROM ratedinstructors i WHERE i.iid = ?';
 PREPARE getInstructorsInFacility FROM 'SELECT i.*, r.rating FROM ratedinstructors i NATURAL LEFT OUTER JOIN
     (SELECT * FROM rates WHERE mid = ?) r
 WHERE i.iid IN (SELECT c.iid FROM class c WHERE c.time > CURRENT_TIMESTAMP AND c.iid = iid AND c.fid = ?)';
+PREPARE rateInstructor FROM 'INSERT INTO rates (mid, iid, rating) VALUES (? ,?, ?)';
+PREPARE rateInstructorAlt FROM 'SELECT * FROM rates WHERE (mid = ? AND iid = ?)'; --then update result set
 PREPARE bestInstructor FROM 'SELECT * FROM ratedinstructors i WHERE i.avgRating =
                                 (SELECT MAX(i2.avgRating) FROM ratedinstructors i2)';
 

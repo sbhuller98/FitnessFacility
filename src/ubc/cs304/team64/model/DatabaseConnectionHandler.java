@@ -79,9 +79,10 @@ public class DatabaseConnectionHandler {
               throw new InvalidParameterException("Phone number should be a 10 digit number");
           }
 
-          stmt = connection.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,
+          PreparedStatement ps = connection.prepareStatement("SELECT * FROM MEMBER WHERE mid = ?", ResultSet.TYPE_SCROLL_SENSITIVE,
                   ResultSet.CONCUR_UPDATABLE);
-          ResultSet result = stmt.executeQuery("SELECT * FROM MEMBER WHERE mid = " + original.getMid());
+          ps.setInt(1, original.getMid());
+          ResultSet result = ps.executeQuery();
           if (!result.next()) {
               throw new AssertionError();
           }
@@ -90,6 +91,7 @@ public class DatabaseConnectionHandler {
           result.updateString("email", email);
           result.updateString("phoneNumber", phone);
           result.updateRow();
+          ps.close();
           connection.commit();
           return new Member(original.getMid(), address, phone, email, name, original.getBirthDate(), original.getStatusType(), original.getStatusCost(), original.getAvailableClassTypes());
       } catch (SQLIntegrityConstraintViolationException e) {
@@ -115,15 +117,17 @@ public class DatabaseConnectionHandler {
     public void updatepass(Member original, String password) {
         Statement stmt;
         try {
-            stmt = connection.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,
+            PreparedStatement ps = connection.prepareStatement("SELECT * FROM MEMBER WHERE mid = ?", ResultSet.TYPE_SCROLL_SENSITIVE,
                     ResultSet.CONCUR_UPDATABLE);
-            ResultSet result = stmt.executeQuery("SELECT * FROM MEMBER WHERE mid = " + original.getMid());
+            ps.setInt(1, original.getMid());
+            ResultSet result = ps.executeQuery();
             if (!result.next()) {
                 throw new InvalidLoginException();
             }
 
             result.updateBytes("password", digest.digest(password.getBytes()));
             result.updateRow();
+            ps.close();
             connection.commit();
         } catch (SQLException e) {
             throw new Error(e);
@@ -310,11 +314,11 @@ public class DatabaseConnectionHandler {
   public Collection<ClassInfo> getClasses(Facility facility, Member member){
     try {
       PreparedStatement ps = connection.prepareStatement(
-          "SELECT *, " +
-            "(SELECT COUNT(t.mid) FROM takes t WHERE c.time = t.time AND c.rid = t.rid AND c.fid = t.fid) as taking, " +
-            "? IN (SELECT mid FROM takes t2 WHERE c.time = t2.time AND c.rid = t2.rid AND c.fid = t2.fid) as isMemberTaking "+
-          "FROM instructor i NATURAL JOIN class c NATURAL JOIN classt "+
-          "WHERE fid = ? AND time > CURRENT_TIMESTAMP");
+          "SELECT *, COUNT(t.mid) as taking, " +
+                  "? IN (SELECT mid FROM takes t2 WHERE c.time = t2.time AND c.rid = t2.rid AND c.fid = t2.fid) as isMemberTaking " +
+               "FROM takes t NATURAL RIGHT OUTER JOIN class c NATURAL JOIN classt ct NATURAL JOIN instructor i " +
+               "WHERE fid = ? AND time > CURRENT_TIMESTAMP " +
+               "GROUP BY c.time, c.rid, c.fid");
       ps.setInt(1, member == null ? -1 : member.getMid());
       ps.setInt(2, facility.getFid());
       return getClassesBase(facility, member, ps, true);
@@ -326,10 +330,10 @@ public class DatabaseConnectionHandler {
   public Collection<ClassInfo> getRegisteredClasses(Facility facility, Member member){
     try {
       PreparedStatement ps = connection.prepareStatement(
-     "SELECT *,"+
-            "(SELECT COUNT(t.mid) FROM takes t WHERE c.time = t.time AND c.rid = t.rid AND c.fid = t.fid) as taking "+
-          "FROM instructor i NATURAL JOIN class c NATURAL JOIN classt "+
-          "WHERE fid = ? AND time > CURRENT_TIMESTAMP AND ? IN (SELECT mid FROM takes t2 WHERE c.time = t2.time AND c.rid = t2.rid AND c.fid = t2.fid)");
+     "SELECT *, COUNT(t.mid) as taking " +
+          "FROM  takes t NATURAL RIGHT OUTER JOIN class c NATURAL JOIN classt NATURAL JOIN instructor i " +
+          "WHERE fid = ? AND time > CURRENT_TIMESTAMP AND ? IN (SELECT mid FROM takes t2 WHERE c.time = t2.time AND c.rid = t2.rid AND c.fid = t2.fid) " +
+          "GROUP BY c.time, c.title, c.fid");
       ps.setInt(1, facility.getFid());
       ps.setInt(2, member.getMid());
       return getClassesBase(facility, member, ps, false);
