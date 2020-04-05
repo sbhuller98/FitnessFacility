@@ -86,7 +86,7 @@ public class updateInfoController implements Initializable {
     public void upDateMember() {
         if(hasNoBlanks()){
             try{
-                Main.connectionHandler.updatePersonal(
+                /*Main.connectionHandler.updatePersonal(
                         member1.getMid(),
                         name.getText(),
                         street.getText() + ", " + city.getText() + ", " + province.getValue() + ", " + postalCode.getText(),
@@ -117,30 +117,6 @@ public class updateInfoController implements Initializable {
             }
         }
         return retVal;
-    }
-
-    private static void restrictDates(DatePicker picker, Predicate<LocalDate> acceptable) {
-        picker.setDayCellFactory(d -> new DateCell() {
-            public void updateItem(LocalDate item, boolean empty){
-                super.updateItem(item, empty);
-                setDisable(!acceptable.test(item));
-            }
-        });
-        picker.setConverter(new StringConverter<LocalDate>() {
-            @Override
-            public String toString(LocalDate localDate) {
-                return localDate == null ? "" : localDate.toString();
-            }
-
-            @Override
-            public LocalDate fromString(String s) {
-                LocalDate localDate = LocalDate.parse(s);
-                if(!acceptable.test(localDate)){
-                    throw new IllegalArgumentException();
-                }
-                return localDate;
-            }
-        });
     }
 
     private static String autoCorrectExpiryDate(String expiryDate){

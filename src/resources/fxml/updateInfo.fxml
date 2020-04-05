@@ -10,6 +10,18 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="420.0" prefWidth="640.0" style="-fx-background-color: #07407b;" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ubc.cs304.team64.ui.updateInfoController">
    <children>
+     <BorderPane layoutX="236.0" layoutY="58.0" prefHeight="337.0" prefWidth="189.0" style="-fx-border-color: #7fcdee; -fx-border-width: 4;">
+       <top>
+         <ImageView fitHeight="127.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER" />
+       </top>
+     </BorderPane>
+     <BorderPane layoutX="26.0" layoutY="58.0" prefHeight="337.0" prefWidth="189.0" style="-fx-border-color: #7fcdee; -fx-border-width: 4;">
+       <top>
+         <ImageView fitHeight="127.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER" />
+       </top>
+     </BorderPane>
+     <BorderPane layoutX="447.0" layoutY="59.0" prefHeight="337.0" prefWidth="189.0" style="-fx-border-color: #7fcdee; -fx-border-width: 4;" />
+
 <!--      Sign Up-->
       <Label layoutX="40.0" layoutY="20.0" prefHeight="30.0" prefWidth="120.0" style="-fx-text-fill: white;" text="Update Information" underline="true">
          <font>
@@ -38,14 +50,13 @@
          </FXCollections>
        </items>
       </ComboBox>
-      <TextField fx:id="postalCode" layoutX="40.0" layoutY="244.0" promptText="Postal Code" />
+      <TextField fx:id="postalCode" layoutX="40.0" layoutY="210.0" promptText="Postal Code" />
+      <TextField fx:id="email" layoutX="40.0" layoutY="244.0" promptText="Email Address" />
       <TextField fx:id="phoneNumber" layoutX="40.0" layoutY="281.0" promptText="Phone Number" />
-
-      <TextField fx:id="email" layoutX="40.0" layoutY="210.0" promptText="Email Address" />
       <PasswordField fx:id="password" layoutX="250.0" layoutY="217.0" promptText="Password" />
       <PasswordField fx:id="passwordConf" layoutX="250.0" layoutY="268.0" promptText="Re-Enter Password" />
 
-     <BorderPane layoutX="447.0" layoutY="59.0" prefHeight="337.0" prefWidth="189.0" style="-fx-border-color: #7fcdee; -fx-border-width: 4;" />
+      <TextField fx:id="nameOnCard" layoutX="464.0" layoutY="175.0" promptText="Cardholder Name" />
       <TextField fx:id="cardNumber" layoutX="464.0" layoutY="217.0" promptText="Card Number" />
       <TextField fx:id="csv" layoutX="464.0" layoutY="261.0" promptText="CVV" />
       <TextField fx:id="expiryDate" layoutX="464.0" layoutY="301.0" promptText="Expiry Date: MM/YY" />
