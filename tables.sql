@@ -241,6 +241,7 @@ INSERT INTO classtype (title) VALUES ('HIT');
 INSERT INTO classtype (title) VALUES ('GymSports');
 INSERT INTO classtype (title) VALUES ('Swimming');
 INSERT INTO classtype (title) VALUES ('Skating');
+INSERT INTO classtype (title) VALUES ('FieldSports');
 
 INSERT INTO instructor (name, salary) VALUES ('Carlos Hyde', 60000);
 INSERT INTO instructor (name, salary) VALUES ('David ', 25000);
@@ -275,10 +276,25 @@ INSERT INTO facility (address, name, description) VALUES ('3487 Haney Place, Coq
 INSERT INTO facility (address, name, description) VALUES ('2204 196 St, Langley, BC', 'Lanngley Athleisure Centre', 'Lanngley Athleisure Centre description');
 
 INSERT INTO room (rid, fid) VALUES (100, 1);
+INSERT INTO room (rid, fid) VALUES (101, 1);
+INSERT INTO room (rid, fid) VALUES (102, 1);
+INSERT INTO room (rid, fid) VALUES (103, 1);
+INSERT INTO room (rid, fid) VALUES (104, 1);
+INSERT INTO room (rid, fid) VALUES (105, 1);
 INSERT INTO room (rid, fid) VALUES (100, 2);
-INSERT INTO room (rid, fid) VALUES (100, 3);
+INSERT INTO room (rid, fid) VALUES (101, 2);
+INSERT INTO room (rid, fid) VALUES (102, 2);
+INSERT INTO room (rid, fid) VALUES (101, 3);
+INSERT INTO room (rid, fid) VALUES (102, 3);
+INSERT INTO room (rid, fid) VALUES (103, 3);
 INSERT INTO room (rid, fid) VALUES (100, 4);
+INSERT INTO room (rid, fid) VALUES (101, 4);
+INSERT INTO room (rid, fid) VALUES (102, 4);
+INSERT INTO room (rid, fid) VALUES (103, 4);
+INSERT INTO room (rid, fid) VALUES (104, 4);
 INSERT INTO room (rid, fid) VALUES (100, 5);
+INSERT INTO room (rid, fid) VALUES (101, 5);
+INSERT INTO room (rid, fid) VALUES (102, 5);
 
 INSERT INTO member(login, password, address, phoneNumber, email, name, birthDate, sType) VALUES ('imiller', X'a61a78e492ee60c63ed8f2bb3a6a0072','4444 128 St, Surrey, BC', '6043442423', 'imiller@gmail.com', 'Ian Miller', '1978-12-12', 'Silver');
 #password: "pa$$word"
@@ -299,23 +315,62 @@ INSERT INTO classt (title, description, type) VALUES ('Shapetastic', 'This class
 INSERT INTO classt (title, description, type) VALUES ('Basketball Skills I', 'Come improve your basketball skills, with a focus on dribbling ands shooting.  The second part of this class consists of scrimmage.  Open to adults only.  All skill levels welcome!', 'GymSports');
 INSERT INTO classt (title, description, type) VALUES ('World Dance', 'Shake away your worries and have some fun learning various dances from across the world.  Each class will focus on a dance from a specific country, with guest instructors!  All dancers welcome regardless of experience!', 'Dance');
 
-INSERT INTO canhave (rid, fid, classType) VALUES (100, 1, 'GymSports');
+
 INSERT INTO canhave (rid, fid, classType) VALUES (100, 1, 'Cardio');
 INSERT INTO canhave (rid, fid, classType) VALUES (100, 1, 'Dance');
+INSERT INTO canhave (rid, fid, classType) VALUES (101, 1, 'Cardio');
+INSERT INTO canhave (rid, fid, classType) VALUES (101, 1, 'Dance');
+INSERT INTO canhave (rid, fid, classType) VALUES (101, 1, 'HIT');
+INSERT INTO canhave (rid, fid, classType) VALUES (101, 1, 'BootCamp');
+INSERT INTO canhave (rid, fid, classType) VALUES (102, 1, 'Cardio');
+INSERT INTO canhave (rid, fid, classType) VALUES (102, 1, 'Dance');
+INSERT INTO canhave (rid, fid, classType) VALUES (102, 1, 'HIT');
+INSERT INTO canhave (rid, fid, classType) VALUES (102, 1, 'BootCamp');
+INSERT INTO canhave (rid, fid, classType) VALUES (105, 1, 'FieldSports');
+
 INSERT INTO canhave (rid, fid, classType) VALUES (100, 2, 'Skating');
-INSERT INTO canhave (rid, fid, classType) VALUES (100, 3, 'Swimming');
-INSERT INTO canhave (rid, fid, classType) VALUES (100, 4, 'HIT');
+INSERT INTO canhave (rid, fid, classType) VALUES (101, 2, 'Skating');
+INSERT INTO canhave (rid, fid, classType) VALUES (102, 2, 'Skating');
+
+INSERT INTO canhave (rid, fid, classType) VALUES (101, 3, 'GymSports');
+INSERT INTO canhave (rid, fid, classType) VALUES (101, 3, 'Dance');
+INSERT INTO canhave (rid, fid, classType) VALUES (101, 3, 'Cardio');
+INSERT INTO canhave (rid, fid, classType) VALUES (102, 3, 'GymSports');
+INSERT INTO canhave (rid, fid, classType) VALUES (102, 3, 'Dance');
+INSERT INTO canhave (rid, fid, classType) VALUES (102, 3, 'Cardio');
+INSERT INTO canhave (rid, fid, classType) VALUES (103, 3, 'Swimming');
+
 INSERT INTO canhave (rid, fid, classType) VALUES (100, 4, 'GymSports');
 INSERT INTO canhave (rid, fid, classType) VALUES (100, 4, 'Dance');
-INSERT INTO canhave (rid, fid, classType) VALUES (100, 4, 'BootCamp');
 INSERT INTO canhave (rid, fid, classType) VALUES (100, 4, 'Cardio');
-INSERT INTO canhave (rid, fid, classType) VALUES (100, 5, 'BootCamp');
+INSERT INTO canhave (rid, fid, classType) VALUES (101, 4, 'GymSports');
+INSERT INTO canhave (rid, fid, classType) VALUES (101, 4, 'Dance');
+INSERT INTO canhave (rid, fid, classType) VALUES (101, 4, 'Cardio');
+INSERT INTO canhave (rid, fid, classType) VALUES (102, 4, 'HIT');
+INSERT INTO canhave (rid, fid, classType) VALUES (102, 4, 'Dance');
+INSERT INTO canhave (rid, fid, classType) VALUES (102, 4, 'BootCamp');
+INSERT INTO canhave (rid, fid, classType) VALUES (102, 4, 'Cardio');
+INSERT INTO canhave (rid, fid, classType) VALUES (103, 4, 'HIT');
+INSERT INTO canhave (rid, fid, classType) VALUES (103, 4, 'Dance');
+INSERT INTO canhave (rid, fid, classType) VALUES (103, 4, 'BootCamp');
+INSERT INTO canhave (rid, fid, classType) VALUES (103, 4, 'Cardio');
+INSERT INTO canhave (rid, fid, classType) VALUES (104, 4, 'Cardio');
+INSERT INTO canhave (rid, fid, classType) VALUES (104, 4, 'Dance');
+
 INSERT INTO canhave (rid, fid, classType) VALUES (100, 5, 'Cardio');
 INSERT INTO canhave (rid, fid, classType) VALUES (100, 5, 'Dance');
+INSERT INTO canhave (rid, fid, classType) VALUES (101, 5, 'Cardio');
+INSERT INTO canhave (rid, fid, classType) VALUES (101, 5, 'Dance');
+INSERT INTO canhave (rid, fid, classType) VALUES (101, 5, 'HIT');
+INSERT INTO canhave (rid, fid, classType) VALUES (101, 5, 'BootCamp');
+INSERT INTO canhave (rid, fid, classType) VALUES (102, 5, 'Cardio');
+INSERT INTO canhave (rid, fid, classType) VALUES (102, 5, 'Dance');
+INSERT INTO canhave (rid, fid, classType) VALUES (102, 5, 'HIT');
+INSERT INTO canhave (rid, fid, classType) VALUES (102, 5, 'BootCamp');
 
-INSERT INTO class (time, title, capacity, rid, fid, iid) VALUES ('2020-04-11 16:30:00', 'Abs of Steel', 30, 100, 4, 1);
+INSERT INTO class (time, title, capacity, rid, fid, iid) VALUES ('2020-04-11 16:30:00', 'Abs of Steel', 30, 102, 4, 1);
 INSERT INTO class (time, title, capacity, rid, fid, iid) VALUES ('2020-04-11 10:00:00', 'Running Machine', 15, 100, 1, 2);
-INSERT INTO class (time, title, capacity, rid, fid, iid) VALUES ('2020-04-11 13:00:00', 'Shapetastic', 25, 100, 4, 3);
+INSERT INTO class (time, title, capacity, rid, fid, iid) VALUES ('2020-04-11 13:00:00', 'Shapetastic', 25, 103, 4, 3);
 INSERT INTO class (time, title, capacity, rid, fid, iid) VALUES ('2020-04-11 20:00:00', 'Basketball Skills I', 40, 100, 4, 4);
 INSERT INTO class (time, title, capacity, rid, fid, iid) VALUES ('2020-04-11 14:00:00', 'Running Machine', 20, 100, 5, 5);
 INSERT INTO class (time, title, capacity, rid, fid, iid) VALUES ('2020-04-11 18:00:00', 'World Dance', 30, 100, 5, 5);
@@ -383,9 +438,9 @@ INSERT INTO letsyoutake (classType, sType) VALUES ('Swimming', 'Platinum');
 INSERT INTO letsyoutake (classType, sType) VALUES ('Skating', 'Platinum');
 
 
-INSERT INTO takes (mid, time, rid, fid) VALUES (1, '2020-04-11 16:30:00', 100, 4);
+INSERT INTO takes (mid, time, rid, fid) VALUES (1, '2020-04-11 16:30:00', 102, 4);
 INSERT INTO takes (mid, time, rid, fid) VALUES (2, '2020-04-11 10:00:00', 100, 1);
-INSERT INTO takes (mid, time, rid, fid) VALUES (3, '2020-04-11 13:00:00', 100, 4);
+INSERT INTO takes (mid, time, rid, fid) VALUES (3, '2020-04-11 13:00:00', 103, 4);
 INSERT INTO takes (mid, time, rid, fid) VALUES (4, '2020-04-11 20:00:00', 100, 4);
 INSERT INTO takes (mid, time, rid, fid) VALUES (5, '2020-04-11 10:00:00', 100, 1);
 INSERT INTO takes (mid, time, rid, fid) VALUES (5, '2020-04-11 14:00:00', 100, 5);
