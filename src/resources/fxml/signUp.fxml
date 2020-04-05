@@ -57,7 +57,7 @@
 
       <ImageView fitHeight="69.0" fitWidth="181.0" layoutX="418.0" layoutY="78.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../../resources/Interac-Visa-Mastercard-300x160.jpg" />
+            <Image url="@../Interac-Visa-Mastercard-300x160.jpg" />
          </image>
       </ImageView>
 

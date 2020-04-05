@@ -22,7 +22,7 @@
       <!-- Image -->
       <ImageView fitHeight="280.0" fitWidth="280.0" layoutX="42.0" layoutY="110.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../../resources/welcome.png" />
+            <Image url="@../welcome.png" />
          </image>
       </ImageView>
       <!-- New here? -->

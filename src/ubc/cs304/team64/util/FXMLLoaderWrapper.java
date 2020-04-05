@@ -11,7 +11,7 @@ public class FXMLLoaderWrapper<E extends Initializable> {
   private Scene scene;
 
   public FXMLLoaderWrapper(String fxml){
-    loader = new FXMLLoader(FXMLLoaderWrapper.class.getResource(fxml));
+    loader = new FXMLLoader(FXMLLoaderWrapper.class.getResource("/fxml/"+fxml));
     try {
       scene = new Scene(loader.load());
     } catch (IOException e) {
