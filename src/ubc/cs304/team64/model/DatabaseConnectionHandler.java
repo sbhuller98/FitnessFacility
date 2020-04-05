@@ -254,47 +254,52 @@ public class DatabaseConnectionHandler {
             "(SELECT COUNT(t.mid) FROM takes t WHERE c.time = t.time AND c.rid = t.rid AND c.fid = t.fid) as taking, " +
             "? IN (SELECT mid FROM takes t2 WHERE c.time = t2.time AND c.rid = t2.rid AND c.fid = t2.fid) as isMemberTaking "+
           "FROM instructor i NATURAL JOIN class c NATURAL JOIN classt "+
-          "WHERE fid = ? AND time > CURRENT_TIMESTAMP()");
+          "WHERE fid = ? AND time > CURRENT_TIMESTAMP");
       ps.setInt(1, member == null ? -1 : member.getMid());
       ps.setInt(2, facility.getFid());
-      Collection<ClassInfo> classes = new ArrayList<>();
-      ResultSet rs = ps.executeQuery();
-      while (rs.next()){
-        ClassInfo classInfo = new ClassInfo (
-            facility,
-            rs.getInt("rid"),
-            rs.getTimestamp("time"),
-            rs.getString("title"),
-            rs.getString("description"),
-            rs.getString("type"),
-            rs.getInt("iid"),
-            rs.getString("name"),
-            rs.getInt("capacity"),
-            rs.getInt("taking"),
-            member,
-            rs.getBoolean("isMemberTaking")
-        );
-        classes.add(classInfo);
-      }
-      ps.close();
-      return classes;
+      return getClassesBase(facility, member, ps, true);
     } catch (SQLException e) {
       throw new Error(e);
     }
   }
 
-  public Instructor getInstructor(ClassInfo classInfo){
+  public Collection<ClassInfo> getRegisteredClasses(Facility facility, Member member){
     try {
-      PreparedStatement ps = connection.prepareStatement("SELECT * FROM ratedinstructors i WHERE i.iid = ?");
-      ps.setInt(1, classInfo.getIid());
-      ResultSet rs = ps.executeQuery();
-      if ((!rs.next())) throw new AssertionError();
-      Instructor retVal = getInstructorFromRs(rs);
-      ps.close();
-      return retVal;
+      PreparedStatement ps = connection.prepareStatement(
+     "SELECT *,"+
+            "(SELECT COUNT(t.mid) FROM takes t WHERE c.time = t.time AND c.rid = t.rid AND c.fid = t.fid) as taking "+
+          "FROM instructor i NATURAL JOIN class c NATURAL JOIN classt "+
+          "WHERE fid = ? AND time > CURRENT_TIMESTAMP AND ? IN (SELECT mid FROM takes t2 WHERE c.time = t2.time AND c.rid = t2.rid AND c.fid = t2.fid)");
+      ps.setInt(1, facility.getFid());
+      ps.setInt(2, member.getMid());
+      return getClassesBase(facility, member, ps, false);
     } catch (SQLException e) {
       throw new Error(e);
     }
+  }
+
+  private Collection<ClassInfo> getClassesBase(Facility facility, Member member, PreparedStatement ps, boolean hasExtraField) throws SQLException {
+    Collection<ClassInfo> classes = new ArrayList<>();
+    ResultSet rs = ps.executeQuery();
+    while (rs.next()){
+      ClassInfo classInfo = new ClassInfo (
+          facility,
+          rs.getInt("rid"),
+          rs.getTimestamp("time"),
+          rs.getString("title"),
+          rs.getString("description"),
+          rs.getString("type"),
+          rs.getInt("iid"),
+          rs.getString("name"),
+          rs.getInt("capacity"),
+          rs.getInt("taking"),
+          member,
+          !hasExtraField || rs.getBoolean("isMemberTaking")
+      );
+      classes.add(classInfo);
+    }
+    ps.close();
+    return classes;
   }
 
   public Collection<Instructor> getInstructorsFromFacility(Facility facility){

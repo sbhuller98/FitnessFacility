@@ -68,7 +68,7 @@ public class MyAccountController implements Initializable {
     }
 
     public Collection<ClassInfo> getClassInfo (Facility facility, Member member) {
-        Collection<ClassInfo> allClasses = Main.connectionHandler.getClasses(facility, member);
+        Collection<ClassInfo> allClasses = Main.connectionHandler.getRegisteredClasses(facility, member);
         return allClasses;
     }
 

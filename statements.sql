@@ -18,7 +18,12 @@ PREPARE getClasses FROM
         (SELECT COUNT(t.mid) FROM takes t WHERE c.time = t.time AND c.rid = t.rid AND c.fid = t.fid) as taking,
         ? IN (SELECT mid FROM takes t2 WHERE c.time = t2.time AND c.rid = t2.rid AND c.fid = t2.fid) as isMemberTaking
     FROM instructor i NATURAL JOIN class c NATURAL JOIN classt
-    WHERE fid = ? AND time > CURRENT_TIMESTAMP()';
+    WHERE fid = ? AND time > CURRENT_TIMESTAMP';
+PREPARE getRegisteredClasses FROM
+    'SELECT *,
+        (SELECT COUNT(t.mid) FROM takes t WHERE c.time = t.time AND c.rid = t.rid AND c.fid = t.fid) as taking
+    FROM instructor i NATURAL JOIN class c NATURAL JOIN classt
+    WHERE fid = ? AND time > CURRENT_TIMESTAMP AND ? IN (SELECT mid FROM takes t2 WHERE c.time = t2.time AND c.rid = t2.rid AND c.fid = t2.fid)';
 PREPARE getInstructor FROM 'SELECT * FROM ratedinstructors i WHERE i.iid = ?';
 PREPARE getInstructorsInFacility FROM 'SELECT i.* FROM ratedinstructors i WHERE
     i.iid IN (SELECT c.iid FROM class c WHERE c.time > CURRENT_TIMESTAMP AND c.iid = iid AND c.fid = ?)';
