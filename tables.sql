@@ -97,7 +97,7 @@ CREATE TABLE Rates(
     iid INT,
     rating INT,
     PRIMARY KEY(mid, iid),
-    FOREIGN KEY(mid) REFERENCES Member(mid),
+    FOREIGN KEY(mid) REFERENCES Member(mid) ON DELETE CASCADE,
     FOREIGN KEY(iid) REFERENCES Instructor(iid),
     CHECK ( 1 <= rating <= 5 )
 );
@@ -125,7 +125,7 @@ CREATE TABLE Takes(
     rid INT,
     fid INT,
     PRIMARY KEY(mid, time, rid, fid),
-    FOREIGN KEY(mid) REFERENCES Member(mid),
+    FOREIGN KEY(mid) REFERENCES Member(mid) ON DELETE CASCADE,
     FOREIGN KEY(time, rid, fid) REFERENCES Class(time, rid, fid) ON DELETE CASCADE
 );
 
@@ -133,7 +133,7 @@ CREATE TABLE MemberPayment(
     mid INT,
     pid INT,
     PRIMARY KEY(mid, pid),
-    FOREIGN KEY(mid) REFERENCES Member(mid),
+    FOREIGN KEY(mid) REFERENCES Member(mid) ON DELETE CASCADE,
     FOREIGN KEY(pid) REFERENCES Payment(pid)
 );
 CREATE TABLE Cleans(

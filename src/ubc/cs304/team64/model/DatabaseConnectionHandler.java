@@ -285,6 +285,18 @@ public class DatabaseConnectionHandler {
     }
   }
 
+  private void deleteMember(Member m){
+    try {
+      PreparedStatement ps = connection.prepareStatement("DELETE FROM member WHERE mid = ?");
+      ps.setInt(1, m.getMid());
+      ps.executeUpdate();
+      ps.close();
+      connection.commit();
+    } catch (SQLException e) {
+      throw new Error(e);
+    }
+  }
+
   public Collection<Facility> getFacilities() {
     try {
       Collection<Facility> retVal = new ArrayList<>();

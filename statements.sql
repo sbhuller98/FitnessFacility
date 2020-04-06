@@ -11,9 +11,10 @@ PREPARE createPayment FROM 'INSERT INTO payment(frequency, creditCardNumber, acc
 PREPARE getPayments FROM 'SELECT * FROM payment NATURAL JOIN memberpayment WHERE mid = ?';
 PREPARE getCreditCard FROM 'SELECT * FROM creditcard WHERE num = ?';
 PREPARE getPap FROM 'SELECT * FROM PAPAccount WHERE accountNumber = ?';
-PREPARE updatePersonal FROM 'SELECT * FROM MEMBER WHERE mid = ?' --then update result set
+PREPARE updatePersonal FROM 'SELECT * FROM MEMBER WHERE mid = ?'; --then update result set
 PREPARE updatePayment FROM 'INSERT INTO memberpayment(mid, pid) VALUES (?, ?)';
-PREPARE updatePassword FROM 'SELECT * FROM MEMBER WHERE mid = ?' --then update result set
+PREPARE updatePassword FROM 'SELECT * FROM MEMBER WHERE mid = ?'; --then update result set
+PREPARE deleteMember FROM 'DELETE FROM member WHERE mid = ?';
 
 PREPARE getFacilities FROM 'SELECT * FROM facility';
 PREPARE getClasses FROM
