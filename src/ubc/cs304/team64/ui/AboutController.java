@@ -32,7 +32,7 @@ public class AboutController implements Initializable {
     public void setUp(Facility facility, Member member) {
         back.setOnAction(e -> FacilityController.setStage(facility, member));
         description.setWrapText(true);
-
+        description.setMaxWidth(200);
         address.setWrapText(true);
         description.setWrapText(true);
         description.setText(facility.getDescription());
