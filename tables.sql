@@ -242,7 +242,6 @@ INSERT INTO classtype (title) VALUES ('HIIT');
 INSERT INTO classtype (title) VALUES ('GymSports');
 INSERT INTO classtype (title) VALUES ('Swimming');
 INSERT INTO classtype (title) VALUES ('Skating');
-INSERT INTO classtype (title) VALUES ('Basketball');
 INSERT INTO classtype (title) VALUES ('Tennis');
 
 INSERT INTO instructor (name, salary) VALUES ('Carlos Hyde', 60000);
@@ -355,7 +354,6 @@ INSERT INTO canhave (rid, fid, classType) VALUES (102, 1, 'BootCamp');
 INSERT INTO canhave (rid, fid, classType) VALUES (102, 1, 'GymSports');
 INSERT INTO canhave (rid, fid, classType) VALUES (103, 1, 'Tennis');
 INSERT INTO canhave (rid, fid, classType) VALUES (104, 1, 'Tennis');
-INSERT INTO canhave (rid, fid, classType) VALUES (105, 1, 'Basketball');
 
 INSERT INTO canhave (rid, fid, classType) VALUES (100, 2, 'Skating');
 INSERT INTO canhave (rid, fid, classType) VALUES (101, 2, 'Skating');
@@ -415,6 +413,13 @@ INSERT INTO class (time, title, capacity, rid, fid, iid) VALUES ('2020-04-11 13:
 INSERT INTO class (time, title, capacity, rid, fid, iid) VALUES ('2020-04-11 20:00:00', 'Basketball Skills I', 40, 100, 4, 4);
 INSERT INTO class (time, title, capacity, rid, fid, iid) VALUES ('2020-04-11 14:00:00', 'Running Machine', 20, 100, 5, 5);
 INSERT INTO class (time, title, capacity, rid, fid, iid) VALUES ('2020-04-11 18:00:00', 'World Dance', 30, 100, 5, 5);
+INSERT INTO class (time, title, capacity, rid, fid, iid) VALUES ('2020-04-11 12:00:00', 'Lil Dippers Swimming Lessons', 30, 103, 3, 3);
+INSERT INTO class (time, title, capacity, rid, fid, iid) VALUES ('2020-04-11 11:00:00', 'Learn to Skate', 30, 100, 2, 2);
+INSERT INTO class (time, title, capacity, rid, fid, iid) VALUES ('2020-04-11 14:00:00', 'Learn to Skate', 30, 101, 2, 4);
+INSERT INTO class (time, title, capacity, rid, fid, iid) VALUES ('2020-04-11 10:00:00', 'World Tennis', 20, 103, 1, 2);
+INSERT INTO class (time, title, capacity, rid, fid, iid) VALUES ('2020-04-11 14:00:00', 'World Tennis', 15, 104, 1, 2);
+INSERT INTO class (time, title, capacity, rid, fid, iid) VALUES ('2020-04-11 12:00:00', 'World Tennis', 25, 103, 1, 2);
+INSERT INTO class (time, title, capacity, rid, fid, iid) VALUES ('2020-04-11 16:00:00', 'World Tennis', 10, 104, 1, 2);
 
 INSERT INTO creditcard (num, expiryDate, csv, nameOnCard) VALUES (1234120000000000, '2021-02-28', 123, 'Ian Miller');
 INSERT INTO creditcard (num, expiryDate, csv, nameOnCard) VALUES (4567350000000000, '2020-07-31', 456, 'Lana Smith');
