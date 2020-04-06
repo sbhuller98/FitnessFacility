@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ubc.cs304.team64.ui.deleteController">
+    <children>
+        <Label layoutX="249.0" layoutY="24.0" prefHeight="32.0" prefWidth="56.0" styleClass="title" text="Delete Account">
+            <font>
+                <Font size="21.0" />
+            </font>
+        </Label>
+        <Label fx:id="description" alignment="TOP_CENTER" layoutX="38.0" layoutY="99.0" prefHeight="179.0" prefWidth="549.0" style="-fx-text-fill: white; -fx-background-color: #3e4173;" />
+        <Button fx:id="back" layoutX="530.0" layoutY="8.0" mnemonicParsing="false" text="Back">
+            <font>
+                <Font size="16.0" />
+            </font></Button>
+      <Button fx:id="yesDelete" layoutX="356.0" layoutY="310.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="84.0" style="-fx-background-color: red;" text="Yes">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Button>
+      <Button fx:id="noDelete" layoutX="165.0" layoutY="310.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="84.0" text="No">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Button>
+    </children>
+    <stylesheets>
+        <URL value="@mainStyle.css" />
+    </stylesheets>
+</AnchorPane>
