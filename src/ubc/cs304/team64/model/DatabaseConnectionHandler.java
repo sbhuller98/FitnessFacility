@@ -23,11 +23,6 @@ public class DatabaseConnectionHandler {
       digest = MessageDigest.getInstance("MD5");
 
       System.out.println("\nConnected to Database!");
-      Statement test = connection.createStatement();
-      ResultSet testRes = test.executeQuery("select @@sql_mode");
-      testRes.next();
-      System.out.println(testRes.getString(1));
-      System.exit(-64);
     } catch (SQLException | NoSuchAlgorithmException e) {
       throw new Error(e);
     }
