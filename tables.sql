@@ -285,6 +285,7 @@ INSERT INTO room (rid, fid) VALUES (105, 1);
 INSERT INTO room (rid, fid) VALUES (100, 2);
 INSERT INTO room (rid, fid) VALUES (101, 2);
 INSERT INTO room (rid, fid) VALUES (102, 2);
+INSERT INTO room (rid, fid) VALUES (100, 3);
 INSERT INTO room (rid, fid) VALUES (101, 3);
 INSERT INTO room (rid, fid) VALUES (102, 3);
 INSERT INTO room (rid, fid) VALUES (103, 3);
@@ -296,34 +297,37 @@ INSERT INTO room (rid, fid) VALUES (104, 4);
 INSERT INTO room (rid, fid) VALUES (100, 5);
 INSERT INTO room (rid, fid) VALUES (101, 5);
 INSERT INTO room (rid, fid) VALUES (102, 5);
+INSERT INTO room (rid, fid) VALUES (103, 5);
+INSERT INTO room (rid, fid) VALUES (104, 5);
+INSERT INTO room (rid, fid) VALUES (105, 5);
 
-INSERT INTO member(login, password, address, phoneNumber, email, name, birthDate, sType) VALUES ('imiller', X'a61a78e492ee60c63ed8f2bb3a6a0072','4444 128 St, Surrey, BC, V3X1T8', '6043442423', 'imiller@gmail.com', 'Ian Miller', '1978-12-12', 'Silver');
+INSERT INTO member(mid, login, password, address, phoneNumber, email, name, birthDate, sType) VALUES (01, 'imiller', X'a61a78e492ee60c63ed8f2bb3a6a0072','4444 128 St, Surrey, BC, V3X1T8', '6043442423', 'imiller@gmail.com', 'Ian Miller', '1978-12-12', 'Silver');
 #password: "pa$$word"
-INSERT INTO member(login, password, address, phoneNumber, email, name, birthDate, sType) VALUES ('jonh_w', X'd0763edaa9d9bd2a9516280e9044d885', '1243 Westwood Drive, Coquitlam, BC, V3B4S7', '7782443445', 'jonh.westbrrok@alumni.ubc.ca', 'John Westbrrok', '2001-08-04', 'Student');
+INSERT INTO member(mid, login, password, address, phoneNumber, email, name, birthDate, sType) VALUES (02, 'jonh_w', X'd0763edaa9d9bd2a9516280e9044d885', '1243 Westwood Drive, Coquitlam, BC, V3B4S7', '7782443445', 'jonh.westbrrok@alumni.ubc.ca', 'John Westbrrok', '2001-08-04', 'Student');
 #password: "monkey"
-INSERT INTO member(login, password, address, phoneNumber, email, name, birthDate, sType) VALUES ('henry_cavill', X'2632a9189905c888ead002e11e5c4446', '12-3443 54 Ave, Vancouver, BC, V5X3B4', '6042557546', 'henry_cavill@shaw.ca', 'Henry Cavill', '1948-04-25', 'Senior');
+INSERT INTO member(mid, login, password, address, phoneNumber, email, name, birthDate, sType) VALUES (03, 'henry_cavill', X'2632a9189905c888ead002e11e5c4446', '12-3443 54 Ave, Vancouver, BC, V5X3B4', '6042557546', 'henry_cavill@shaw.ca', 'Henry Cavill', '1948-04-25', 'Senior');
 #password: "asdfghjkl;'"
-INSERT INTO member(login, password, address, phoneNumber, email, name, birthDate, sType) VALUES ('saqon_barkley', X'e10adc3949ba59abbe56e057f20f883e', '4534 12 Ave, Burnaby, BC, V3N2J1', '6041236533', 'sbarkley96@gmail.com', 'Saquon Barkley', '1996-01-19', 'Low-Income');
+INSERT INTO member(mid, login, password, address, phoneNumber, email, name, birthDate, sType) VALUES (04, 'saqon_barkley', X'e10adc3949ba59abbe56e057f20f883e', '4534 12 Ave, Burnaby, BC, V3N2J1', '6041236533', 'sbarkley96@gmail.com', 'Saquon Barkley', '1996-01-19', 'Low-Income');
 #password "123456"
-INSERT INTO member(login, password, address, phoneNumber, email, name, birthDate, sType) VALUES ('russel_wesbrrok', X'35d4785ecc5e3dabfc2edf7542392837', '1243 Westwood Drive, Coquitlam, BC, V3B4S7', '7782347542', 'russel_wesbrrok@shaw.ca', 'Russel Westbrrok', '1970-04-15', 'Platinum');
+INSERT INTO member(mid, login, password, address, phoneNumber, email, name, birthDate, sType) VALUES (05, 'russel_wesbrrok', X'35d4785ecc5e3dabfc2edf7542392837', '1243 Westwood Drive, Coquitlam, BC, V3B4S7', '7782347542', 'russel_wesbrrok@shaw.ca', 'Russel Westbrrok', '1970-04-15', 'Platinum');
 #password "g0w0_3EWnf"
-INSERT INTO member(login, password, address, phoneNumber, email, name, birthDate, sType) VALUES ('lana_smith', X'e99a18c428cb38d5f260853678922e03', '6237 134 St, Langley, BC, V3X1L7', '6044530927', 'lanasmith3@gmail.com', 'Lana Smith','1984-03-12', 'Silver');
+INSERT INTO member(mid, login, password, address, phoneNumber, email, name, birthDate, sType) VALUES (06, 'lana_smith', X'e99a18c428cb38d5f260853678922e03', '6237 134 St, Langley, BC, V3X1L7', '6044530927', 'lanasmith3@gmail.com', 'Lana Smith','1984-03-12', 'Silver');
 #password "abc123"
-INSERT INTO member(login, password, address, phoneNumber, email, name, birthDate, sType) VALUES ('jaebell', X'a50a12eee7caab7848728e0a59d96852', '7117 4th West St, Vancouver, BC, V761X3', '6044998076', 'jaebell@yahoo.ca', 'Jae Bell','1987-03-18', 'Gold');
+INSERT INTO member(mid, login, password, address, phoneNumber, email, name, birthDate, sType) VALUES (07, 'jaebell', X'a50a12eee7caab7848728e0a59d96852', '7117 4th West St, Vancouver, BC, V761X3', '6044998076', 'jaebell@yahoo.ca', 'Jae Bell','1987-03-18', 'Gold');
 #password "twenty20"
-INSERT INTO member(login, password, address, phoneNumber, email, name, birthDate, sType) VALUES ('ben_carter', X'c4bb408471eb7727e59e11385b0a8c19', '4-44 Westbrook Mall, Vancouver, BC, V6S5U5', '7783353535', 'carterben@gmail.com', 'Ben Carter','1996-01-22', 'Student');
+INSERT INTO member(mid, login, password, address, phoneNumber, email, name, birthDate, sType) VALUES (08'ben_carter', X'c4bb408471eb7727e59e11385b0a8c19', '4-44 Westbrook Mall, Vancouver, BC, V6S5U5', '7783353535', 'carterben@gmail.com', 'Ben Carter','1996-01-22', 'Student');
 #password "hihihi"
-INSERT INTO member(login, password, address, phoneNumber, email, name, birthDate, sType) VALUES ('hpotter', X'6403e55883a8a4abf62af4ef7cc85dc1', '545 Pemberton Ave, North Vancouver, BC, V3M0L7', '6049886151', 'hpotter00@gmail.com', 'Harry Potter','1980-08-31', 'Gold');
+INSERT INTO member(mid, login, password, address, phoneNumber, email, name, birthDate, sType) VALUES (09, 'hpotter', X'6403e55883a8a4abf62af4ef7cc85dc1', '545 Pemberton Ave, North Vancouver, BC, V3M0L7', '6049886151', 'hpotter00@gmail.com', 'Harry Potter','1980-08-31', 'Gold');
 #password "hedwig"
-INSERT INTO member(login, password, address, phoneNumber, email, name, birthDate, sType) VALUES ('estewart', X'4c2a4a7078da0ac6733464eacfd00f86', '777 152 St, Langley, BC, V8H3K7', '6045667656', 'estewart94@gmail.com', 'Elizabeth Stewart','1994-05-12', 'Low-income');
+INSERT INTO member(mid, login, password, address, phoneNumber, email, name, birthDate, sType) VALUES (10, 'estewart', X'4c2a4a7078da0ac6733464eacfd00f86', '777 152 St, Langley, BC, V8H3K7', '6045667656', 'estewart94@gmail.com', 'Elizabeth Stewart','1994-05-12', 'Low-income');
 #password "magenta"
-INSERT INTO member(login, password, address, phoneNumber, email, name, birthDate, sType) VALUES ('bellaswan', X'a53f3929621dba1306f8a61588f52f55', '15322 Buena Vista Ave, Surrey, BC, V7T6Y6', '6043456789', 'bellaswan@hotmail.net', 'Isabella Swan','1987-09-13', 'Bronze');
+INSERT INTO member(mid, login, password, address, phoneNumber, email, name, birthDate, sType) VALUES (11, 'bellaswan', X'a53f3929621dba1306f8a61588f52f55', '15322 Buena Vista Ave, Surrey, BC, V7T6Y6', '6043456789', 'bellaswan@hotmail.net', 'Isabella Swan','1987-09-13', 'Bronze');
 #password "edward"
-INSERT INTO member(login, password, address, phoneNumber, email, name, birthDate, sType) VALUES ('samantha_r', X'5ed4b687561eea35f0f1f562fc38abf5', '34-62 1st St, Burnaby, BC, V7D5L5', '7781234567', 'samrobin@yahoo.com', 'Samantha Robin','1954-11-03', 'Senior');
+INSERT INTO member(mid, login, password, address, phoneNumber, email, name, birthDate, sType) VALUES (12, 'avasky', X'5ed4b687561eea35f0f1f562fc38abf5', '34-62 1st St, Burnaby, BC, V7D5L5', '7781234567', 'avasky@yahoo.com', 'Ava Sky','1954-11-03', 'Senior');
 #password "223344tt"
-INSERT INTO member(login, password, address, phoneNumber, email, name, birthDate, sType) VALUES ('jills22', X'16af54f5d3a0b58c37f9a85d41c7795f', '3190 Parker Blvd, Vancouver, BC, V7P1Y7', '7780998765', 'jills22@gmail.com', 'Jill Steven','1976-10-29', 'Silver');
+INSERT INTO member(mid, login, password, address, phoneNumber, email, name, birthDate, sType) VALUES (13, 'ron_ww', X'16af54f5d3a0b58c37f9a85d41c7795f', '3190 Parker Blvd, Vancouver, BC, V7P1Y7', '7780998765', 'ronw76@gmail.com', 'Ron Weasley','1976-10-29', 'Silver');
 #password "55tg55"
-INSERT INTO member(login, password, address, phoneNumber, email, name, birthDate, sType) VALUES ('willpark', X'aaab09a8fdd7d0ab9d2ff8f4563baa98', '25 111th St, Burnaby, BC, V7P0L0', '7786785474', 'willpark@shaw.ca', 'William Park','1975-05-05', 'Platinum');
+INSERT INTO member(mid, login, password, address, phoneNumber, email, name, birthDate, sType) VALUES (14, 'deepra', X'aaab09a8fdd7d0ab9d2ff8f4563baa98', '25 111th St, Burnaby, BC, V7P0L0', '7786785474', 'deepikachopra@shaw.ca', 'Deepika Chopra','1975-05-05', 'Platinum');
 #password "random9"
 
 
@@ -357,6 +361,7 @@ INSERT INTO canhave (rid, fid, classType) VALUES (100, 2, 'Skating');
 INSERT INTO canhave (rid, fid, classType) VALUES (101, 2, 'Skating');
 INSERT INTO canhave (rid, fid, classType) VALUES (102, 2, 'Skating');
 
+INSERT INTO canhave (rid, fid, classType) VALUES (100, 3, 'Swimming');
 INSERT INTO canhave (rid, fid, classType) VALUES (101, 3, 'GymSports');
 INSERT INTO canhave (rid, fid, classType) VALUES (101, 3, 'Dance');
 INSERT INTO canhave (rid, fid, classType) VALUES (101, 3, 'Cardio');
@@ -414,26 +419,34 @@ INSERT INTO class (time, title, capacity, rid, fid, iid) VALUES ('2020-04-11 18:
 
 INSERT INTO creditcard (num, expiryDate, csv, nameOnCard) VALUES (1234120000000000, '2021-02-28', 123, 'Ian Miller');
 INSERT INTO creditcard (num, expiryDate, csv, nameOnCard) VALUES (4567350000000000, '2020-07-31', 456, 'Lana Smith');
-INSERT INTO creditcard (num, expiryDate, csv, nameOnCard) VALUES (6789680000000000, '2024-01-31', 789, 'Mary Cavill');
+INSERT INTO creditcard (num, expiryDate, csv, nameOnCard) VALUES (6789680000000000, '2024-01-31', 789, 'Henry Cavill');
 INSERT INTO creditcard (num, expiryDate, csv, nameOnCard) VALUES (1234100000000000, '2022-04-30', 987, 'Saquon Barkley');
 INSERT INTO creditcard (num, expiryDate, csv, nameOnCard) VALUES (4321990000000000, '2025-06-30', 654, 'Russel Westbrrok');
+INSERT INTO creditcard (num, expiryDate, csv, nameOnCard) VALUES (4566777654323450, '2020-07-31', 778, 'Jae Bell');
+INSERT INTO creditcard (num, expiryDate, csv, nameOnCard) VALUES (4525252520000000, '2023-05-31', 221, 'Ben Carter');
+INSERT INTO creditcard (num, expiryDate, csv, nameOnCard) VALUES (4599007867656000, '2021-08-31', 247, 'Deepika Chopra');
+INSERT INTO creditcard (num, expiryDate, csv, nameOnCard) VALUES (4563789765112354, '2022-10-31', 790, 'Elizabeth Stewart');
 
-INSERT INTO papaccount (accountNumber, bankNumber, transitNumber) VALUES (1234567, 4027, 1);
-INSERT INTO papaccount (accountNumber, bankNumber, transitNumber) VALUES (4324324, 2334, 3);
-INSERT INTO papaccount (accountNumber, bankNumber, transitNumber) VALUES (5673456, 5672, 1);
-INSERT INTO papaccount (accountNumber, bankNumber, transitNumber) VALUES (9876543, 2342, 2);
-INSERT INTO papaccount (accountNumber, bankNumber, transitNumber) VALUES (3498764, 6943, 4);
+INSERT INTO papaccount (accountNumber, bankNumber, transitNumber) VALUES (1234567, 001, 4027);
+INSERT INTO papaccount (accountNumber, bankNumber, transitNumber) VALUES (4324324, 003, 2334);
+INSERT INTO papaccount (accountNumber, bankNumber, transitNumber) VALUES (5673456, 010, 5672);
+INSERT INTO papaccount (accountNumber, bankNumber, transitNumber) VALUES (9876543, 002, 2342);
+INSERT INTO papaccount (accountNumber, bankNumber, transitNumber) VALUES (3498764, 004, 6943);
 
-INSERT INTO payment (pid, frequency, creditCardNumber, accountNumber) VALUES (1, 'Monthly', 1234120000000000, null);
-INSERT INTO payment (pid, frequency, creditCardNumber, accountNumber) VALUES (2, 'Bi-weekly', 4567350000000000, null);
-INSERT INTO payment (pid, frequency, creditCardNumber, accountNumber) VALUES (3, 'Yearly', 6789680000000000, null);
-INSERT INTO payment (pid, frequency, creditCardNumber, accountNumber) VALUES (4, 'Monthly', 1234100000000000, null);
-INSERT INTO payment (pid, frequency, creditCardNumber, accountNumber) VALUES (5, 'Monthly', 4321990000000000, null);
-INSERT INTO payment (pid, frequency, creditCardNumber, accountNumber) VALUES (6, 'Bi-weekly', null, 1234567);
-INSERT INTO payment (pid, frequency, creditCardNumber, accountNumber) VALUES (7, 'Bi-monthly', null, 4324324);
-INSERT INTO payment (pid, frequency, creditCardNumber, accountNumber) VALUES (8, 'Monthly', null, 5673456);
-INSERT INTO payment (pid, frequency, creditCardNumber, accountNumber) VALUES (9, 'Monthly', null, 9876543);
-INSERT INTO payment (pid, frequency, creditCardNumber, accountNumber) VALUES (10, 'Yearly', null, 3498764);
+INSERT INTO payment (pid, frequency, creditCardNumber, accountNumber) VALUES (01, 'Monthly', 1234120000000000, null);
+INSERT INTO payment (pid, frequency, creditCardNumber, accountNumber) VALUES (02, 'Bi-weekly', 4567350000000000, null);
+INSERT INTO payment (pid, frequency, creditCardNumber, accountNumber) VALUES (03, 'Yearly', 6789680000000000, null);
+INSERT INTO payment (pid, frequency, creditCardNumber, accountNumber) VALUES (04, 'Monthly', 1234100000000000, null);
+INSERT INTO payment (pid, frequency, creditCardNumber, accountNumber) VALUES (05, 'Monthly', 4321990000000000, null);
+INSERT INTO payment (pid, frequency, creditCardNumber, accountNumber) VALUES (06, 'Bi-weekly', 4566777654323450, null);
+INSERT INTO payment (pid, frequency, creditCardNumber, accountNumber) VALUES (07, 'Bi-monthly', 4525252520000000, null);
+INSERT INTO payment (pid, frequency, creditCardNumber, accountNumber) VALUES (08, 'Monthly', 4599007867656000, null);
+INSERT INTO payment (pid, frequency, creditCardNumber, accountNumber) VALUES (09, 'Monthly', 4563789765112354, null);
+INSERT INTO payment (pid, frequency, creditCardNumber, accountNumber) VALUES (10, 'Yearly', null, 1234567);
+INSERT INTO payment (pid, frequency, creditCardNumber, accountNumber) VALUES (11, 'Bi-monthly', null, 4324324);
+INSERT INTO payment (pid, frequency, creditCardNumber, accountNumber) VALUES (12, 'Monthly', null, 5673456);
+INSERT INTO payment (pid, frequency, creditCardNumber, accountNumber) VALUES (13, 'Monthly', null, 9876543);
+INSERT INTO payment (pid, frequency, creditCardNumber, accountNumber) VALUES (14, 'Yearly', null, 3498764);
 
 INSERT INTO rates (mid, iid, rating) VALUES (1, 1, 1);
 INSERT INTO rates (mid, iid, rating) VALUES (2, 2, 3);
@@ -483,13 +496,21 @@ INSERT INTO takes (mid, time, rid, fid) VALUES (5, '2020-04-11 10:00:00', 100, 1
 INSERT INTO takes (mid, time, rid, fid) VALUES (5, '2020-04-11 14:00:00', 100, 5);
 INSERT INTO takes (mid, time, rid, fid) VALUES (6, '2020-04-11 18:00:00', 100, 5);
 
-INSERT INTO memberpayment (mid, pid) VALUES (1, 1);
-INSERT INTO memberpayment (mid, pid) VALUES (2, 5);
-INSERT INTO memberpayment (mid, pid) VALUES (3, 3);
-INSERT INTO memberpayment (mid, pid) VALUES (4, 4);
-INSERT INTO memberpayment (mid, pid) VALUES (5, 5);
-INSERT INTO memberpayment (mid, pid) VALUES (5, 6);
-INSERT INTO memberpayment (mid, pid) VALUES (6, 2);
+INSERT INTO memberpayment (mid, pid) VALUES (01, 01);
+INSERT INTO memberpayment (mid, pid) VALUES (02, 10);
+INSERT INTO memberpayment (mid, pid) VALUES (03, 03);
+INSERT INTO memberpayment (mid, pid) VALUES (04, 04);
+INSERT INTO memberpayment (mid, pid) VALUES (05, 05);
+INSERT INTO memberpayment (mid, pid) VALUES (06, 02);
+INSERT INTO memberpayment (mid, pid) VALUES (07, 06);
+INSERT INTO memberpayment (mid, pid) VALUES (08, 07);
+INSERT INTO memberpayment (mid, pid) VALUES (09, 11);
+INSERT INTO memberpayment (mid, pid) VALUES (10, 09);
+INSERT INTO memberpayment (mid, pid) VALUES (11, 12);
+INSERT INTO memberpayment (mid, pid) VALUES (12, 14);
+INSERT INTO memberpayment (mid, pid) VALUES (13, 13);
+INSERT INTO memberpayment (mid, pid) VALUES (14, 08);
+
 
 INSERT INTO cleans (fid, staffID) VALUES (1, 1);
 INSERT INTO cleans (fid, staffID) VALUES (2, 2);
