@@ -30,6 +30,9 @@
       </Button>
      <Button fx:id="register" prefHeight="27.0" prefWidth="77.0" text="Register" />
      <Button fx:id="deregister" layoutX="77.0" prefHeight="27.0" prefWidth="77.0" text="Deregister" />
+     <ComboBox fx:id="columnSelector" promptText="Filter Column" layoutX="150.0"/>
+     <TextField fx:id="valueSelector" promptText="Filter Value" layoutX="300.0"/>
+     <Button fx:id="filterButton" text="Filter" layoutX="450.0"/>
    </children>
   <stylesheets>
     <URL value="@mainStyle.css" />

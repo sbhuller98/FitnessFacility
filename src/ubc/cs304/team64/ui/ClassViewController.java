@@ -1,19 +1,21 @@
 package ubc.cs304.team64.ui;
 
 import javafx.animation.PauseTransition;
+import javafx.beans.binding.Binding;
+import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 
 import java.net.URL;
 import java.sql.Timestamp;
+import java.util.Arrays;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.ResourceBundle;
 
-import javafx.scene.control.TableView;
-import javafx.scene.control.Button;
+import javafx.scene.control.*;
 import javafx.util.Duration;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableRow;
+import ubc.cs304.team64.model.ClassColumn;
 import ubc.cs304.team64.model.Facility;
 import ubc.cs304.team64.model.ClassInfo;
 import ubc.cs304.team64.model.Member;
@@ -46,7 +48,17 @@ public class ClassViewController implements Initializable {
     @FXML
     private Button back;
 
+    @FXML private ComboBox<ClassColumn> columnSelector;
+    @FXML private TextField valueSelector;
+    @FXML private Button filterButton;
+
+    private Member member;
+    private Facility facility;
+
     public void startUp(Facility facility, Member member) {
+        this.member = member;
+        this.facility = facility;
+
         titleCol.setCellValueFactory(new ImmutablePropertyFactory<>(ClassInfo::getTitle));
         roomCol.setCellValueFactory(new ImmutablePropertyFactory<>(ClassInfo::getRoomNumber));
         descriptionCol.setCellValueFactory(new ImmutablePropertyFactory<>(ClassInfo::getDescription));
@@ -74,7 +86,6 @@ public class ClassViewController implements Initializable {
             setDisable(disable);
           }
         }));
-        mainTable.getItems().setAll(SetUp(facility, member));
 
         PauseTransition pt = new PauseTransition(Duration.millis(2));
         pt.setOnFinished((e) -> mainTable.getSelectionModel().clearSelection());
@@ -105,15 +116,15 @@ public class ClassViewController implements Initializable {
             classInfo -> classInfo == null || classInfo.IsOwnerTaking()));
         deregister.disableProperty().bind(new FunctionalBinding<>(mainTable.getSelectionModel().selectedItemProperty(),
             classInfo -> classInfo == null || !classInfo.IsOwnerTaking()));
-        register.setOnAction(t -> register(member));
-        deregister.setOnAction(t -> deregister(member));
+        register.setOnAction(t -> register());
+        deregister.setOnAction(t -> deregister());
+
+        filterButton.disableProperty().bind(columnSelector.valueProperty().isNull());
+        valueSelector.disableProperty().bind(new FunctionalBinding<>(columnSelector.valueProperty(), c -> c == null || c == ClassColumn.NONE));
+        columnSelector.setItems(FXCollections.observableList(Arrays.asList(ClassColumn.values())));
+        filterButton.setOnAction(e -> filter());
 
         back.setOnAction(e -> FacilityController.setStage(facility, member));
-    }
-
-    public Collection<ClassInfo> SetUp (Facility facility, Member member) {
-        Collection<ClassInfo> allClasses = Main.connectionHandler.getClasses(facility, member);
-        return allClasses;
     }
 
 
@@ -124,7 +135,7 @@ public class ClassViewController implements Initializable {
         Main.updateStage(loader.getScene(), facility.getName());
     }
 
-    private void register(Member member) {
+    private void register() {
         ClassInfo selected = mainTable.getSelectionModel().getSelectedItem();
         try {
           Main.connectionHandler.registerMemberForClass(selected);
@@ -132,10 +143,10 @@ public class ClassViewController implements Initializable {
           e.printStackTrace();
           // TODO handle
         }
-        ClassViewController.setStage(selected.getFacility(), member);
+        filter();
     }
 
-    private void deregister(Member member) {
+    private void deregister() {
         ClassInfo selected = mainTable.getSelectionModel().getSelectedItem();
         try {
           Main.connectionHandler.deregisterMemberForClass(selected);
@@ -143,7 +154,12 @@ public class ClassViewController implements Initializable {
           e.printStackTrace();
           // TODO handle
         }
-        ClassViewController.setStage(selected.getFacility(), member);
+        filter();
+    }
+
+    private void filter() {
+      mainTable.setItems(FXCollections.observableList(Main.connectionHandler.getClasses(facility, member, columnSelector.getValue(), valueSelector.getText())));
+      mainTable.refresh();
     }
 
     @Override

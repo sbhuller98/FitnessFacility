@@ -5,11 +5,9 @@ import java.security.InvalidParameterException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.sql.*;
+import java.sql.Date;
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 public class DatabaseConnectionHandler {
   private Connection connection;
@@ -307,20 +305,20 @@ public class DatabaseConnectionHandler {
     }
   }
 
-  public Collection<ClassInfo> getClasses(Facility facility){
-    return getClasses(facility, null);
-  }
-
-  public Collection<ClassInfo> getClasses(Facility facility, Member member){
+  public List<ClassInfo> getClasses(Facility facility, Member member, ClassColumn colName, String colVal){
+    if(colName == ClassColumn.NONE){
+      colVal = "";
+    }
     try {
       PreparedStatement ps = connection.prepareStatement(
           "SELECT *, COUNT(t.mid) as taking, " +
-                  "? IN (SELECT mid FROM takes t2 WHERE c.time = t2.time AND c.rid = t2.rid AND c.fid = t2.fid) as isMemberTaking " +
-               "FROM takes t NATURAL RIGHT OUTER JOIN class c NATURAL JOIN classt ct NATURAL JOIN instructor i " +
-               "WHERE fid = ? AND time > CURRENT_TIMESTAMP " +
-               "GROUP BY c.time, c.rid, c.fid");
+              "        ? IN (SELECT mid FROM takes t2 WHERE c.time = t2.time AND c.rid = t2.rid AND c.fid = t2.fid) as isMemberTaking " +
+              "    FROM takes t NATURAL RIGHT OUTER JOIN class c NATURAL JOIN classt ct NATURAL JOIN instructor i " +
+              "    WHERE fid = ? AND time > CURRENT_TIMESTAMP AND "+ colName.databaseName + " LIKE ? " +
+              "    GROUP BY c.time, c.rid, c.fid");
       ps.setInt(1, member == null ? -1 : member.getMid());
       ps.setInt(2, facility.getFid());
+      ps.setString(3, colVal);
       return getClassesBase(facility, member, ps, true);
     } catch (SQLException e) {
       throw new Error(e);
@@ -333,7 +331,7 @@ public class DatabaseConnectionHandler {
      "SELECT *, COUNT(t.mid) as taking " +
           "FROM  takes t NATURAL RIGHT OUTER JOIN class c NATURAL JOIN classt NATURAL JOIN instructor i " +
           "WHERE fid = ? AND time > CURRENT_TIMESTAMP AND ? IN (SELECT mid FROM takes t2 WHERE c.time = t2.time AND c.rid = t2.rid AND c.fid = t2.fid) " +
-          "GROUP BY c.time, c.title, c.fid");
+          "GROUP BY c.time, c.rid, c.fid");
       ps.setInt(1, facility.getFid());
       ps.setInt(2, member.getMid());
       return getClassesBase(facility, member, ps, false);
@@ -342,8 +340,8 @@ public class DatabaseConnectionHandler {
     }
   }
 
-  private Collection<ClassInfo> getClassesBase(Facility facility, Member member, PreparedStatement ps, boolean hasExtraField) throws SQLException {
-    Collection<ClassInfo> classes = new ArrayList<>();
+  private List<ClassInfo> getClassesBase(Facility facility, Member member, PreparedStatement ps, boolean hasExtraField) throws SQLException {
+    List<ClassInfo> classes = new ArrayList<>();
     ResultSet rs = ps.executeQuery();
     while (rs.next()){
       ClassInfo classInfo = new ClassInfo (
