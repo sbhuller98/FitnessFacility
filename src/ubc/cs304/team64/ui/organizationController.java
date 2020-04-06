@@ -31,7 +31,7 @@ public class organizationController implements Initializable {
     }
 
     public void setUp(Member member) {
-        Instructor top = Main.connectionHandler.getTopInstructor(member);
+        Instructor top = Main.connectionHandler.getBestInstructor();
         back.setOnAction(event -> FacilitiesController.setStage(member));
         String personalOutput = new StringBuilder()
                 .append("Thank you for choosing GreaterVan Fitness. It has been our ,\n")
