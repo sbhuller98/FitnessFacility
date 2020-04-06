@@ -311,7 +311,7 @@ INSERT INTO member(mid, login, password, address, phoneNumber, email, name, birt
 #password "123456"
 INSERT INTO member(mid, login, password, address, phoneNumber, email, name, birthDate, sType) VALUES (5, 'russel_wesbrrok', X'35d4785ecc5e3dabfc2edf7542392837', '1243 Westwood Drive, Coquitlam, BC, V3B4S7', '7782347542', 'russel_wesbrrok@shaw.ca', 'Russel Westbrrok', '1970-04-15', 'Platinum');
 #password "g0w0_3EWnf"
-INSERT INTO member(mid, login, password, address, phoneNumber, email, name, birthDate, sType) VALUES (6, 'lana_smith', X'e99a18c428cb38d5f260853678922e03', '6237 134 St, Langley, BC, V3X1L7', '6044530927', 'lanasmith3@gmail.com', 'Lana Smith','1984-03-12', 'Silver');
+INSERT INTO member(mid, login, password, address, phoneNumber, email, name, birthDate, sType) VALUES (6, 'lana_smith', X'e99a18c428cb38d5f260853678922e03', '6237 134 St, Langley, BC, V3X1L7', '6044530927', 'lanasmith3@gmail.com', 'Lana Smith','1984-03-12', 'Gold');
 #password "abc123"
 INSERT INTO member(mid, login, password, address, phoneNumber, email, name, birthDate, sType) VALUES (7, 'jaebell', X'a50a12eee7caab7848728e0a59d96852', '7117 4th West St, Vancouver, BC, V761X3', '6044998076', 'jaebell@yahoo.ca', 'Jae Bell','1987-03-18', 'Gold');
 #password "twenty20"
@@ -410,7 +410,7 @@ INSERT INTO canhave (rid, fid, classType) VALUES (105, 5, 'Tennis');
 
 INSERT INTO class (time, title, capacity, rid, fid, iid) VALUES ('2020-04-11 16:30:00', 'Abs of Steel', 30, 101, 1, 1);
 INSERT INTO class (time, title, capacity, rid, fid, iid) VALUES ('2020-04-18 16:30:00', 'Abs of Steel', 30, 101, 1, 1);
-INSERT INTO class (time, title, capacity, rid, fid, iid) VALUES ('2020-04-25 16:30:00', 'Abs of Steel', 30, 101 1, 1);
+INSERT INTO class (time, title, capacity, rid, fid, iid) VALUES ('2020-04-25 16:30:00', 'Abs of Steel', 30, 101, 1, 1);
 INSERT INTO class (time, title, capacity, rid, fid, iid) VALUES ('2020-04-13 10:00:00', 'Running Machine', 15, 102, 3, 2);
 INSERT INTO class (time, title, capacity, rid, fid, iid) VALUES ('2020-04-20 10:00:00', 'Running Machine', 15, 102, 3, 2);
 INSERT INTO class (time, title, capacity, rid, fid, iid) VALUES ('2020-04-27 10:00:00', 'Running Machine', 15, 102, 3, 2);
@@ -536,6 +536,7 @@ INSERT INTO letsyoutake (classType, sType) VALUES ('HIIT', 'Gold');
 INSERT INTO letsyoutake (classType, sType) VALUES ('GymSports', 'Gold');
 INSERT INTO letsyoutake (classType, sType) VALUES ('Dance', 'Gold');
 INSERT INTO letsyoutake (classType, sType) VALUES ('BootCamp', 'Gold');
+INSERT INTO letsyoutake (classType, sType) VALUES ('Swimming', 'Gold');
 INSERT INTO letsyoutake (classType, sType) VALUES ('Cardio', 'Platinum');
 INSERT INTO letsyoutake (classType, sType) VALUES ('HIIT', 'Platinum');
 INSERT INTO letsyoutake (classType, sType) VALUES ('GymSports', 'Platinum');
@@ -544,13 +545,14 @@ INSERT INTO letsyoutake (classType, sType) VALUES ('BootCamp', 'Platinum');
 INSERT INTO letsyoutake (classType, sType) VALUES ('Swimming', 'Platinum');
 INSERT INTO letsyoutake (classType, sType) VALUES ('Skating', 'Platinum');
 
-INSERT INTO takes (mid, time, rid, fid) VALUES (1, '2020-04-11 16:30:00', 101, 1);
-INSERT INTO takes (mid, time, rid, fid) VALUES (2, '2020-04-27 10:00:00', 102, 3);
-INSERT INTO takes (mid, time, rid, fid) VALUES (3, '2020-04-18 18:00:00', 104, 4);
-INSERT INTO takes (mid, time, rid, fid) VALUES (4, '2020-04-14 13:00:00', 101, 1);
-INSERT INTO takes (mid, time, rid, fid) VALUES (5, '2020-04-17 10:00:00', 103, 3);
-INSERT INTO takes (mid, time, rid, fid) VALUES (5, '2020-04-11 16:30:00', 101, 1);
-INSERT INTO takes (mid, time, rid, fid) VALUES (6, '2020-04-18 18:00:00', 104, 4);
+
+INSERT INTO takes (mid, time, rid, fid) VALUES (1, '2020-04-18 20:00:00', 100, 4);
+INSERT INTO takes (mid, time, rid, fid) VALUES (2, '2020-04-25 20:00:00', 100, 4);
+INSERT INTO takes (mid, time, rid, fid) VALUES (3, '2020-04-22 16:00:00', 100, 5);
+INSERT INTO takes (mid, time, rid, fid) VALUES (4, '2020-04-27 10:00:00', 102, 3);
+INSERT INTO takes (mid, time, rid, fid) VALUES (5, '2020-04-15 18:00:00', 101, 3);
+INSERT INTO takes (mid, time, rid, fid) VALUES (5, '2020-04-25 20:00:00', 100, 4);
+INSERT INTO takes (mid, time, rid, fid) VALUES (6, '2020-04-22 11:00:00', 103, 3);
 
 INSERT INTO memberpayment (mid, pid) VALUES (1, 1);
 INSERT INTO memberpayment (mid, pid) VALUES (2, 10);
