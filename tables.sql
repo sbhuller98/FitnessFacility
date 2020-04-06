@@ -449,11 +449,34 @@ INSERT INTO payment (pid, frequency, creditCardNumber, accountNumber) VALUES (12
 INSERT INTO payment (pid, frequency, creditCardNumber, accountNumber) VALUES (13, 'Monthly', null, 9876543);
 INSERT INTO payment (pid, frequency, creditCardNumber, accountNumber) VALUES (14, 'Yearly', null, 3498764);
 
-INSERT INTO rates (mid, iid, rating) VALUES (1, 1, 1);
-INSERT INTO rates (mid, iid, rating) VALUES (2, 2, 3);
-INSERT INTO rates (mid, iid, rating) VALUES (3, 3, 3);
-INSERT INTO rates (mid, iid, rating) VALUES (4, 4, 3);
-INSERT INTO rates (mid, iid, rating) VALUES (5, 5, 4);
+INSERT INTO rates (mid, iid, rating) VALUES (01, 4, 1);
+INSERT INTO rates (mid, iid, rating) VALUES (01, 5, 5);
+INSERT INTO rates (mid, iid, rating) VALUES (02, 2, 3);
+INSERT INTO rates (mid, iid, rating) VALUES (02, 4, 4);
+INSERT INTO rates (mid, iid, rating) VALUES (03, 3, 3);
+INSERT INTO rates (mid, iid, rating) VALUES (03, 2, 5);
+INSERT INTO rates (mid, iid, rating) VALUES (04, 3, 5);
+INSERT INTO rates (mid, iid, rating) VALUES (04, 4, 3);
+INSERT INTO rates (mid, iid, rating) VALUES (05, 2, 4);
+INSERT INTO rates (mid, iid, rating) VALUES (05, 5, 5);
+INSERT INTO rates (mid, iid, rating) VALUES (06, 1, 1);
+INSERT INTO rates (mid, iid, rating) VALUES (06, 2, 3);
+INSERT INTO rates (mid, iid, rating) VALUES (07, 4, 3);
+INSERT INTO rates (mid, iid, rating) VALUES (07, 2, 3);
+INSERT INTO rates (mid, iid, rating) VALUES (08, 3, 2);
+INSERT INTO rates (mid, iid, rating) VALUES (08, 4, 3);
+INSERT INTO rates (mid, iid, rating) VALUES (09, 5, 4);
+INSERT INTO rates (mid, iid, rating) VALUES (09, 4, 3);
+INSERT INTO rates (mid, iid, rating) VALUES (10, 1, 4);
+INSERT INTO rates (mid, iid, rating) VALUES (10, 5, 5);
+INSERT INTO rates (mid, iid, rating) VALUES (11, 2, 1);
+INSERT INTO rates (mid, iid, rating) VALUES (11, 1, 1);
+INSERT INTO rates (mid, iid, rating) VALUES (12, 3, 3);
+INSERT INTO rates (mid, iid, rating) VALUES (12, 2, 1);
+INSERT INTO rates (mid, iid, rating) VALUES (13, 4, 3);
+INSERT INTO rates (mid, iid, rating) VALUES (13, 5, 5);
+INSERT INTO rates (mid, iid, rating) VALUES (14, 1, 3);
+INSERT INTO rates (mid, iid, rating) VALUES (14, 4, 4);
 
 INSERT INTO letsyoutake (classType, sType) VALUES ('Cardio', 'Bronze');
 INSERT INTO letsyoutake (classType, sType) VALUES ('BootCamp', 'Silver');
@@ -511,7 +534,6 @@ INSERT INTO memberpayment (mid, pid) VALUES (11, 12);
 INSERT INTO memberpayment (mid, pid) VALUES (12, 14);
 INSERT INTO memberpayment (mid, pid) VALUES (13, 13);
 INSERT INTO memberpayment (mid, pid) VALUES (14, 08);
-
 
 INSERT INTO cleans (fid, staffID) VALUES (1, 1);
 INSERT INTO cleans (fid, staffID) VALUES (2, 2);
