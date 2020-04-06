@@ -9,7 +9,7 @@ Created by: David Ewert, Sukhman Bhuller, Hasti Delfi
 
 1) Data base setup:
 
-Please have a valid SQL Server up and running before starting.  Please run the the included tables.sql file.  This will add the necessary information to your database.
+Please have a valid MySQL Server up and running on localhost:3306 before starting and set its root password to be "CPSC304g64".  Please run the the included tables.sql file.  This will add the necessary information to your database.
 
 2) Running the java file:
 
