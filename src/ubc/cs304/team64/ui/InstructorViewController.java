@@ -9,10 +9,7 @@ import java.net.URL;
 import java.util.Collection;
 import java.util.ResourceBundle;
 
-import javafx.scene.control.Button;
-import javafx.scene.control.Slider;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import ubc.cs304.team64.model.Facility;
 import ubc.cs304.team64.model.Instructor;
 import ubc.cs304.team64.model.Member;
@@ -39,6 +36,7 @@ public class InstructorViewController implements Initializable {
     private Button rate;
 
     @FXML private Button back;
+    @FXML private ComboBox<String> iViews;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
