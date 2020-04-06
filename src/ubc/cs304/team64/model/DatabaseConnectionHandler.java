@@ -364,6 +364,38 @@ public class DatabaseConnectionHandler {
     return classes;
   }
 
+    public Instructor getTopInstructor(Member member){
+        try {
+            PreparedStatement ps = connection.prepareStatement("SELECT i.*, r.rating FROM ratedinstructors i NATURAL LEFT OUTER JOIN " +
+                    "(SELECT * FROM rates WHERE rating = (SELECT MAX(rating) FROM rates)) r " +
+                    "WHERE i.iid IN (SELECT c.iid FROM class c WHERE c.time > CURRENT_TIMESTAMP AND c.iid = iid)");
+            //ps.setInt(1, member.getMid());
+            ResultSet rs = ps.executeQuery();
+            Collection<Instructor> retVal = new ArrayList<>();
+            Instructor i = null;
+            while (rs.next()){
+                String memberRating = String.valueOf(rs.getInt("rating"));
+                if(rs.wasNull()){
+                    memberRating = "";
+                }
+                i = new Instructor(
+                        rs.getInt("iid"),
+                        rs.getString("name"),
+                        rs.getDouble("avgRating"),
+                        rs.getDouble("salary"),
+                        memberRating,
+                        member
+
+                );
+
+            }
+            ps.close();
+            return i;
+        } catch (SQLException e) {
+            throw new Error(e);
+        }
+    }
+
   public Collection<Instructor> getInstructorsFromFacility(Facility facility, Member member){
     try {
       PreparedStatement ps = connection.prepareStatement("SELECT i.*, r.rating FROM ratedinstructors i NATURAL LEFT OUTER JOIN " +
