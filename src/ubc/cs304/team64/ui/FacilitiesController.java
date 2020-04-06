@@ -33,7 +33,7 @@ public class FacilitiesController implements Initializable {
   }
 
   public void setUp(Member m){
-      organization.setOnAction(e -> organizationController.setStage(m));
+      organization.setOnAction(e -> OrganizationController.setStage(m));
     Collection<Facility> facilities = Main.connectionHandler.getFacilities();
     int i = 0;
     for(Facility f : facilities){

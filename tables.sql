@@ -1,4 +1,4 @@
-SET sql_mode=(SELECT REPLACE(@@sql_mode, 'ONLY_FULL_GROUP_BY', ''));
+SET GLOBAL sql_mode=(SELECT REPLACE(@@sql_mode,'ONLY_FULL_GROUP_BY',''));
 CREATE DATABASE IF NOT EXISTS Project;
 USE Project;
 CREATE TABLE Facility(
@@ -242,7 +242,6 @@ INSERT INTO classtype (title) VALUES ('HIIT');
 INSERT INTO classtype (title) VALUES ('GymSports');
 INSERT INTO classtype (title) VALUES ('Swimming');
 INSERT INTO classtype (title) VALUES ('Skating');
-INSERT INTO classtype (title) VALUES ('Basketball');
 INSERT INTO classtype (title) VALUES ('Tennis');
 
 INSERT INTO instructor (name, salary) VALUES ('Carlos Hyde', 60000);
@@ -316,7 +315,7 @@ INSERT INTO member(mid, login, password, address, phoneNumber, email, name, birt
 #password "abc123"
 INSERT INTO member(mid, login, password, address, phoneNumber, email, name, birthDate, sType) VALUES (7, 'jaebell', X'a50a12eee7caab7848728e0a59d96852', '7117 4th West St, Vancouver, BC, V761X3', '6044998076', 'jaebell@yahoo.ca', 'Jae Bell','1987-03-18', 'Gold');
 #password "twenty20"
-INSERT INTO member(mid, login, password, address, phoneNumber, email, name, birthDate, sType) VALUES (8'ben_carter', X'c4bb408471eb7727e59e11385b0a8c19', '4-44 Westbrook Mall, Vancouver, BC, V6S5U5', '7783353535', 'carterben@gmail.com', 'Ben Carter','1996-01-22', 'Student');
+INSERT INTO member(mid, login, password, address, phoneNumber, email, name, birthDate, sType) VALUES (8, 'ben_carter', X'c4bb408471eb7727e59e11385b0a8c19', '4-44 Westbrook Mall, Vancouver, BC, V6S5U5', '7783353535', 'carterben@gmail.com', 'Ben Carter','1996-01-22', 'Student');
 #password "hihihi"
 INSERT INTO member(mid, login, password, address, phoneNumber, email, name, birthDate, sType) VALUES (9, 'hpotter', X'6403e55883a8a4abf62af4ef7cc85dc1', '545 Pemberton Ave, North Vancouver, BC, V3M0L7', '6049886151', 'hpotter00@gmail.com', 'Harry Potter','1980-08-31', 'Gold');
 #password "hedwig"
@@ -356,7 +355,6 @@ INSERT INTO canhave (rid, fid, classType) VALUES (102, 1, 'BootCamp');
 INSERT INTO canhave (rid, fid, classType) VALUES (102, 1, 'GymSports');
 INSERT INTO canhave (rid, fid, classType) VALUES (103, 1, 'Tennis');
 INSERT INTO canhave (rid, fid, classType) VALUES (104, 1, 'Tennis');
-INSERT INTO canhave (rid, fid, classType) VALUES (105, 1, 'Basketball');
 
 INSERT INTO canhave (rid, fid, classType) VALUES (100, 2, 'Skating');
 INSERT INTO canhave (rid, fid, classType) VALUES (101, 2, 'Skating');
@@ -411,48 +409,19 @@ INSERT INTO canhave (rid, fid, classType) VALUES (103, 5, 'Tennis');
 INSERT INTO canhave (rid, fid, classType) VALUES (104, 5, 'Tennis');
 INSERT INTO canhave (rid, fid, classType) VALUES (105, 5, 'Tennis');
 
-INSERT INTO class (time, title, capacity, rid, fid, iid) VALUES ('2020-04-11 16:30:00', 'Abs of Steel', 30, 101, 1, 1);
-INSERT INTO class (time, title, capacity, rid, fid, iid) VALUES ('2020-04-18 16:30:00', 'Abs of Steel', 30, 101, 1, 1);
-INSERT INTO class (time, title, capacity, rid, fid, iid) VALUES ('2020-04-25 16:30:00', 'Abs of Steel', 30, 101 1, 1);
-INSERT INTO class (time, title, capacity, rid, fid, iid) VALUES ('2020-04-13 10:00:00', 'Running Machine', 15, 102, 3, 2);
-INSERT INTO class (time, title, capacity, rid, fid, iid) VALUES ('2020-04-20 10:00:00', 'Running Machine', 15, 102, 3, 2);
-INSERT INTO class (time, title, capacity, rid, fid, iid) VALUES ('2020-04-27 10:00:00', 'Running Machine', 15, 102, 3, 2);
-INSERT INTO class (time, title, capacity, rid, fid, iid) VALUES ('2020-04-17 14:00:00', 'Running Machine', 20, 102, 3, 2);
-INSERT INTO class (time, title, capacity, rid, fid, iid) VALUES ('2020-04-24 14:00:00', 'Running Machine', 20, 102, 3, 2);
-INSERT INTO class (time, title, capacity, rid, fid, iid) VALUES ('2020-05-01 14:00:00', 'Running Machine', 20, 102, 3, 2);
-INSERT INTO class (time, title, capacity, rid, fid, iid) VALUES ('2020-04-14 13:00:00', 'Shapetastic', 25, 101, 1, 1);
-INSERT INTO class (time, title, capacity, rid, fid, iid) VALUES ('2020-04-21 13:00:00', 'Shapetastic', 25, 101, 1, 1);
-INSERT INTO class (time, title, capacity, rid, fid, iid) VALUES ('2020-04-28 13:00:00', 'Shapetastic', 25, 101, 1, 1);
+INSERT INTO class (time, title, capacity, rid, fid, iid) VALUES ('2020-04-11 16:30:00', 'Abs of Steel', 30, 102, 4, 1);
+INSERT INTO class (time, title, capacity, rid, fid, iid) VALUES ('2020-04-11 10:00:00', 'Running Machine', 15, 100, 1, 2);
+INSERT INTO class (time, title, capacity, rid, fid, iid) VALUES ('2020-04-11 13:00:00', 'Shapetastic', 25, 103, 4, 3);
 INSERT INTO class (time, title, capacity, rid, fid, iid) VALUES ('2020-04-11 20:00:00', 'Basketball Skills I', 40, 100, 4, 4);
-INSERT INTO class (time, title, capacity, rid, fid, iid) VALUES ('2020-04-18 20:00:00', 'Basketball Skills I', 40, 100, 4, 4);
-INSERT INTO class (time, title, capacity, rid, fid, iid) VALUES ('2020-04-25 20:00:00', 'Basketball Skills I', 40, 100, 4, 4);
-INSERT INTO class (time, title, capacity, rid, fid, iid) VALUES ('2020-04-15 16:00:00', 'World Dance', 30, 100, 5, 5);
-INSERT INTO class (time, title, capacity, rid, fid, iid) VALUES ('2020-04-22 16:00:00', 'World Dance', 30, 100, 5, 5);
-INSERT INTO class (time, title, capacity, rid, fid, iid) VALUES ('2020-04-29 16:00:00', 'World Dance', 30, 100, 5, 5);
-INSERT INTO class (time, title, capacity, rid, fid, iid) VALUES ('2020-04-11 18:00:00', 'World Dance', 20, 104, 4, 5);
-INSERT INTO class (time, title, capacity, rid, fid, iid) VALUES ('2020-04-18 18:00:00', 'World Dance', 20, 104, 4, 5);
-INSERT INTO class (time, title, capacity, rid, fid, iid) VALUES ('2020-04-25 18:00:00', 'World Dance', 20, 104, 4, 5);
-INSERT INTO class (time, title, capacity, rid, fid, iid) VALUES ('2020-04-15 16:30:00', 'World Tennis', 20, 103, 5, 4);
-INSERT INTO class (time, title, capacity, rid, fid, iid) VALUES ('2020-04-22 16:30:00', 'World Tennis', 20, 103, 5, 4);
-INSERT INTO class (time, title, capacity, rid, fid, iid) VALUES ('2020-04-29 16:30:00', 'World Tennis', 20, 103, 5, 4);
-INSERT INTO class (time, title, capacity, rid, fid, iid) VALUES ('2020-04-15 11:00:00', 'Lil Dippers Swimming Lessons', 1, 103, 3, 2);
-INSERT INTO class (time, title, capacity, rid, fid, iid) VALUES ('2020-04-22 11:00:00', 'Lil Dippers Swimming Lessons', 1, 103, 3, 2);
-INSERT INTO class (time, title, capacity, rid, fid, iid) VALUES ('2020-04-29 11:00:00', 'Lil Dippers Swimming Lessons', 1, 103, 3, 2);
-INSERT INTO class (time, title, capacity, rid, fid, iid) VALUES ('2020-04-17 10:00:00', 'Lil Dippers Swimming Lessons', 12, 103, 3, 2);
-INSERT INTO class (time, title, capacity, rid, fid, iid) VALUES ('2020-04-24 10:00:00', 'Lil Dippers Swimming Lessons', 12, 103, 3, 2);
-INSERT INTO class (time, title, capacity, rid, fid, iid) VALUES ('2020-05-01 10:00:00', 'Lil Dippers Swimming Lessons', 12, 103, 3, 2);
-INSERT INTO class (time, title, capacity, rid, fid, iid) VALUES ('2020-04-15 18:00:00', 'Personal Training Classes', 1, 101, 3, 3);
-INSERT INTO class (time, title, capacity, rid, fid, iid) VALUES ('2020-04-22 18:00:00', 'Personal Training Classes', 1, 101, 3, 3);
-INSERT INTO class (time, title, capacity, rid, fid, iid) VALUES ('2020-04-29 18:00:00', 'Personal Training Classes', 1, 101, 3, 3);
-INSERT INTO class (time, title, capacity, rid, fid, iid) VALUES ('2020-04-15 18:00:00', 'Personal Training Classes', 30, 101, 3, 3);
-INSERT INTO class (time, title, capacity, rid, fid, iid) VALUES ('2020-04-22 18:00:00', 'Personal Training Classes', 30, 101, 3, 3);
-INSERT INTO class (time, title, capacity, rid, fid, iid) VALUES ('2020-04-29 18:00:00', 'Personal Training Classes', 30, 101, 3, 3);
-INSERT INTO class (time, title, capacity, rid, fid, iid) VALUES ('2020-04-11 12:00:00', 'Learn to Skate', 1, 100, 2, 4);
-INSERT INTO class (time, title, capacity, rid, fid, iid) VALUES ('2020-04-18 12:00:00', 'Learn to Skate', 1, 100, 2, 4);
-INSERT INTO class (time, title, capacity, rid, fid, iid) VALUES ('2020-04-25 12:00:00', 'Learn to Skate', 1, 100, 2, 4);
-INSERT INTO class (time, title, capacity, rid, fid, iid) VALUES ('2020-04-16 12:00:00', 'Learn to Skate', 12, 101, 2, 4);
-INSERT INTO class (time, title, capacity, rid, fid, iid) VALUES ('2020-04-23 12:00:00', 'Learn to Skate', 12, 101, 2, 4);
-INSERT INTO class (time, title, capacity, rid, fid, iid) VALUES ('2020-04-30 12:00:00', 'Learn to Skate', 12, 101, 2, 4);
+INSERT INTO class (time, title, capacity, rid, fid, iid) VALUES ('2020-04-11 14:00:00', 'Running Machine', 20, 100, 5, 5);
+INSERT INTO class (time, title, capacity, rid, fid, iid) VALUES ('2020-04-11 18:00:00', 'World Dance', 30, 100, 5, 5);
+INSERT INTO class (time, title, capacity, rid, fid, iid) VALUES ('2020-04-11 12:00:00', 'Lil Dippers Swimming Lessons', 30, 103, 3, 3);
+INSERT INTO class (time, title, capacity, rid, fid, iid) VALUES ('2020-04-11 11:00:00', 'Learn to Skate', 30, 100, 2, 2);
+INSERT INTO class (time, title, capacity, rid, fid, iid) VALUES ('2020-04-11 14:00:00', 'Learn to Skate', 30, 101, 2, 4);
+INSERT INTO class (time, title, capacity, rid, fid, iid) VALUES ('2020-04-11 10:00:00', 'World Tennis', 20, 103, 1, 2);
+INSERT INTO class (time, title, capacity, rid, fid, iid) VALUES ('2020-04-11 14:00:00', 'World Tennis', 15, 104, 1, 2);
+INSERT INTO class (time, title, capacity, rid, fid, iid) VALUES ('2020-04-11 12:00:00', 'World Tennis', 25, 103, 1, 2);
+INSERT INTO class (time, title, capacity, rid, fid, iid) VALUES ('2020-04-11 16:00:00', 'World Tennis', 10, 104, 1, 2);
 
 INSERT INTO creditcard (num, expiryDate, csv, nameOnCard) VALUES (1234120000000000, '2021-02-28', 123, 'Ian Miller');
 INSERT INTO creditcard (num, expiryDate, csv, nameOnCard) VALUES (4567350000000000, '2020-07-31', 456, 'Lana Smith');

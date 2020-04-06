@@ -4,7 +4,6 @@ import javafx.animation.Animation;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
-import javafx.util.StringConverter;
 import ubc.cs304.team64.model.Facility;
 import ubc.cs304.team64.model.Member;
 import ubc.cs304.team64.model.Payment;
@@ -13,13 +12,10 @@ import ubc.cs304.team64.util.RegexStringConverter;
 import ubc.cs304.team64.util.StrokeTransition;
 
 import java.net.URL;
-import java.sql.Date;
-import java.sql.SQLOutput;
 import java.time.LocalDate;
 import java.util.*;
-import java.util.function.Predicate;
 
-public class updateInfoController implements Initializable {
+public class UpdateInfoController implements Initializable {
     private Member member1;
     private Facility facility1;
     @FXML private TextField name;
@@ -84,7 +80,7 @@ public class updateInfoController implements Initializable {
 
       csv.setTextFormatter(new TextFormatter<>(new RegexStringConverter("\\d{3}", inputs.get(csv))));
 
-      expiryDate.setTextFormatter(new TextFormatter<>(new RegexStringConverter("(0[1-9]|1[0-2])/\\d{2}", inputs.get(expiryDate), updateInfoController::autoCorrectExpiryDate)));
+      expiryDate.setTextFormatter(new TextFormatter<>(new RegexStringConverter("(0[1-9]|1[0-2])/\\d{2}", inputs.get(expiryDate), UpdateInfoController::autoCorrectExpiryDate)));
 
       back.setOnAction(e -> MyAccountController.setStage(facility1, member1));
     }
@@ -92,7 +88,7 @@ public class updateInfoController implements Initializable {
 
 
     static void setStage(Facility facility, Member member){
-        FXMLLoaderWrapper<updateInfoController> loader = new FXMLLoaderWrapper<>("updateInfo.fxml");
+        FXMLLoaderWrapper<UpdateInfoController> loader = new FXMLLoaderWrapper<>("updateInfo.fxml");
         loader.getController().setUp(member, facility);
         Main.updateStage(loader.getScene(), facility.getName());
     }

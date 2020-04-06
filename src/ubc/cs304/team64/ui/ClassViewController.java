@@ -27,26 +27,18 @@ import ubc.cs304.team64.util.ImmutablePropertyFactory;
 public class ClassViewController implements Initializable {
 
 
-    @FXML
-    private TableView<ClassInfo> mainTable;
-    @FXML
-    private TableColumn<ClassInfo, String> titleCol;
-    @FXML
-    private TableColumn<ClassInfo, Timestamp> timeCol;
-    @FXML
-    private TableColumn<ClassInfo, Integer> roomCol;
-    @FXML
-    private TableColumn<ClassInfo, String> descriptionCol;
-    @FXML
-    private TableColumn<ClassInfo, String> capacityCol;
-    @FXML
-    private TableColumn<ClassInfo, String> instructorCol;
-    @FXML
-    private Button register;
-    @FXML
-    private Button deregister;
-    @FXML
-    private Button back;
+    @FXML private TableView<ClassInfo> mainTable;
+    @FXML private TableColumn<ClassInfo, String> titleCol;
+    @FXML private TableColumn<ClassInfo, Timestamp> timeCol;
+    @FXML private TableColumn<ClassInfo, Integer> roomCol;
+    @FXML private TableColumn<ClassInfo, String> descriptionCol;
+    @FXML private TableColumn<ClassInfo, String> capacityCol;
+    @FXML private TableColumn<ClassInfo, String> instructorCol;
+    @FXML private TableColumn<ClassInfo, String> typeCol;
+
+    @FXML private Button register;
+    @FXML private Button deregister;
+    @FXML private Button back;
 
     @FXML private ComboBox<ClassColumn> columnSelector;
     @FXML private TextField valueSelector;
@@ -62,6 +54,7 @@ public class ClassViewController implements Initializable {
         titleCol.setCellValueFactory(new ImmutablePropertyFactory<>(ClassInfo::getTitle));
         roomCol.setCellValueFactory(new ImmutablePropertyFactory<>(ClassInfo::getRoomNumber));
         descriptionCol.setCellValueFactory(new ImmutablePropertyFactory<>(ClassInfo::getDescription));
+        typeCol.setCellValueFactory(new ImmutablePropertyFactory<>(ClassInfo::getType));
         capacityCol.setCellValueFactory(new ImmutablePropertyFactory<>(ClassInfo::getEnrollmentStatus));
         timeCol.setCellValueFactory(new ImmutablePropertyFactory<>(ClassInfo::getTime));
         instructorCol.setCellValueFactory(new ImmutablePropertyFactory<>(ClassInfo::getInstructorName));

@@ -46,8 +46,8 @@ public class MyAccountController implements Initializable {
 
     public void setUp(Facility facility, Member member) {
         back.setOnAction(e -> FacilityController.setStage(facility, member));
-        upDate.setOnAction(e -> updateInfoController.setStage(facility, member));
-        deleteButton.setOnAction(e -> deleteController.setStage(member, facility));
+        upDate.setOnAction(e -> UpdateInfoController.setStage(facility, member));
+        deleteButton.setOnAction(e -> DeleteController.setStage(member, facility));
         title.setCellValueFactory(new ImmutablePropertyFactory<>(ClassInfo::getTitle));
         room.setCellValueFactory(new ImmutablePropertyFactory<>(ClassInfo::getRoomNumber));
         time.setCellValueFactory(new ImmutablePropertyFactory<>(ClassInfo::getTime));
