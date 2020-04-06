@@ -441,9 +441,9 @@ INSERT INTO class (time, title, capacity, rid, fid, iid) VALUES ('2020-05-01 10:
 INSERT INTO class (time, title, capacity, rid, fid, iid) VALUES ('2020-04-15 18:00:00', 'Personal Training Classes', 1, 101, 3, 3);
 INSERT INTO class (time, title, capacity, rid, fid, iid) VALUES ('2020-04-22 18:00:00', 'Personal Training Classes', 1, 101, 3, 3);
 INSERT INTO class (time, title, capacity, rid, fid, iid) VALUES ('2020-04-29 18:00:00', 'Personal Training Classes', 1, 101, 3, 3);
-INSERT INTO class (time, title, capacity, rid, fid, iid) VALUES ('2020-04-15 18:00:00', 'Personal Training Classes', 30, 101, 3, 3);
-INSERT INTO class (time, title, capacity, rid, fid, iid) VALUES ('2020-04-22 18:00:00', 'Personal Training Classes', 30, 101, 3, 3);
-INSERT INTO class (time, title, capacity, rid, fid, iid) VALUES ('2020-04-29 18:00:00', 'Personal Training Classes', 30, 101, 3, 3);
+INSERT INTO class (time, title, capacity, rid, fid, iid) VALUES ('2020-04-15 18:00:00', 'Personal Training Classes', 30, 102, 3, 3);
+INSERT INTO class (time, title, capacity, rid, fid, iid) VALUES ('2020-04-22 18:00:00', 'Personal Training Classes', 30, 102, 3, 3);
+INSERT INTO class (time, title, capacity, rid, fid, iid) VALUES ('2020-04-29 18:00:00', 'Personal Training Classes', 30, 102, 3, 3);
 INSERT INTO class (time, title, capacity, rid, fid, iid) VALUES ('2020-04-11 12:00:00', 'Learn to Skate', 1, 100, 2, 4);
 INSERT INTO class (time, title, capacity, rid, fid, iid) VALUES ('2020-04-18 12:00:00', 'Learn to Skate', 1, 100, 2, 4);
 INSERT INTO class (time, title, capacity, rid, fid, iid) VALUES ('2020-04-25 12:00:00', 'Learn to Skate', 1, 100, 2, 4);
