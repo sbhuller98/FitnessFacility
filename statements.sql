@@ -20,7 +20,7 @@ PREPARE getClasses FROM
     'SELECT *, COUNT(t.mid) as taking,
         ? IN (SELECT mid FROM takes t2 WHERE c.time = t2.time AND c.rid = t2.rid AND c.fid = t2.fid) as isMemberTaking
     FROM takes t NATURAL RIGHT OUTER JOIN class c NATURAL JOIN classt ct NATURAL JOIN instructor i
-    WHERE fid = ? AND time > CURRENT_TIMESTAMP
+    WHERE fid = ? AND time > CURRENT_TIMESTAMP AND '/*Uses selected column*/' = ?
     GROUP BY c.time, c.rid, c.fid';
 PREPARE getRegisteredClasses FROM
     'SELECT *, COUNT(t.mid) as taking
