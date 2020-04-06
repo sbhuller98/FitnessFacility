@@ -450,6 +450,7 @@ INSERT INTO class (time, title, capacity, rid, fid, iid) VALUES ('2020-04-25 12:
 INSERT INTO class (time, title, capacity, rid, fid, iid) VALUES ('2020-04-16 12:00:00', 'Learn to Skate', 12, 101, 2, 4);
 INSERT INTO class (time, title, capacity, rid, fid, iid) VALUES ('2020-04-23 12:00:00', 'Learn to Skate', 12, 101, 2, 4);
 INSERT INTO class (time, title, capacity, rid, fid, iid) VALUES ('2020-04-30 12:00:00', 'Learn to Skate', 12, 101, 2, 4);
+
 INSERT INTO creditcard (num, expiryDate, csv, nameOnCard) VALUES (1234120000000000, '2021-02-28', 123, 'Ian Miller');
 INSERT INTO creditcard (num, expiryDate, csv, nameOnCard) VALUES (4567350000000000, '2020-07-31', 456, 'Lana Smith');
 INSERT INTO creditcard (num, expiryDate, csv, nameOnCard) VALUES (6789680000000000, '2024-01-31', 789, 'Henry Cavill');
@@ -543,14 +544,13 @@ INSERT INTO letsyoutake (classType, sType) VALUES ('BootCamp', 'Platinum');
 INSERT INTO letsyoutake (classType, sType) VALUES ('Swimming', 'Platinum');
 INSERT INTO letsyoutake (classType, sType) VALUES ('Skating', 'Platinum');
 
-
-INSERT INTO takes (mid, time, rid, fid) VALUES (1, '2020-04-11 16:30:00', 102, 4);
-INSERT INTO takes (mid, time, rid, fid) VALUES (2, '2020-04-11 10:00:00', 100, 1);
-INSERT INTO takes (mid, time, rid, fid) VALUES (3, '2020-04-11 13:00:00', 103, 4);
-INSERT INTO takes (mid, time, rid, fid) VALUES (4, '2020-04-11 20:00:00', 100, 4);
-INSERT INTO takes (mid, time, rid, fid) VALUES (5, '2020-04-11 10:00:00', 100, 1);
-INSERT INTO takes (mid, time, rid, fid) VALUES (5, '2020-04-11 14:00:00', 100, 5);
-INSERT INTO takes (mid, time, rid, fid) VALUES (6, '2020-04-11 18:00:00', 100, 5);
+INSERT INTO takes (mid, time, rid, fid) VALUES (1, '2020-04-11 16:30:00', 101, 1);
+INSERT INTO takes (mid, time, rid, fid) VALUES (2, '2020-04-27 10:00:00', 102, 3);
+INSERT INTO takes (mid, time, rid, fid) VALUES (3, '2020-04-18 18:00:00', 104, 4);
+INSERT INTO takes (mid, time, rid, fid) VALUES (4, '2020-04-14 13:00:00', 101, 1);
+INSERT INTO takes (mid, time, rid, fid) VALUES (5, '2020-04-17 10:00:00', 103, 3);
+INSERT INTO takes (mid, time, rid, fid) VALUES (5, '2020-04-11 16:30:00', 101, 1);
+INSERT INTO takes (mid, time, rid, fid) VALUES (6, '2020-04-18 18:00:00', 104, 4);
 
 INSERT INTO memberpayment (mid, pid) VALUES (1, 1);
 INSERT INTO memberpayment (mid, pid) VALUES (2, 10);
