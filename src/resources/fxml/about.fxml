@@ -13,7 +13,7 @@
             <Font size="21.0" />
          </font>
       </Label>
-      <Label fx:id="description" alignment="TOP_LEFT" layoutX="38.0" layoutY="184.0" prefHeight="188.0" prefWidth="291.0" style="-fx-text-fill: white; -fx-background-color: #3e4173;" />
+      <Label fx:id="description" alignment="TOP_LEFT" wrapText="true" layoutX="38.0" layoutY="184.0" prefHeight="188.0" prefWidth="291.0" style="-fx-text-fill: white; -fx-background-color: #3e4173;" />
       <Label fx:id="address" layoutX="38.0" layoutY="103.0" prefHeight="39.0" prefWidth="291.0" style="-fx-text-fill: white; -fx-background-color: #3e4173;" />
       <Button fx:id="back" layoutX="530.0" layoutY="8.0" mnemonicParsing="false" text="Back">
          <font>
