@@ -15,12 +15,13 @@
       <Label layoutX="107.0" layoutY="156.0" text="Label" />
       <TableView fx:id="mainTable" layoutX="16.0" layoutY="80.0" prefHeight="479.0" prefWidth="764.0" style="-fx-background-color: #363857; -fx-border-color: #229aeb; -fx-border-width: 5;">
         <columns>
-          <TableColumn fx:id="roomCol" prefWidth="71.0" text="Room#" />
-          <TableColumn fx:id="timeCol" prefWidth="107.0" text="Time" />
-          <TableColumn fx:id="titleCol" prefWidth="106.0" text="Title" />
-          <TableColumn fx:id="capacityCol" prefWidth="82.0" text="Capacity" />
-          <TableColumn fx:id="instructorCol" prefWidth="128.0" text="Instructor" />
-          <TableColumn fx:id="descriptionCol" prefWidth="258.0" text="Description" />
+          <TableColumn fx:id="roomCol" prefWidth="59.20001029968262" text="Room#" />
+          <TableColumn fx:id="timeCol" prefWidth="142.1999969482422" text="Time" />
+          <TableColumn fx:id="titleCol" prefWidth="131.40000915527344" text="Title" />
+          <TableColumn fx:id="typeCol" prefWidth="73.79998779296875" text="Type" />
+          <TableColumn fx:id="capacityCol" prefWidth="59.399993896484375" text="Capacity" />
+          <TableColumn fx:id="instructorCol" prefWidth="80.39996337890625" text="Instructor" />
+          <TableColumn fx:id="descriptionCol" prefWidth="342.0" text="Description" />
         </columns>
       </TableView>
       <Button fx:id="back" layoutX="734.0" layoutY="12.0" mnemonicParsing="false" text="Back">
@@ -30,9 +31,9 @@
       </Button>
      <Button fx:id="register" prefHeight="27.0" prefWidth="77.0" text="Register" />
      <Button fx:id="deregister" layoutX="77.0" prefHeight="27.0" prefWidth="77.0" text="Deregister" />
-     <ComboBox fx:id="columnSelector" promptText="Filter Column" layoutX="150.0"/>
-     <TextField fx:id="valueSelector" promptText="Filter Value" layoutX="300.0"/>
-     <Button fx:id="filterButton" text="Filter" layoutX="450.0"/>
+     <ComboBox fx:id="columnSelector" layoutX="150.0" promptText="Filter Column" />
+     <TextField fx:id="valueSelector" layoutX="300.0" promptText="Filter Value" />
+     <Button fx:id="filterButton" layoutX="450.0" text="Filter" />
    </children>
   <stylesheets>
     <URL value="@mainStyle.css" />
