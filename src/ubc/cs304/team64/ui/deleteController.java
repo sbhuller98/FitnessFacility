@@ -35,7 +35,7 @@ public class deleteController implements Initializable {
     public void setUp(Facility facility,Member member) {
         back.setOnAction(e -> MyAccountController.setStage(facility, member));
         noDelete.setOnAction(e -> MyAccountController.setStage(facility, member));
-        yesDelete.setOnAction(e -> updateStage(new FXMLLoaderWrapper<>("Login.fxml").getScene(), "Login"));
+        yesDelete.setOnAction(e -> delete(facility, member));
         String personalOutput = new StringBuilder()
                 .append("Are you sure you wuld like to delete you account?  This will ,\n")
                 .append("deregister you from all classes and delete your personal data., \n")
@@ -43,6 +43,11 @@ public class deleteController implements Initializable {
                 .toString();
         description.setText(personalOutput);
 
+    }
+
+    public void delete(Facility facility, Member member) {
+        Main.connectionHandler.deleteMember(member);
+        MyAccountController.setStage(facility, member);
     }
 
 
