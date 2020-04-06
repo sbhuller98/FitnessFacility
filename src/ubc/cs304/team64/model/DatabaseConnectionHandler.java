@@ -18,7 +18,7 @@ public class DatabaseConnectionHandler {
       // Load the JDBC driver
       // Note that the path could change for new drivers
       DriverManager.registerDriver(new com.mysql.cj.jdbc.Driver());
-      connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/Project", "root", "CPSC304g64");
+      connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/Project?serverTimezone=UTC", "root", "CPSC304g64");
       connection.setAutoCommit(false);
       digest = MessageDigest.getInstance("MD5");
 
