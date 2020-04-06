@@ -330,7 +330,6 @@ INSERT INTO member(mid, login, password, address, phoneNumber, email, name, birt
 INSERT INTO member(mid, login, password, address, phoneNumber, email, name, birthDate, sType) VALUES (14, 'deepra', X'aaab09a8fdd7d0ab9d2ff8f4563baa98', '25 111th St, Burnaby, BC, V7P0L0', '7786785474', 'deepikachopra@shaw.ca', 'Deepika Chopra','1975-05-05', 'Platinum');
 #password "random9"
 
-
 INSERT INTO classt (title, description, type) VALUES ('Abs of Steel', 'Have you ever wanted finely toned abs?  This is the class for you!  This class targets the various abdominal muscles through direct and indirect exercises, while also getting your heart racing!', 'BootCamp');
 INSERT INTO classt (title, description, type) VALUES ('Running Machine', 'Do you get tired climbing the stairs?  Come train with us.  We’ll get you in shape and help[ you get that perfect runner body!  This class focuses on aerobic cardio exercises such as skipping rope, biking, and running on the treadmill.  Sign up now!', 'Cardio');
 INSERT INTO classt (title, description, type) VALUES ('Shapetastic', 'This class is not for the faint of heart.  Come join us for interval exercises that will have you feeling the burn.  This is one of our hardest classes and will get you that beach body for the summer!', 'HIIT');
