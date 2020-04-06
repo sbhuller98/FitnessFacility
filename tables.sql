@@ -297,6 +297,9 @@ INSERT INTO room (rid, fid) VALUES (104, 4);
 INSERT INTO room (rid, fid) VALUES (100, 5);
 INSERT INTO room (rid, fid) VALUES (101, 5);
 INSERT INTO room (rid, fid) VALUES (102, 5);
+INSERT INTO room (rid, fid) VALUES (103, 5);
+INSERT INTO room (rid, fid) VALUES (104, 5);
+INSERT INTO room (rid, fid) VALUES (105, 5);
 
 INSERT INTO member(login, password, address, phoneNumber, email, name, birthDate, sType) VALUES ('imiller', X'a61a78e492ee60c63ed8f2bb3a6a0072','4444 128 St, Surrey, BC, V3X1T8', '6043442423', 'imiller@gmail.com', 'Ian Miller', '1978-12-12', 'Silver');
 #password: "pa$$word"
@@ -331,10 +334,10 @@ INSERT INTO member(login, password, address, phoneNumber, email, name, birthDate
 INSERT INTO classt (title, description, type) VALUES ('Abs of Steel', 'Have you ever wanted finely toned abs?  This is the class for you!  This class targets the various abdominal muscles through direct and indirect exercises, while also getting your heart racing!', 'BootCamp');
 INSERT INTO classt (title, description, type) VALUES ('Running Machine', 'Do you get tired climbing the stairs?  Come train with us.  We’ll get you in shape and help[ you get that perfect runner body!  This class focuses on aerobic cardio exercises such as skipping rope, biking, and running on the treadmill.  Sign up now!', 'Cardio');
 INSERT INTO classt (title, description, type) VALUES ('Shapetastic', 'This class is not for the faint of heart.  Come join us for interval exercises that will have you feeling the burn.  This is one of our hardest classes and will get you that beach body for the summer!', 'HIIT');
-INSERT INTO classt (title, description, type) VALUES ('Basketball Skills I', 'Come improve your basketball skills, with a focus on dribbling ands shooting.  The second part of this class consists of scrimmage.  Open to adults only.  All skill levels welcome!', 'Basketball');
+INSERT INTO classt (title, description, type) VALUES ('Basketball Skills I', 'Come improve your basketball skills, with a focus on dribbling ands shooting.  The second part of this class consists of scrimmage.  Open to adults only.  All skill levels welcome!', 'GymSports');
 INSERT INTO classt (title, description, type) VALUES ('World Dance', 'Shake away your worries and have some fun learning various dances from across the world.  Each class will focus on a dance from a specific country, with guest instructors!  All dancers welcome regardless of experience!', 'Dance');
 INSERT INTO classt (title, description, type) VALUES ('Learn to Skate', 'Come learn skating with us and build a foundation for figure skating, hockey, speed skating and ringette thouhg a series of balance, control and agility trainings!', 'Skating');
-INSERT INTO classt (title, description, type) VALUES ('Personal Training Classes', 'Looking to start building a habit of working out? Or maybe you are looking for an intense training program? Regardless of how experienced you are, we are here to help you achieve your fitness dreams!', 'GymSports');
+INSERT INTO classt (title, description, type) VALUES ('Personal Training Classes', 'Looking to start building a habit of working out? Or maybe you are looking for an intense training program? Regardless of how experienced you are, we are here to help you achieve your fitness dreams!', 'Cardio');
 INSERT INTO classt (title, description, type) VALUES ('Lil Dippers Swimming Lessons', 'Want your little one to get a head start when it comes to pool play time? We have helped thousands of babies, AND adults all over Vancouver Greater Area learn water safety skills by pairing them with one of our seasoned swimming instructors!', 'Swimming');
 INSERT INTO classt (title, description, type) VALUES ('World Tennis', 'Did you know that we are one of 18 tennis courts in the Greater Vancouver Area? We offer classes to all ages and skill levels all year. Take a lesson, register for a program, or join a drop-in class!', 'Tennis');
 
