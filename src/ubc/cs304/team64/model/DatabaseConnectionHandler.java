@@ -331,7 +331,7 @@ public class DatabaseConnectionHandler {
      "SELECT *, COUNT(t.mid) as taking " +
           "FROM  takes t NATURAL RIGHT OUTER JOIN class c NATURAL JOIN classt NATURAL JOIN instructor i " +
           "WHERE fid = ? AND time > CURRENT_TIMESTAMP AND ? IN (SELECT mid FROM takes t2 WHERE c.time = t2.time AND c.rid = t2.rid AND c.fid = t2.fid) " +
-          "GROUP BY c.time, c.title, c.fid");
+          "GROUP BY c.time, c.rid, c.fid");
       ps.setInt(1, facility.getFid());
       ps.setInt(2, member.getMid());
       return getClassesBase(facility, member, ps, false);
