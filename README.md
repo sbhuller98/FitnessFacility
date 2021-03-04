@@ -3,7 +3,7 @@ cs304
 
 Welcome to GreaterVan Gainz!
 
-Created by: David Ewert, Sukhman Bhuller, Hasti Delfi
+Created by: David Ewert, Sukhman Bhuller
 
 
 
